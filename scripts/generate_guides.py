@@ -9,11 +9,11 @@ soup = BeautifulSoup(response.content, 'html.parser')
 error_codes = []
 
 # Scrape error codes and descriptions from the table
-table = soup.find('table')  # Find the first table on the page
+table = soup.find('table')
 if table:
     for row in table.find_all('tr'):
         cells = row.find_all('td')
-        if len(cells) >= 2:
+        if len(cells) == 2:  # Ensure there are exactly two cells in the row
             code = cells[0].get_text(strip=True)
             description = cells[1].get_text(strip=True)
             error_codes.append({
@@ -28,7 +28,7 @@ if not error_codes:
     exit()
 
 # Directory to save the guides
-output_dir = "guides"
+output_dir = os.path.join(os.getcwd(), "guides")
 os.makedirs(output_dir, exist_ok=True)
 
 # Template for the Markdown file
@@ -73,3 +73,5 @@ for error in error_codes:
     with open(filename, 'w') as file:
         file.write(content)
     print(f"Created {filename}")
+
+print(f"All guides created in {/workspaces/EntraIDcampjo/guides}")
