@@ -11,8 +11,6 @@
 - [Step 3: Notify the User](#step-3-notify-the-user)
 - [Additional Notes](#additional-notes)
 - [Troubleshooting](#troubleshooting)
-- [Additional Notes](#additional-notes-1)
-- [Troubleshooting](#troubleshooting-1)
 - [Conclusion](#conclusion)
 
 <!-- tocstop -->
