@@ -14,4 +14,5 @@
 
 ## Contributing
 
-If you have suggestions or additional troubleshooting steps, please feel free to contribute by submitting a pull request or opening an issue.
+If you have suggestions or additional troubleshooting steps, please feel free to
+contribute by submitting a pull request or opening an issue.

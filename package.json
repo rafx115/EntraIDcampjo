@@ -1,0 +1,18 @@
+{
+  "name": "entraidcampjo",
+  "version": "1.0.0",
+  "description": "- **docs/**: General documentation and overviews. - **guides/**: Step-by-step troubleshooting guides. - **images/**: Visual aids used in the documentation. - **scripts/** (Optional): Scripts that can assist with troubleshooting. - **logs/** (Optional): Sample log files and examples.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}
