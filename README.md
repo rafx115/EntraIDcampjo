@@ -1,4 +1,4 @@
-## Repository Structure
+# Repository Structure
 
 * **docs/**: General documentation and overviews.
 * **guides/**: Step-by-step troubleshooting guides.
