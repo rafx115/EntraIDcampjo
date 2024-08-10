@@ -2,6 +2,19 @@
 
 <!-- toc -->
 
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Step 1: Access the User's Profile](#step-1-access-the-users-profile)
+- [Step 2: Reset MFA](#step-2-reset-mfa)
+- [Step 3: Notify the User](#step-3-notify-the-user)
+- [Additional Notes](#additional-notes)
+- [Troubleshooting](#troubleshooting)
+- [Additional Notes](#additional-notes-1)
+- [Troubleshooting](#troubleshooting-1)
+- [Conclusion](#conclusion)
+
+<!-- tocstop -->
+
 ## Introduction
 This guide will walk you through the steps to reset Multi-Factor Authentication (MFA) for a user in Entra ID.
 
