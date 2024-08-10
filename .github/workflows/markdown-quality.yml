@@ -20,7 +20,8 @@ jobs:
         npm install -g markdownlint-cli prettier remark-cli remark-preset-lint-consistent
 
     - name: Run markdownlint
-      run: markdownlint '**/*.md' --fix
+      run: markdownlint '**/*.md' '!node_modules/**'
+
 
     - name: Run Prettier
       run: npx prettier --write "**/*.md"
