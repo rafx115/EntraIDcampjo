@@ -36,7 +36,7 @@ jobs:
           "messages": [{"role": "system", "content": "Summarize the following issue or pull request:"}, {"role": "user", "content": "${{ github.event.issue.body }}"}]
         }' | jq -r '.choices[0].message.content')
         
-        echo "ChatGPT Response: $response"
+        echo "Raw Response: $raw_response"
 
     - name: Comment on the Issue or PR
       run: |
