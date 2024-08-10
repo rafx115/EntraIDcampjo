@@ -13,5 +13,5 @@ provides an overview of MFA and common troubleshooting steps.
 
 ## Common Issues
 
-* Users unable to receive MFA prompts.
-* Error messages during MFA setup.
+- Users unable to receive MFA prompts.
+- Error messages during MFA setup.

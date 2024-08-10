@@ -20,8 +20,8 @@ This guide will walk you through the steps to reset Multi-Factor Authentication
 
 ## Prerequisites
 
-* Administrator access to the Entra ID portal.
-* The user must be informed that their MFA settings will be reset.
+- Administrator access to the Entra ID portal.
+- The user must be informed that their MFA settings will be reset.
 
 ## Step 1: Access the User's Profile
 
@@ -36,20 +36,18 @@ This guide will walk you through the steps to reset Multi-Factor Authentication
 
 ## Step 3: Notify the User
 
-* Inform the user that their MFA has been reset and that they will need to
+- Inform the user that their MFA has been reset and that they will need to
   reconfigure it the next time they sign in.
 
 ## Additional Notes
 
-* Ensure that the user has backup contact methods set up in case they lose
+- Ensure that the user has backup contact methods set up in case they lose
   access to their primary MFA device.
 
 ## Troubleshooting
 
-* If the "Reset multi-factor authentication" option is not available, ensure you
+- If the "Reset multi-factor authentication" option is not available, ensure you
   have the necessary permissions.
-
-
 
 ## Conclusion
 

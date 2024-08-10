@@ -16,9 +16,9 @@ guidelines to help you get started.
 
 ## Formatting Guidelines
 
-* Follow the structure of existing guides when adding new content.
-* Use Markdown for all documentation files.
-* Include images in the `images/` folder and reference them in your guides.
+- Follow the structure of existing guides when adding new content.
+- Use Markdown for all documentation files.
+- Include images in the `images/` folder and reference them in your guides.
 
 ## Review Process
 
