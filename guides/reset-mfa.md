@@ -25,5 +25,11 @@ This guide will walk you through the steps to reset Multi-Factor Authentication 
 ## Troubleshooting
 - If the "Reset multi-factor authentication" option is not available, ensure you have the necessary permissions.
 
+## Additional Notes
+- Ensure that the user has backup contact methods set up in case they lose access to their primary MFA device.
+
+## Troubleshooting
+- If the "Reset multi-factor authentication" option is not available, ensure you have the necessary permissions.
+
 ## Conclusion
 The user's MFA settings have been reset. They will need to reconfigure their MFA settings the next time they sign in.
