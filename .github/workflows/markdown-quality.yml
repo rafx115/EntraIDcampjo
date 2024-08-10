@@ -1,0 +1,39 @@
+name: Markdown Quality Assurance
+
+on: [push, pull_request]
+
+jobs:
+  lint-and-fix:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+
+    - name: Install Tools
+      run: |
+        npm install -g markdownlint-cli prettier remark-cli remark-preset-lint-consistent
+
+    - name: Run markdownlint
+      run: markdownlint '**/*.md' --fix
+
+    - name: Run Prettier
+      run: npx prettier --write "**/*.md"
+
+    - name: Run Remark
+      run: npx remark . --output
+
+    - name: Commit changes
+      run: |
+        git config --local user.name "github-actions[bot]"
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add .
+        git commit -m "Auto-fixed Markdown files" || echo "No changes to commit"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
