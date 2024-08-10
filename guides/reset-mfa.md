@@ -1,3 +1,6 @@
+<!-- toc -->
+
+
 # Reset MFA for Entra ID
 
 ## Introduction
