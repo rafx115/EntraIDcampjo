@@ -4,6 +4,7 @@
     "remark-preset-lint-consistent",
     "remark-lint-heading-increment",
     "remark-lint-first-heading-level",
-    "remark-lint-no-duplicate-headings"
+    "remark-lint-no-duplicate-headings",
+    "remark-lint-list-item-indent"
   ]
 }
