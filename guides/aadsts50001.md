@@ -1,4 +1,3 @@
-
 # AADSTS50001: InvalidResource - The resource is disabled or doesn't exist. Check your app's code to ensure that you have specified the exact resource URL for the resource you're trying to access.
 
 
@@ -21,11 +20,17 @@ Troubleshooting the AADSTS50001 error can be critical to ensuring a smooth acces
 
 ### **Step-by-Step Resolution Strategies**
 
+<<<<<<< HEAD
 1. **Verify Resource Registration**:
    - Log in to the Azure portal.
    - Navigate to **Azure Active Directory** > **App registrations**.
    - Check if the resource you are trying to access (API) is listed and correctly registered.
    - Ensure the **Redirect URI** for your app is correct and matches what you are using in the code.
+=======
+3. **Ensure Resource Existence:**
+   - Double-check that the resource being accessed exists.
+   - If it doesn�t exist, correct the resource URL accordingly.
+>>>>>>> 44a6fd6d2b08a07d1c083c6d7db8bca24b23c735
 
 2. **Check Resource Status**:
    - In the Azure portal, ensure that the resource is active and not disabled. 

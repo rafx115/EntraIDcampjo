@@ -1,4 +1,3 @@
-
 # AADSTS50178: SessionControlNotSupportedForPassthroughUsers - Session control isn't supported for passthrough users.
 
 

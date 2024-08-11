@@ -1,4 +1,3 @@
-
 # AADSTS40009: OAuth2IdPRefreshTokenRedemptionUserError - There's an issue with your federated Identity Provider. Contact your IDP to resolve this issue.
 
 

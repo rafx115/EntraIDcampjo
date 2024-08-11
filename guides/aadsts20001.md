@@ -1,4 +1,3 @@
-
 # AADSTS20001: WsFedSignInResponseError - There's an issue with your federated Identity Provider. Contact your IDP to resolve this issue.
 
 
@@ -9,7 +8,16 @@ Certainly! Below is a comprehensive troubleshooting guide for the error code **A
 
 1. **Confirm the Error Origin**: Verify if the error occurs consistently or sporadically. Note the time when the error occurs and the conditions under which it appears (e.g., specific applications, users, etc.).
 
+<<<<<<< HEAD
 2. **Review Logs**: Access and review the application’s logs to gather any additional context or error messages surrounding the AADSTS20001 error. Look for any failures regarding federation requests.
+=======
+#### Step-by-Step Resolution Strategies:
+1. **Contact IDP Support**: Follow the instructions in the error message and reach out to your IDPï¿½s support team for assistance.
+2. **Check Certificate Validity**: Ensure that the certificates used for authentication are valid and not expired.
+3. **Review IDP Configuration**: Verify the configurations on the IDP side to ensure they align with the requirements of your application.
+4. **Update Metadata**: Update the metadata configuration on both your application and the IDP to ensure they are in sync.
+5. **Monitor Network Connectivity**: Check the network connectivity between your application and the IDP to identify and resolve any issues.
+>>>>>>> 44a6fd6d2b08a07d1c083c6d7db8bca24b23c735
 
 3. **Check User Environment**: Identify if the issue is isolated to a specific user or group. If applicable, perform tests with different user accounts to determine the scope of the problem.
 

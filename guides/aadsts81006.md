@@ -1,11 +1,17 @@
-
 # AADSTS81006: DesktopSsoNoAuthorizationHeader - No authorization header was found.
 
 
 ## Troubleshooting Steps
 **Troubleshooting Guide for Error Code AADSTS81006: DesktopSsoNoAuthorizationHeader - No authorization header was found.**
 
+<<<<<<< HEAD
 This error typically occurs in Azure Active Directory (AAD) scenarios when a client application attempts to access a resource without providing a valid authorization header. This guide will provide you with detailed steps to diagnose and resolve this issue.
+=======
+#### Initial Diagnostic Steps:
+1. **Verify Error Context**: Understand where and when the error occurs � during sign-in, authentication, token validation, etc.
+2. **Check Logs**: Review logs or error messages to gather more information about the specific environment and context of the error.
+3. **Confirm Environment Setup**: Check if the correct configurations are in place for the authentication process.
+>>>>>>> 44a6fd6d2b08a07d1c083c6d7db8bca24b23c735
 
 ### 1. Initial Diagnostic Steps
 

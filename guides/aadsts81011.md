@@ -1,4 +1,3 @@
-
 # AADSTS81011: DesktopSsoLookupUserBySidFailed - Unable to find user object based on information in the user's Kerberos ticket.
 
 

@@ -1,4 +1,3 @@
-
 # AADSTS90009: TokenForItselfMissingIdenticalAppIdentifier - The application is requesting a token for itself. This scenario is supported only if the resource that's specified is using the GUID-based application ID.
 
 

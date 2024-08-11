@@ -1,4 +1,3 @@
-
 # AADSTS50147: MissingCodeChallenge - The size of the code challenge parameter isn't valid.
 
 

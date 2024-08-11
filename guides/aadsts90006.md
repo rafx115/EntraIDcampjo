@@ -1,4 +1,3 @@
-
 # AADSTS90006: ExternalServerRetryableError - The service is temporarily unavailable.
 
 
@@ -9,7 +8,16 @@
 
 The error code AADSTS90006 signifies that there is an external server issue causing temporary unavailability in connecting with Azure Active Directory (Azure AD). It is a retryable error, indicating that the request should be tried again after a brief pause.
 
+<<<<<<< HEAD
 ### Initial Diagnostic Steps:
+=======
+3. **Resolution Strategies**:
+   - **Step 1**: Confirm that the issue is not specific to your environment by checking with other users or contacting the identity provider's support.
+   - **Step 2**: If the issue is widespread, wait for some time and try again later as it might be a temporary service outage.
+   - **Step 3**: Check your network connection to ensure there are no issues preventing communication with the authentication service.
+   - **Step 4**: Clear browser cache and cookies or try using a different browser to rule out any local issues.
+   - **Step 5**: If the issue persists, contact the identity provider�s support for further assistance.
+>>>>>>> 44a6fd6d2b08a07d1c083c6d7db8bca24b23c735
 
 1. **Check Azure Status:**
    - Go to the [Azure Status Page](https://status.azure.com) to see if there are any ongoing service interruptions or outages affecting Azure AD services.
