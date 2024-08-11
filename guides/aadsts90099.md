@@ -25,3 +25,48 @@ This guide will help resolve issues related to the application '{appid}' ({appna
 
 ## Additional Notes
 - Refer to the [Azure AD documentation](https://learn.microsoft.com/en-us/azure/active-directory/) for more details.
+
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+### Troubleshooting Guide for Error Code AADSTS90099
+
+#### Initial Diagnostic Steps
+1. **Confirm Error Code**: Verify that the error message matches AADSTS90099.
+2. **Review Parameters**: Note down the values of '{appId}', '{appName}', and '{tenant}' mentioned in the error message.
+3. **Check Application Consent Status**: Determine if the application has been previously authorized in the specified tenant.
+
+#### Common Issues
+1. **Missing Application Consent**: The application '{appId}' has not been granted consent to access the specified tenant.
+2. **Incorrect Permissions**: The application may lack necessary permissions to access resources in the tenant.
+3. **Partner Center API Not Executed**: The appropriate Partner Center API has not been called to authorize the application.
+
+#### Step-by-Step Resolution
+
+1. **Check Application Consent Status**:
+    - Visit the Azure Portal and navigate to Azure Active Directory.
+    - Go to "Enterprise applications" and search for the application '{appName}' using the '{appId}'.
+    - Verify if the application has been granted permissions in the tenant.
+
+2. **Grant Pre-Consent**:
+    - If the application lacks consent, follow these steps to provide pre-consent:
+        - Within the application permissions section, grant the required permissions.
+        - Ensure that the consent is provided in the tenant specified in the error message.
+
+3. **Execute Partner Center API**:
+    - Utilize the appropriate Partner Center API to authorize the application for access:
+        - Refer to the Microsoft Partner Center API documentation for the specific API needed to authorize the application.
+        - Execute the API call with the correct parameters including the '{appId}', '{appName}', and '{tenant}'.
+
+4. **Re-validate Access**:
+    - After granting consent or executing the API, retest the functionality that was triggering the error to confirm the issue has been resolved.
+
+#### Additional Notes or Considerations
+- **API Authentication**: Ensure the user executing the API call has the necessary permissions to authorize applications in the specified tenant.
+- **Partner Center Documentation**: Consult the official Microsoft Partner Center documentation for detailed guidance on using the APIs for application authorization.
+- **Error Persistence**: If the error persists after following the steps, contact Microsoft support for further assistance in addressing the authorization issue.

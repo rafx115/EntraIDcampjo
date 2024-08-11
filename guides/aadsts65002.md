@@ -25,3 +25,52 @@ This guide will help resolve issues related to consent between first party appli
 
 ## Additional Notes
 - Refer to the [Azure AD documentation](https://learn.microsoft.com/en-us/azure/active-directory/) for more details.
+
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+### Error Code: AADSTS65002 Troubleshooting Guide ###
+#### Description: 
+The error code AADSTS65002 indicates that consent between a first-party application and first-party resource must be configured via preauthorization. This typically occurs when a developer within your tenant attempts to reuse an App ID owned by Microsoft, which prevents them from impersonating a Microsoft application to call other APIs.
+
+#### Initial Diagnostic Steps:
+1. Verify the specific applications and resources involved in the error message.
+2. Confirm the ownership and permissions associated with the App ID and resource ID.
+3. Check if any recent changes or configurations have been made that may have triggered this error.
+
+#### Common Issues:
+1. Attempting to use a Microsoft-owned App ID without proper authorization.
+2. Misconfiguration of permissions between the application and resource.
+3. Changes in APIs or permissions that were not properly managed.
+
+#### Step-by-Step Resolution Strategies:
+1. **Identify the Issue:**
+   - Confirm the specific App ID and resource ID causing the error.
+   - Determine if the developer is attempting to use a Microsoft-owned App ID.
+
+2. **Register a New App ID:**
+   - Advise the developer to register a new App ID that they can use for the application.
+   
+3. **Configure Consent:**
+   - Ensure that proper consent and permissions are set between the new App ID and the required resources.
+   
+4. **Update Application Settings:**
+   - Instruct the developer to update the application settings to use the newly registered App ID.
+   
+5. **Testing and Verification:**
+   - Test the application to ensure that the error is resolved and that the new App ID is working correctly.
+   
+6. **Monitor for Recurrence:**
+   - Keep an eye on the application to verify that the error does not reoccur.
+
+#### Additional Notes or Considerations:
+- Verify that the permissions and configurations are aligned with Microsoft's policies and guidelines.
+- Communicate clearly with the developer to ensure they understand the reasons behind the error and the steps taken to resolve it.
+- Regularly review and update permissions and configurations to prevent similar issues in the future.
+
+By following these steps, you should be able to address the AADSTS65002 error and allow the developer to continue using the application with the appropriate permissions and configurations.

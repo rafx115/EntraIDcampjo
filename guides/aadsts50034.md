@@ -25,3 +25,54 @@ This guide will help resolve issues related to useraccountnotfound - to sign int
 
 ## Additional Notes
 - Refer to the [Azure AD documentation](https://learn.microsoft.com/en-us/azure/active-directory/) for more details.
+
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+### Troubleshooting Guide for Error Code AADSTS50034: UserAccountNotFound
+
+#### Initial Diagnostic Steps:
+1. **Verify Account Details:**
+   - Confirm that the user has entered the correct username. Typos or incorrect usernames can lead to this error.
+   
+2. **Check Tenant Membership:**
+   - Ensure that the user account is part of the correct directory or tenant required to access the application.
+   
+3. **Application Tenant Configuration:**
+   - Check if the application has been configured to the correct tenant for user sign-in.
+   
+4. **Identify the User as Internal or Guest:**
+   - Determine if the user should be added as a guest to access the application.
+
+#### Common Issues:
+- Incorrect username input.
+- User not added to the correct directory or tenant.
+- Application configured with the wrong tenant.
+- User status is not set to guest when required.
+
+#### Step-by-Step Resolution Strategies:
+1. **Correct Username Entry:**
+   - Ensure that the user inputs the correct username.
+   
+2. **Add User to the Tenant:**
+   - If the user is not part of the tenant, add them as a guest user using the following steps:
+     - Go to Azure Active Directory portal.
+     - Select "Users" and then choose "New guest user."
+     - Follow the prompts to add the user as a guest in the tenant.
+     
+3. **Check Application Tenant Settings:**
+   - Verify that the application is set up with the correct tenant for user sign-in.
+   
+4. **User Account Validation:**
+   - Confirm with the user if they should have access to the application and adjust their status accordingly.
+
+#### Additional Notes or Considerations:
+- Some applications require users to be added as guests to access them from external directories.
+- Ensure that the user account is active and does not have any restrictions that prevent access.
+- Review the application's documentation for specific instructions on handling user accounts and tenants.
+- Regularly monitor and update user access rights to prevent similar issues in the future.

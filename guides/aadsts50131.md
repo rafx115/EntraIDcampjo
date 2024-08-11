@@ -25,3 +25,37 @@ This guide will help resolve issues related to conditionalaccessfailed - indicat
 
 ## Additional Notes
 - Refer to the [Azure AD documentation](https://learn.microsoft.com/en-us/azure/active-directory/) for more details.
+
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+### Troubleshooting Guide for Error Code AADSTS50131 - ConditionalAccessFailed
+
+#### Initial Diagnostic Steps:
+1. **Confirm Error Code**: Ensure that the error code displayed is indeed AADSTS50131.
+2. **Check User Activity**: Verify the recent activities of the user encountering the error.
+3. **Review Conditional Access Policies**: Check the Conditional Access policies that are in place.
+
+#### Common Issues:
+1. **Bad Windows Device State**: This can occur if the user's device does not meet the security requirements.
+2. **Request Blocked Due to Suspicious Activity**: If there have been recent suspicious activities from the user or device.
+3. **Access Policy Decisions**: Errors may arise due to conflicts with established access policies.
+4. **Security Policy Decisions**: Non-compliance with security policies can trigger this error.
+
+#### Step-by-Step Resolution Strategies:
+1. **Check User Device**: Ensure that the user's Windows device meets the security requirements stipulated in the Conditional Access policies.
+2. **Review Suspicious Activity**: Investigate and address any suspicious activities associated with the user and device.
+3. **Evaluate Access Policies**: Review and update any conflicting access policies to align with the current requirements.
+4. **Adjust Security Policies**: Make necessary adjustments to the security policies for compliance.
+
+#### Additional Notes or Considerations:
+1. **User Communication**: Inform the user of the error and any actions required from their end.
+2. **Policy Review**: Regularly review and update Conditional Access policies to prevent such errors.
+3. **Admin Support**: Seek assistance from administrators or IT support if needed for policy adjustments or device evaluations.
+
+By following these steps and strategies, you should be able to diagnose and resolve the AADSTS50131 error related to Conditional Access issues effectively.

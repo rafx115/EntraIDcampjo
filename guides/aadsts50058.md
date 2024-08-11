@@ -25,3 +25,47 @@ This guide will help resolve issues related to userinformationnotprovided - sess
 
 ## Additional Notes
 - Refer to the [Azure AD documentation](https://learn.microsoft.com/en-us/azure/active-directory/) for more details.
+
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+Troubleshooting Guide for Error Code AADSTS50058 - UserInformationNotProvided:
+
+Initial Diagnostic Steps:
+1. Check if the user is correctly authenticated and signed in to the application.
+2. Verify the configuration settings related to single sign-on (SSO) in the application and identity provider.
+
+Common Issues that Cause this Error:
+1. User is not signed in or authenticated.
+2. SSO session is not found or is invalid.
+3. Improper configuration of prompt=none parameter causing the error to occur.
+
+Step-by-Step Resolution Strategies:
+
+1. Sign-In Troubleshooting:
+   a. Ask the user to sign in again and ensure they are successfully authenticated.
+   b. Check if there are any issues with the sign-in flow or functionality of the application.
+
+2. Verify SSO Session:
+   a. Confirm that the SSO session is valid and has not expired.
+   b. If using external identity providers, check if there are any issues with the SSO setup or configuration.
+
+3. Check prompt=none Parameter:
+   a. If the error occurs when prompt=none is specified in the request, consider removing this parameter to prompt the user for sign-in.
+   b. If prompt=none is necessary for your application flow, ensure that the SSO session is properly managed and maintained.
+
+4. Review Application and Identity Provider Configuration:
+   a. Double-check the SSO settings and configurations in both the application and the identity provider.
+   b. Ensure that the required user information is being provided during the authentication process.
+
+Additional Notes or Considerations:
+- It is crucial to handle this error gracefully in the application to guide the user on the necessary steps to resolve it.
+- Consider logging detailed information about the error to aid in troubleshooting, such as timestamps and user actions leading to the error.
+- If the issue persists, consider reaching out to the identity provider support for further assistance in diagnosing and resolving the problem.
+
+By following these troubleshooting steps, you can address the AADSTS50058 error and ensure a smooth SSO experience for users accessing your application.

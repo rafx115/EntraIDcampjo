@@ -25,3 +25,54 @@ This guide will help resolve issues related to cmsiinterrupt - for security reas
 
 ## Additional Notes
 - Refer to the [Azure AD documentation](https://learn.microsoft.com/en-us/azure/active-directory/) for more details.
+
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+Here is a detailed troubleshooting guide for the error code AADSTS50199 with the CmsiInterrupt description:
+
+### Initial Diagnostic Steps:
+
+1. **Check URL Configuration**: Ensure that the redirect URI is configured correctly in the application's settings.
+2. **Browser Compatibility**: Verify if the issue is specific to mobile browsers or if it occurs on other devices as well.
+3. **Review App Permissions**: Confirm that the app requesting access is the one intended.
+4. **Review Azure AD Settings**: Check if the redirect URI is correctly specified and part of the safe list.
+5. **Check for Spoofing Indicators**: Look for any signs of malicious activity or unauthorized attempts.
+
+### Common Issues Causing the Error:
+
+- **Incorrect Redirect URI Configuration**: Redirect URI not matching or not included in the safe list.
+- **Use of System WebView**: Using a system webview to request a token for a native application can trigger the security confirmation.
+- **Spoofing Attempt**: Suspicious activity detected that may indicate a spoofing attack.
+
+### Step-by-Step Resolution Strategies:
+
+1. **Review Redirect URI Configuration**:
+   - Ensure the redirect URIs are correctly configured in the Azure AD application settings.
+   - Add the necessary redirect URI to the safe list if required.
+
+2. **Check Browser Compatibility**:
+   - Verify if the issue is specific to mobile browsers and if any specific configurations are needed.
+
+3. **User Confirmation**:
+   - If the interruption is due to a security feature, inform users that this is a standard procedure to prevent spoofing attacks.
+
+4. **Avoid System WebView**:
+   - If possible, avoid using system webviews for requesting tokens and opt for browser-based flows instead.
+
+5. **Additional Considerations**:
+   - Consider the use of secure browser extensions for desktop Chrome browsers to avoid interruptions.
+   - Educate users on recognizing spoofing attempts to enhance security awareness.
+
+### Additional Notes or Considerations:
+
+- If the error persists despite following the steps, contact Azure AD support for further assistance.
+- Regularly review and update the application settings to maintain security and prevent unauthorized access.
+- Encourage users to report any suspicious activity or prompts for user confirmation that seem out of the ordinary.
+
+By following these steps and considering the mentioned factors, you can troubleshoot and address the AADSTS50199 error with the CmsiInterrupt description effectively.

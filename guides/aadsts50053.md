@@ -25,3 +25,61 @@ This guide will help resolve issues related to this error can result from two di
 
 ## Additional Notes
 - Refer to the [Azure AD documentation](https://learn.microsoft.com/en-us/azure/active-directory/) for more details.
+
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+Troubleshooting steps could not be generated due to an error.
+
+## Troubleshooting Steps
+**Error Code: AADSTS50053 Troubleshooting Guide**
+
+**Description:**
+Error Code AADSTS50053 can occur due to two different reasons:
+1. IdsLocked: The account is locked because the user tried to sign in too many times with an incorrect user ID or password. The user is blocked due to repeated sign-in attempts.
+2. Sign-in was blocked because it came from an IP address with malicious activity.
+
+**Initial Diagnostic Steps:**
+1. Confirm the exact error message and error code received.
+2. Verify if the error is consistent across multiple sign-in attempts or platforms.
+3. Check if other users are experiencing similar issues.
+4. Identify the user affected by the error.
+
+**Common Issues that Cause this Error:**
+1. Incorrect user ID or password input.
+2. Repeated sign-in attempts with incorrect credentials.
+3. Malicious activity from the user's IP address.
+4. System misconfiguration impacting user sign-in.
+
+**Step-by-Step Resolution Strategies:**
+
+**1. Identify Failure Reason:**
+- Sign in to the Microsoft admin center as a Cloud Application Administrator.
+- Navigate to your Microsoft Entra tenant and go to Monitoring & health -> Sign-in logs.
+- Find the failed user sign-in with the Sign-in error code 50053 and check the Failure Reason to determine if it's IdsLocked or IP related.
+
+**2. Remediate Risks and Unblock Users:**
+If the Failure Reason is IdsLocked:
+- Follow Microsoft's guidelines to unblock the user due to repeated sign-in attempts.
+- Guide the user to reset their password or verify their user ID to regain access.
+- Implement security measures to prevent future lockouts.
+
+**3. Address Malicious IP Activity:**
+If the Failure Reason is a malicious IP address:
+- Investigate the IP address activity and take necessary security actions.
+- Implement IP blocking or access controls to prevent further malicious sign-in attempts.
+- Consider enforcing multi-factor authentication for added security.
+
+**4. System Configuration Review:**
+- Check for any misconfigurations in your Microsoft Entra settings that may be affecting user sign-in.
+- Ensure all settings are aligned with security best practices and policies.
+- Test user sign-in after making any configuration changes to verify resolution.
+
+**Additional Notes or Considerations:**
+- Communicate with the affected user to provide guidance on resolving the sign-in issue.
+- Educate users on secure sign-in practices and password management.
+- Regularly monitor sign-in logs for suspicious activities and address them promptly.
+
+By following these troubleshooting steps, you should be able to determine the root cause of the AADSTS50053 error and take appropriate actions to resolve it effectively.

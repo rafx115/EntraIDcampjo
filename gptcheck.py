@@ -3,7 +3,7 @@ import openai
 import time
 
 # Your OpenAI API key
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = ''
 
 # Directory where the guides are located
 guides_dir = "/workspaces/EntraIDcampjo/guides"
@@ -23,19 +23,28 @@ def generate_troubleshooting_steps(code, description):
     - Additional notes or considerations
     """
     
-    try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": prompt}
-            ]
-        )
-        return response['choices'][0]['message']['content'].strip()
-    except openai.error.RateLimitError as e:
-        print("Rate limit exceeded, waiting for 60 seconds...")
-        time.sleep(60)
-        return generate_troubleshooting_steps(code, description)
+    while True:
+        try:
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {"role": "user", "content": prompt}
+                ]
+            )
+            return response['choices'][0]['message']['content'].strip()
+        except openai.error.APIError as e:
+            print(f"API error: {e}. Retrying in 60 seconds...")
+            time.sleep(60)
+        except openai.error.RateLimitError as e:
+            print(f"Rate limit exceeded: {e}. Waiting for 60 seconds...")
+            time.sleep(60)
+        except openai.error.OpenAIError as e:
+            print(f"General OpenAI error: {e}.")
+            return "Troubleshooting steps could not be generated due to an error."
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
+            return "Troubleshooting steps could not be generated due to an error."
 
 # Iterate through each Markdown file in the directory
 for filename in os.listdir(guides_dir):
