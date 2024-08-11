@@ -26,7 +26,6 @@ for index, table in enumerate(tables):
                     error_codes.append({
                         'code': code,
                         'description': description,
-                        'guide': f"This guide will help resolve issues related to {description.lower()}."
                     })
     if error_codes:  # Stop once the correct table has been found and processed
         break
@@ -53,11 +52,10 @@ for error in error_codes:
     filename = os.path.join(output_dir, f"{error['code'].lower()}.md")
     content = template.format(
         code=error['code'],
-        description=error['description'],
-        guide=error['guide']
+        description=error['description']
     )
-     # Save the updated content back to the file using UTF-8 encoding
-    with open(filepath, 'w', encoding='utf-8') as file:
-        file.write(updated_content)
+    # Save the content to the file using UTF-8 encoding
+    with open(filename, 'w', encoding='utf-8') as file:
+        file.write(content)
 
 print(f"All guides created in {output_dir}")

@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/access-reviews-overview
+https://learn.microsoft.com/en-us/entra/identity/access-reviews-overview#main

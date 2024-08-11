@@ -1,0 +1,3 @@
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-access-package-assignments#main
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-access-package-assignments#view-assignments-with-powershell
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-access-package-assignments

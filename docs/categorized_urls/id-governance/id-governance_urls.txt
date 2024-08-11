@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/id-governance/entitlement-management-group-writeback#main
+https://learn.microsoft.com/en-us/entra/identity/id-governance/entitlement-management-group-writeback

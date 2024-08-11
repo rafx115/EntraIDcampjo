@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-logic-apps-integration
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-logic-apps-integration#main

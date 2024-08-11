@@ -1,0 +1,3 @@
+https://learn.microsoft.com/en-us/entra/identity/sap
+https://learn.microsoft.com/en-us/entra/identity/sap#enable-sso
+https://learn.microsoft.com/en-us/entra/identity/sap#main

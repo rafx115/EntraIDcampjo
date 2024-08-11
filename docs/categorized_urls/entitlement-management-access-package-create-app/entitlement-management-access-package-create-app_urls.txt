@@ -1,0 +1,3 @@
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-access-package-create-app#add-a-policy-to-the-access-packages-for-auto-assignment
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-access-package-create-app
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-access-package-create-app#main

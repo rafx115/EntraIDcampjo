@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/identity-governance-applications-integrate
+https://learn.microsoft.com/en-us/entra/identity/identity-governance-applications-integrate#main

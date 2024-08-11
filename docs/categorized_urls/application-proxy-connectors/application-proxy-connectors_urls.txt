@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/application-proxy-connectors
+https://learn.microsoft.com/en-us/entra/identity/application-proxy-connectors#main

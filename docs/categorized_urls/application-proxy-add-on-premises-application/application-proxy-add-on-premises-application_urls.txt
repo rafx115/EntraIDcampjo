@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/application-proxy-add-on-premises-application
+https://learn.microsoft.com/en-us/entra/identity/application-proxy-add-on-premises-application#main

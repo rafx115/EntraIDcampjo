@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/create-access-review
+https://learn.microsoft.com/en-us/entra/identity/create-access-review#main

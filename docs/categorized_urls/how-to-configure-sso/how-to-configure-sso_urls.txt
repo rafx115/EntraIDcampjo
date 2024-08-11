@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/how-to-configure-sso#main
+https://learn.microsoft.com/en-us/entra/identity/how-to-configure-sso

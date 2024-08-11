@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/custom-entitlement-report-with-adx-and-entra-id#main
+https://learn.microsoft.com/en-us/entra/identity/custom-entitlement-report-with-adx-and-entra-id

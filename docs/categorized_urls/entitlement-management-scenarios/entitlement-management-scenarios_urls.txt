@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-scenarios
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-scenarios#main

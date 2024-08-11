@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/overview-what-is-app-proxy
+https://learn.microsoft.com/en-us/entra/identity/overview-what-is-app-proxy#main

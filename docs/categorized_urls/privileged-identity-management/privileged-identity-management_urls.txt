@@ -1,0 +1,4 @@
+https://learn.microsoft.com/en-us/entra/identity/privileged-identity-management/groups-discover-groups
+https://learn.microsoft.com/en-us/entra/identity/privileged-identity-management/pim-configure#main
+https://learn.microsoft.com/en-us/entra/identity/privileged-identity-management/pim-configure
+https://learn.microsoft.com/en-us/entra/identity/privileged-identity-management/groups-discover-groups#main

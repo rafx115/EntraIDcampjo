@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/what-is-provisioning#main
+https://learn.microsoft.com/en-us/entra/identity/what-is-provisioning

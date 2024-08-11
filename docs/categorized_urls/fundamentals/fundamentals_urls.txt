@@ -1,0 +1,11 @@
+https://learn.microsoft.com/en-us/entra/identity/fundamentals/whatis
+https://learn.microsoft.com/en-us/entra/identity/fundamentals/whats-new
+https://learn.microsoft.com/en-us/entra/identity/fundamentals/concept-learn-about-groups
+https://learn.microsoft.com/en-us/entra/identity/fundamentals/new-name
+https://learn.microsoft.com/en-us/entra/identity/fundamentals/new-name#main
+https://learn.microsoft.com/en-us/entra/identity/fundamentals/whats-new#main
+https://learn.microsoft.com/en-us/entra/identity/fundamentals/concept-learn-about-groups#group-types
+https://learn.microsoft.com/en-us/entra/identity/fundamentals/concept-secure-remote-workers
+https://learn.microsoft.com/en-us/entra/identity/fundamentals/concept-learn-about-groups#main
+https://learn.microsoft.com/en-us/entra/identity/fundamentals/whatis#main
+https://learn.microsoft.com/en-us/entra/identity/fundamentals/concept-secure-remote-workers#main

@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-logs-and-reporting#main
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-logs-and-reporting

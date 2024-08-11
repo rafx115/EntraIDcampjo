@@ -1,0 +1,2 @@
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-access-package-create
+https://learn.microsoft.com/en-us/entra/identity/entitlement-management-access-package-create#main
