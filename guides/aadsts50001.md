@@ -1,4 +1,3 @@
-
 # AADSTS50001: InvalidResource - The resource is disabled or doesn't exist. Check your app's code to ensure that you have specified the exact resource URL for the resource you're trying to access.
 
 

@@ -1,4 +1,3 @@
-
 # AADSTS70007: UnsupportedResponseMode - The app returned an unsupported value ofresponse\_modewhen requesting a token.
 
 

@@ -1,4 +1,3 @@
-
 # AADSTS70016: AuthorizationPending - OAuth 2.0 device flow error. Authorization is pending. The device will retry polling the request.
 
 

@@ -1,4 +1,3 @@
-
 # AADSTS50127: BrokerAppNotInstalled - User needs to install a broker app to gain access to this content.
 
 

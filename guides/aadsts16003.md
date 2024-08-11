@@ -1,4 +1,3 @@
-
 # AADSTS16003: SsoUserAccountNotFoundInResourceTenant - Indicates that the user hasn't been explicitly added to the tenant.
 
 

@@ -1,4 +1,3 @@
-
 # AADSTS80007: OnPremisePasswordValidatorErrorOccurredOnPrem - The Authentication Agent is unable to validate user's password. Check the agent logs for more info and verify that Active Directory is operating as expected.
 
 

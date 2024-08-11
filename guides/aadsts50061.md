@@ -1,4 +1,3 @@
-
 # AADSTS50061: SignoutInvalidRequest - Unable to complete sign out. The request was invalid.
 
 

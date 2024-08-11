@@ -1,27 +1,17 @@
-
 # Reset MFA for Entra ID
 
 <!-- toc -->
 
-
-* [Introduction](#introduction)
-
-* [Prerequisites](#prerequisites)
-
-* [Step 1: Access the User's Profile](#step-1-access-the-users-profile)
-
-* [Step 2: Reset MFA](#step-2-reset-mfa)
-
-* [Step 3: Notify the User](#step-3-notify-the-user)
-
-* [Additional Notes](#additional-notes)
-
-* [Troubleshooting](#troubleshooting)
-
-* [Conclusion](#conclusion)
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Step 1: Access the User's Profile](#step-1-access-the-users-profile)
+- [Step 2: Reset MFA](#step-2-reset-mfa)
+- [Step 3: Notify the User](#step-3-notify-the-user)
+- [Additional Notes](#additional-notes)
+- [Troubleshooting](#troubleshooting)
+- [Conclusion](#conclusion)
 
 <!-- tocstop -->
-
 
 ## Introduction
 

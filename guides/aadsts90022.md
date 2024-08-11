@@ -1,4 +1,3 @@
-
 # AADSTS90022: AuthenticatedInvalidPrincipalNameFormat - The principal name format isn't valid, or doesn't meet the expectedname\[/host]\[@realm]format. The principal name is required, host, and realm are optional and can be set to null.
 
 

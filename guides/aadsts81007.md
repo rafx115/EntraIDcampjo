@@ -1,4 +1,3 @@
-
 # AADSTS81007: DesktopSsoTenantIsNotOptIn - The tenant isn't enabled for Seamless SSO.
 
 

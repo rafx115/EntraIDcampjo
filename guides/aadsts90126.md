@@ -1,4 +1,3 @@
-
 # AADSTS90126: DebugModeEnrollTenantNotInferred - The user type isn't supported on this endpoint. The system can't infer the user's tenant from the user name.
 
 

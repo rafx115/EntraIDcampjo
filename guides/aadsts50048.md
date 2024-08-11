@@ -1,4 +1,3 @@
-
 # AADSTS50048: SubjectMismatchesIssuer - Subject mismatches Issuer claim in the client assertion. Contact the tenant admin.
 
 

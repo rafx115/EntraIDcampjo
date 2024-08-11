@@ -1,4 +1,3 @@
-
 # AADSTS50015: ViralUserLegalAgeConsentRequiredState - The user requires legal age group consent.
 
 
