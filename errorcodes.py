@@ -1,37 +1,43 @@
-import os
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
+import os
+import re
 
-# URL of the Microsoft error codes page
-url = "https://learn.microsoft.com/en-us/entra/identity-platform/reference-error-codes#aadsts-error-codes"
+URL = "https://learn.microsoft.com/en-us/entra/identity-platform/reference-error-codes#aadsts-error-codes"
+response = requests.get(URL)
+soup = BeautifulSoup(response.content, 'html.parser')
 
-# Fetch and parse the webpage
-response = requests.get(url)
-soup = BeautifulSoup(response.text, "html.parser")
-
-# Locate the table containing the error codes
-table = soup.find("table", {"class": "table table-sm margin-top-none"})
-
-# List to store error codes and their descriptions
 error_codes = []
 
-# Extract error codes and descriptions
-if table:
-    rows = table.find_all("tr")[1:]  # Skip header row
-    for row in rows:
-        cells = row.find_all("td")
+# Find the table containing the AADSTS error codes
+tables = soup.find_all('table')
+
+# Iterate through tables and check for the one that contains 'AADSTS'
+for index, table in enumerate(tables):
+    for row in table.find_all('tr'):
+        cells = row.find_all('td')
         if len(cells) == 2:
-            code = cells[0].text.strip()
-            description = cells[1].text.strip()
-            error_codes.append((code, description))
+            code_text = cells[0].get_text(strip=True)
+            if 'AADSTS' in code_text:  # Check if this row contains an AADSTS code
+                match = re.search(r'AADSTS\d+', code_text)
+                if match:
+                    code = match.group(0)
+                    description = cells[1].get_text(strip=True)
+                    error_codes.append({
+                        'code': code,
+                        'description': description,
+                        'guide': f"This guide will help resolve issues related to {description.lower()}."
+                    })
+    if error_codes:  # Stop once the correct table has been found and processed
+        break
 
 # Check if any error codes were found
 if not error_codes:
     print("No AADSTS error codes found. Please check the structure of the page.")
     exit()
 
-# Directory to save the guides
-output_dir = os.path.abspath("/workspaces/EntraIDcampjo/guides")
+# Set the output directory to the specified path
+output_dir = "/workspaces/EntraIDcampjo/guides"
 
 # Ensure the output directory exists
 os.makedirs(output_dir, exist_ok=True)
@@ -41,7 +47,7 @@ template = """
 # {code}: {description}
 
 ## Introduction
-This guide will help resolve issues related to {code} - {description}.
+{guide}
 
 ## Prerequisites
 - Access to the Azure AD portal with administrator privileges.
@@ -59,21 +65,25 @@ This guide will help resolve issues related to {code} - {description}.
 1. Ensure that the user has MFA configured.
 2. If necessary, guide the user through the MFA setup process.
 
-## Additional Resources
-- Link to further documentation or troubleshooting resources.
+## Troubleshooting
+- Check for any Azure AD conditional access policies that might be affecting the MFA process.
+- Consider any additional security measures that might be in place.
 
+## Additional Notes
+- Refer to the [Azure AD documentation](https://learn.microsoft.com/en-us/azure/active-directory/) for more details.
 """
 
-# Generate the guides
-for code, description in error_codes:
-    filename = f"{code.lower()}.md"
-    filepath = os.path.join(output_dir, filename)
-
-    content = template.format(code=code, description=description)
-
-    with open(filepath, "w") as file:
+# Generate a Markdown file for each error code
+for error in error_codes:
+    # Ensure the filename is directly under the specified directory
+    filename = os.path.join(output_dir, f"{error['code'].lower()}.md")
+    content = template.format(
+        code=error['code'],
+        description=error['description'],
+        guide=error['guide']
+    )
+    with open(filename, 'w') as file:
         file.write(content)
-
-    print(f"Created {filepath}")
+    print(f"Created {filename}")
 
 print(f"All guides created in {output_dir}")
