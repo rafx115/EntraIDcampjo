@@ -3,10 +3,10 @@ import openai
 import time
 
 # Your OpenAI API key
-openai.api_key = ''
+openai.api_key = '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'
 
 # Directory where the guides are located
-guides_dir = "/workspaces/EntraIDcampjo/guides"
+guides_dir = r"C:\Users\joser\EntraIDcampjo\guides"
 
 # Initialize counters for evaluated and skipped files
 total_files_count = 0
@@ -21,6 +21,7 @@ def generate_troubleshooting_steps(code, description):
     - Common issues that cause this error
     - Step-by-step resolution strategies
     - Additional notes or considerations
+    - Documentation where steps can be find for guidance
     """
     
     while True:
@@ -55,6 +56,12 @@ for filename in os.listdir(guides_dir):
         with open(filepath, 'r') as file:
             content = file.read()
             lines = content.splitlines()
+            
+             # Check if the file already contains troubleshooting steps
+            if "## Troubleshooting Steps" in content:
+                print(f"Skipping {filename}: Troubleshooting steps already exist.")
+                skipped_files_count += 1
+                continue
             
             # Skip over any leading empty lines
             first_non_empty_line = next((line for line in lines if line.strip()), "")

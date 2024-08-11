@@ -37,7 +37,7 @@ if not error_codes:
     exit()
 
 # Set the output directory to the specified path
-output_dir = "/workspaces/EntraIDcampjo/guides"
+output_dir = r"C:\Users\joser\EntraIDcampjo\guides"
 
 # Ensure the output directory exists
 os.makedirs(output_dir, exist_ok=True)
@@ -45,32 +45,6 @@ os.makedirs(output_dir, exist_ok=True)
 # Template for the Markdown file
 template = """
 # {code}: {description}
-
-## Introduction
-{guide}
-
-## Prerequisites
-- Access to the Azure AD portal with administrator privileges.
-- The user must have already set up MFA.
-
-## Steps to Resolve
-
-### Step 1: Initial Actions
-1. Log in to the Azure AD portal.
-2. Navigate to the "Users" section.
-3. Select the affected user.
-4. Perform necessary actions as described for the error.
-
-### Step 2: Verify MFA Settings
-1. Ensure that the user has MFA configured.
-2. If necessary, guide the user through the MFA setup process.
-
-## Troubleshooting
-- Check for any Azure AD conditional access policies that might be affecting the MFA process.
-- Consider any additional security measures that might be in place.
-
-## Additional Notes
-- Refer to the [Azure AD documentation](https://learn.microsoft.com/en-us/azure/active-directory/) for more details.
 """
 
 # Generate a Markdown file for each error code
