@@ -1,4 +1,3 @@
-
 # AADSTS50061: SignoutInvalidRequest - Unable to complete sign out. The request was invalid.
 
 
@@ -16,7 +15,7 @@
 4. **Improper Session Management**: Insufficient handling of user sessions within the application may disrupt the sign-out process.
 
 #### Step-by-Step Resolution Strategies:
-1. **Check Request Parameters**: Ensure that the user’s sign-out request includes all necessary parameters.
+1. **Check Request Parameters**: Ensure that the userï¿½s sign-out request includes all necessary parameters.
 2. **Handle Token Expiration**: Implement mechanisms to handle expired tokens during the sign-out process.
 3. **Validate Redirect URIs**: Verify that the redirection URIs are accurate and properly configured.
 4. **Improve Session Management**: Enhance session management to correctly handle sign-out actions.

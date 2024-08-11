@@ -1,5 +1,4 @@
-
-# AADSTS50177: ExternalChallengeNotSupportedForPassthroughUsers - External challenge isn't supported for passthrough users.
+# AADSTS50177: ExternalChallengeNotSupportedForPassthroughUsers - External challenge isn't supported for passthroughï¿½users.
 
 
 ## Troubleshooting Steps

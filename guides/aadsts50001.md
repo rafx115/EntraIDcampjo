@@ -1,4 +1,3 @@
-
 # AADSTS50001: InvalidResource - The resource is disabled or doesn't exist. Check your app's code to ensure that you have specified the exact resource URL for the resource you're trying to access.
 
 
@@ -28,7 +27,7 @@
 
 3. **Ensure Resource Existence:**
    - Double-check that the resource being accessed exists.
-   - If it doesn’t exist, correct the resource URL accordingly.
+   - If it doesnï¿½t exist, correct the resource URL accordingly.
 
 4. **Review App Permissions:**
    - Adjust the app's permissions to ensure it has the necessary access rights to the resource.

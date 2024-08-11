@@ -1,4 +1,3 @@
-
 # AADSTS50139: SessionMissingMsaOAuth2RefreshToken - The session is invalid due to a missing external refresh token.
 
 

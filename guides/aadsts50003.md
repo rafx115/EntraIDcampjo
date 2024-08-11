@@ -1,4 +1,3 @@
-
 # AADSTS50003: MissingSigningKey - Sign-in failed because of a missing signing key or certificate. This might be because there was no signing key configured in the app. To learn more, see the troubleshooting article for errorAADSTS50003. If you still see issues, contact the app owner or an app admin.
 
 

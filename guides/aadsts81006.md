@@ -1,4 +1,3 @@
-
 # AADSTS81006: DesktopSsoNoAuthorizationHeader - No authorization header was found.
 
 
@@ -6,7 +5,7 @@
 ### Error Code: AADSTS81006 - DesktopSsoNoAuthorizationHeader
 
 #### Initial Diagnostic Steps:
-1. **Verify Error Context**: Understand where and when the error occurs – during sign-in, authentication, token validation, etc.
+1. **Verify Error Context**: Understand where and when the error occurs ï¿½ during sign-in, authentication, token validation, etc.
 2. **Check Logs**: Review logs or error messages to gather more information about the specific environment and context of the error.
 3. **Confirm Environment Setup**: Check if the correct configurations are in place for the authentication process.
 

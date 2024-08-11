@@ -1,5 +1,4 @@
-
-# AADSTS50140: KmsiInterrupt - This error occurred due to "Keep me signed in" interrupt when the user was signing-in. This is an expected part of the sign in flow, where a user is asked if they want to remain signed into their current browser to make further logins easier. For more information, seeThe new Microsoft Entra sign-in and “Keep me signed in” experiences rolling out now!. You canopen a support ticketwith Correlation ID, Request ID, and Error code to get more details.
+# AADSTS50140: KmsiInterrupt - This error occurred due to "Keep me signed in" interrupt when the user was signing-in. This is an expected part of the sign in flow, where a user is asked if they want to remain signed into their current browser to make further logins easier. For more information, seeThe new Microsoft Entra sign-in and ï¿½Keep me signed inï¿½ experiences rolling out now!. You canopen a support ticketwith Correlation ID, Request ID, and Error code to get more details.
 
 
 ## Troubleshooting Steps
@@ -30,7 +29,7 @@
 #### Documentation for Guidance:
 Microsoft provides documentation on troubleshooting Azure Active Directory sign-in errors, which can be helpful in resolving issues like AADSTS50140. You can refer to the following resources:
 - [Troubleshoot Azure AD sign-in errors](https://docs.microsoft.com/en-us/azure/active-directory/review-troubleshoot)
-- [Microsoft Entra sign-in and “Keep me signed in” experiences](https://learn.microsoft.com/en-us/azure/active-directory/authentication/concept-app-access-panel)
+- [Microsoft Entra sign-in and ï¿½Keep me signed inï¿½ experiences](https://learn.microsoft.com/en-us/azure/active-directory/authentication/concept-app-access-panel)
 - [Opening a support ticket](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-access-troubleshooting)
 
 By following these steps and considering the common issues, you can effectively troubleshoot the AADSTS50140 error related to KmsiInterrupt during the sign-in process.

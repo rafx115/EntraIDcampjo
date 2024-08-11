@@ -1,4 +1,3 @@
-
 # AADSTS90006: ExternalServerRetryableError - The service is temporarily unavailable.
 
 
@@ -19,7 +18,7 @@ Troubleshooting Guide for Error Code AADSTS90006 - ExternalServerRetryableError 
    - **Step 2**: If the issue is widespread, wait for some time and try again later as it might be a temporary service outage.
    - **Step 3**: Check your network connection to ensure there are no issues preventing communication with the authentication service.
    - **Step 4**: Clear browser cache and cookies or try using a different browser to rule out any local issues.
-   - **Step 5**: If the issue persists, contact the identity provider’s support for further assistance.
+   - **Step 5**: If the issue persists, contact the identity providerï¿½s support for further assistance.
 
 4. **Additional Notes or Considerations**:
    - It is essential to keep monitoring the service status of the identity provider for any reported outages or service disruptions.

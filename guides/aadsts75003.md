@@ -1,4 +1,3 @@
-
 # AADSTS75003: UnsupportedBindingError - The app returned an error related to unsupported binding (SAML protocol response can't be sent via bindings other than HTTP POST).
 
 

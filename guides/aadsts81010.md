@@ -1,4 +1,3 @@
-
 # AADSTS81010: DesktopSsoAuthTokenInvalid - Seamless SSO failed because the user's Kerberos ticket has expired or is invalid.
 
 

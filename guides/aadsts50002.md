@@ -1,4 +1,3 @@
-
 # AADSTS50002: NotAllowedTenant - Sign-in failed because of a restricted proxy access on the tenant. If it's your own tenant policy, you can change your restricted tenant settings to fix this issue.
 
 

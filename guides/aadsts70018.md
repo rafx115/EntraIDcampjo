@@ -1,4 +1,3 @@
-
 # AADSTS70018: BadVerificationCode - Invalid verification code due to User typing in wrong user code for device code flow. Authorization isn't approved.
 
 

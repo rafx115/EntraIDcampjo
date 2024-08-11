@@ -1,4 +1,3 @@
-
 # AADSTS75016: Saml2AuthenticationRequestInvalidNameIDPolicy - SAML2 Authentication Request has invalid NameIdPolicy.
 
 

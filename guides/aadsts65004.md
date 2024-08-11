@@ -1,4 +1,3 @@
-
 # AADSTS65004: UserDeclinedConsent - User declined to consent to access the app. Have the user retry the sign-in and consent to the app
 
 

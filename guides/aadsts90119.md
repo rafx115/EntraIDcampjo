@@ -1,4 +1,3 @@
-
 # AADSTS90119: InvalidUserCode - The user code is null or empty.
 
 

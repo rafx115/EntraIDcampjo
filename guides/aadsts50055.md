@@ -1,4 +1,3 @@
-
 # AADSTS50055: InvalidPasswordExpiredPassword - The password is expired. The user's password is expired, and therefore their login or session was ended. They will be offered the opportunity to reset it, or can ask an admin to reset it viaReset a user's password using Microsoft Entra ID.
 
 

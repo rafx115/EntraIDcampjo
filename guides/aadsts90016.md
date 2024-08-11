@@ -1,4 +1,3 @@
-
 # AADSTS90016: MissingRequiredClaim - The access token isn't valid. The required claim is missing.
 
 
@@ -6,7 +5,7 @@
 Troubleshooting Guide for Error Code AADSTS90016: MissingRequiredClaim
 
 **Initial Diagnostic Steps:**
-1. Confirm that the error message is indeed "AADSTS90016: MissingRequiredClaim – The access token isn't valid. The required claim is missing."
+1. Confirm that the error message is indeed "AADSTS90016: MissingRequiredClaim ï¿½ The access token isn't valid. The required claim is missing."
 2. Check the access token details for any missing required claims.
 3. Verify the configuration of the application and the claims required to access the protected resource.
 

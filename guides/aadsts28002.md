@@ -1,4 +1,3 @@
-
 # AADSTS28002: Provided value for the input parameter scope '{scope}' isn't valid when requesting an access token. Specify a valid scope.
 
 

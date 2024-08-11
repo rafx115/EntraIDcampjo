@@ -1,4 +1,3 @@
-
 # AADSTS20001: WsFedSignInResponseError - There's an issue with your federated Identity Provider. Contact your IDP to resolve this issue.
 
 
@@ -18,7 +17,7 @@
 5. **IDP Outage**: Unavailability of the IDP due to maintenance or other reasons.
 
 #### Step-by-Step Resolution Strategies:
-1. **Contact IDP Support**: Follow the instructions in the error message and reach out to your IDP’s support team for assistance.
+1. **Contact IDP Support**: Follow the instructions in the error message and reach out to your IDPï¿½s support team for assistance.
 2. **Check Certificate Validity**: Ensure that the certificates used for authentication are valid and not expired.
 3. **Review IDP Configuration**: Verify the configurations on the IDP side to ensure they align with the requirements of your application.
 4. **Update Metadata**: Update the metadata configuration on both your application and the IDP to ensure they are in sync.

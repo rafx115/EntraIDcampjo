@@ -1,4 +1,3 @@
-
 # AADSTS90082: OrgIdWsFederationNotSupported - The selected authentication policy for the request isn't currently supported.
 
 

@@ -1,5 +1,4 @@
-
-# AADSTS75005: Saml2MessageInvalid - Microsoft Entra doesn’t support the SAML request sent by the app for SSO. To learn more, see the troubleshooting article for errorAADSTS75005.
+# AADSTS75005: Saml2MessageInvalid - Microsoft Entra doesnï¿½t support the SAML request sent by the app for SSO. To learn more, see the troubleshooting article for errorAADSTS75005.
 
 
 ## Troubleshooting Steps

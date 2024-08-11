@@ -1,4 +1,3 @@
-
 # AADSTS81009: DesktopSsoAuthorizationHeaderValueWithBadFormat - Unable to validate user's Kerberos ticket.
 
 
