@@ -1,16 +1,23 @@
+
 # AADSTS50088: Limit on telecom MFA calls reached. Please try again in a few minutes.
+
 
 ## Introduction
 
 This guide will help resolve issues related to limit on telecom mfa calls
 reached. please try again in a few minutes..
 
+
 ## Prerequisites
 
+
 * Access to the Azure AD portal with administrator privileges.
+
 * The user must have already set up MFA.
 
+
 ## Steps to Resolve
+
 
 ### Step 1: Initial Actions
 
@@ -19,34 +26,48 @@ reached. please try again in a few minutes..
 3. Select the affected user.
 4. Perform necessary actions as described for the error.
 
+
 ### Step 2: Verify MFA Settings
 
 1. Ensure that the user has MFA configured.
 2. If necessary, guide the user through the MFA setup process.
 
+
 ## Troubleshooting
 
+
 * Check for any Azure AD conditional access policies that might be affecting the
+
   MFA process.
+
 * Consider any additional security measures that might be in place.
+
 
 ## Additional Notes
 
+
 * Refer to the
-  [Azure AD documentation](https://learn.microsoft.com/en-us/azure/active-directory/)
+
+  [Azure AD 
+documentation](https://learn.microsoft.com/en-us/azure/active-directory/)
   for more details.
 
-## Troubleshooting Steps
-
-Troubleshooting steps could not be generated due to an error.
 
 ## Troubleshooting Steps
 
 Troubleshooting steps could not be generated due to an error.
 
+
 ## Troubleshooting Steps
+
+Troubleshooting steps could not be generated due to an error.
+
+
+## Troubleshooting Steps
+
 
 ### Troubleshooting Guide for Error Code AADSTS50088: Limit on telecom MFA calls reached
+
 
 #### Initial Diagnostic Steps:
 
@@ -60,6 +81,7 @@ Troubleshooting steps could not be generated due to an error.
 4. **Review MFA Configuration**: Check the MFA settings in Azure Active
    Directory to verify that the correct methods are enabled.
 
+
 #### Common Issues that Cause this Error:
 
 1. **Excessive MFA Calls**: The error occurs when the limit on the number of
@@ -71,6 +93,7 @@ Troubleshooting steps could not be generated due to an error.
    failed MFA calls.
 4. **Incorrect User Information**: Ensure that the user's information is
    up-to-date and accurate in the Azure Active Directory.
+
 
 #### Step-by-Step Resolution Strategies:
 
@@ -87,13 +110,20 @@ Troubleshooting steps could not be generated due to an error.
    further assistance in investigating and resolving the telecom MFA calls limit
    error.
 
+
 #### Additional Notes or Considerations:
 
+
 * **Security Implications**: MFA limits are in place for security reasons, and
+
   exceeding these limits could indicate a potential security threat or misuse.
+
 * **Educate Users**: Encourage users to use MFA responsibly and understand the
+
   need for such security measures.
+
 * **Regular Monitoring**: Continuously monitor MFA usage and adjust settings as
+
   necessary to prevent errors related to telecom MFA calls limit.
 
 By following these troubleshooting steps and best practices, you should be able
