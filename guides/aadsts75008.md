@@ -1,4 +1,3 @@
-
 # AADSTS75008: RequestDeniedError - The request from the app was denied since the SAML request had an unexpected destination.
 
 ## Introduction

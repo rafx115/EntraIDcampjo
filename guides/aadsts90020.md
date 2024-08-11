@@ -1,4 +1,3 @@
-
 # AADSTS90020: The SAML 1.1 Assertion is missing ImmutableID of the user. Developer error - the app is attempting to sign in without the necessary or correct authentication parameters.
 
 ## Introduction

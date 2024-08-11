@@ -1,4 +1,3 @@
-
 # AADSTS90056: BadResourceRequest - To redeem the code for an access token, the app should send a POST request to the/tokenendpoint. Also, prior to this, you should provide an authorization code and send it in the POST request to the/tokenendpoint. Refer to this article for an overview ofOAuth 2.0 authorization code flow. Direct the user to the/authorizeendpoint, which will return an authorization_code. By posting a request to the/tokenendpoint, the user gets the access token. CheckApp registrations > Endpointsto confirm that the two endpoints were configured correctly.
 
 ## Introduction

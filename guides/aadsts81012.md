@@ -1,4 +1,3 @@
-
 # AADSTS81012: DesktopSsoMismatchBetweenTokenUpnAndChosenUpn - The user trying to sign in to Microsoft Entra ID is different from the user signed into the device.
 
 ## Introduction

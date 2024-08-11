@@ -1,4 +1,3 @@
-
 # AADSTS50187: DeviceInformationNotProvided - The service failed to perform device authentication.
 
 ## Introduction

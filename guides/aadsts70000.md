@@ -1,4 +1,3 @@
-
 # AADSTS70000: InvalidGrant - Authentication failed. The refresh token isn't valid. Error might be due to the following reasons:Token binding header is emptyToken binding hash does not match
 
 ## Introduction

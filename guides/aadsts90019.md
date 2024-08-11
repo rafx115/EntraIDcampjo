@@ -1,4 +1,3 @@
-
 # AADSTS90019: MissingTenantRealm - Microsoft Entra ID was unable to determine the tenant identifier from the request.
 
 ## Introduction

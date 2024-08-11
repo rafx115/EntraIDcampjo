@@ -1,4 +1,3 @@
-
 # AADSTS50006: InvalidSignature - Signature verification failed because of an invalid signature.
 
 ## Introduction

@@ -1,4 +1,3 @@
-
 # AADSTS50158: ExternalSecurityChallenge - External security challenge was not satisfied.
 
 ## Introduction

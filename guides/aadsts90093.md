@@ -1,4 +1,3 @@
-
 # AADSTS90093: GraphUserUnauthorized - Graph returned with a forbidden error code for the request.
 
 ## Introduction

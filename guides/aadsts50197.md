@@ -1,4 +1,3 @@
-
 # AADSTS50197: ConflictingIdentities - The user could not be found. Try signing in again.
 
 ## Introduction

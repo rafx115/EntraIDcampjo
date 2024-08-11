@@ -1,4 +1,3 @@
-
 # AADSTS90005: InvalidRequestWithMultipleRequirements - Unable to complete the request. The request isn't valid because the identifier and login hint can't be used together.
 
 ## Introduction

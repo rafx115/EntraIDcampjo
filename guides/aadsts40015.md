@@ -1,4 +1,3 @@
-
 # AADSTS40015: OAuth2IdPAuthCodeRedemptionUserError - There's an issue with your federated Identity Provider. Contact your IDP to resolve this issue.
 
 ## Introduction

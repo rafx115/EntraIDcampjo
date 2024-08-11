@@ -1,4 +1,3 @@
-
 # AADSTS90120: InvalidDeviceFlowRequest - The request was already authorized or declined.
 
 ## Introduction

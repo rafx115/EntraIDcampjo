@@ -1,4 +1,3 @@
-
 # AADSTS90036: MsodsServiceUnretryableFailure - An unexpected, non-retryable error from the WCF service hosted by MSODS has occurred.Open a support ticketto get more details on the error.
 
 ## Introduction

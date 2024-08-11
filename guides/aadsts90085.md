@@ -1,4 +1,3 @@
-
 # AADSTS90085: OrgIdWsFederationSltRedemptionFailed - The service is unable to issue a token because the company object hasn't been provisioned yet.
 
 ## Introduction

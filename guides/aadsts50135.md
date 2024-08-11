@@ -1,4 +1,3 @@
-
 # AADSTS50135: PasswordChangeCompromisedPassword - Password change is required due to account risk.
 
 ## Introduction

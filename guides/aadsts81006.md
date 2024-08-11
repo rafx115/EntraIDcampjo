@@ -1,4 +1,3 @@
-
 # AADSTS81006: DesktopSsoNoAuthorizationHeader - No authorization header was found.
 
 ## Introduction

@@ -1,4 +1,3 @@
-
 # AADSTS90023: InvalidRequest - The authentication service request isn't valid.
 
 ## Introduction

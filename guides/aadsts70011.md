@@ -1,4 +1,3 @@
-
 # AADSTS70011: InvalidScope - The scope requested by the app is invalid.
 
 ## Introduction

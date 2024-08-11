@@ -1,4 +1,3 @@
-
 # AADSTS90004: InvalidRequestFormat - The request isn't properly formatted.
 
 ## Introduction

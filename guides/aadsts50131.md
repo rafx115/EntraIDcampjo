@@ -1,4 +1,3 @@
-
 # AADSTS50131: ConditionalAccessFailed - Indicates various Conditional Access errors such as bad Windows device state, request blocked due to suspicious activity, access policy, or security policy decisions.
 
 ## Introduction

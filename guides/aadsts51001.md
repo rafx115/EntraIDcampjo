@@ -1,4 +1,3 @@
-
 # AADSTS51001: DomainHintMustbePresent - Domain hint must be present with on-premises security identifier or on-premises UPN.
 
 ## Introduction

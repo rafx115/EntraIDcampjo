@@ -1,4 +1,3 @@
-
 # AADSTS90123: IdentityProviderAccessDenied - The token can't be issued because the identity or claim issuance provider denied the request.
 
 ## Introduction

@@ -1,4 +1,3 @@
-
 # AADSTS90027: We are unable to issue tokens from this API version on the MSA tenant. Please contact the application vendor as they need to use version 2.0 of the protocol to support this.
 
 ## Introduction

@@ -1,4 +1,3 @@
-
 # AADSTS50043: UnableToGeneratePairwiseIdentifierWithMultipleSalts
 
 ## Introduction

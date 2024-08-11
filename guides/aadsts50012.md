@@ -1,4 +1,3 @@
-
 # AADSTS50012: AuthenticationFailed - Authentication failed for one of the following reasons:The subject name of the signing certificate isn't authorizedA matching trusted authority policy wasn't found for the authorized subject nameThe certificate chain isn't validThe signing certificate isn't validPolicy isn't configured on the tenantThumbprint of the signing certificate isn't authorizedClient assertion contains an invalid signature
 
 ## Introduction

@@ -1,4 +1,3 @@
-
 # AADSTS50013: InvalidAssertion - Assertion is invalid because of various reasons - The token issuer doesn't match the API version within its valid time range -expired -malformed - Refresh token in the assertion isn't a primary refresh token. Contact the app developer.
 
 ## Introduction

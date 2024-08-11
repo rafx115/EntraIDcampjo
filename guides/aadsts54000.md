@@ -1,4 +1,3 @@
-
 # AADSTS54000: MinorUserBlockedLegalAgeGroupRule
 
 ## Introduction

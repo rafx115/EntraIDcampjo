@@ -1,4 +1,3 @@
-
 # AADSTS90055: TenantThrottlingError - There are too many incoming requests. This exception is thrown for blocked tenants.
 
 ## Introduction

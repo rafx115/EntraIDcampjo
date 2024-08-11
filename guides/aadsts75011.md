@@ -1,4 +1,3 @@
-
 # AADSTS75011: NoMatchedAuthnContextInOutputClaims - The authentication method by which the user authenticated with the service doesn't match requested authentication method. To learn more, see the troubleshooting article for errorAADSTS75011.
 
 ## Introduction

@@ -1,4 +1,3 @@
-
 # AADSTS81005: DesktopSsoAuthenticationPackageNotSupported - The authentication package isn't supported.
 
 ## Introduction

@@ -1,4 +1,3 @@
-
 # AADSTS50057: UserDisabled - The user account is disabled. The user object in Active Directory backing this account has been disabled. An admin can re-enable this accountthrough PowerShell
 
 ## Introduction

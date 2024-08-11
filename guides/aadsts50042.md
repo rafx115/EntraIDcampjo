@@ -1,4 +1,3 @@
-
 # AADSTS50042: UnableToGeneratePairwiseIdentifierWithMissingSalt - The salt required to generate a pairwise identifier is missing in principle. Contact the tenant admin.
 
 ## Introduction

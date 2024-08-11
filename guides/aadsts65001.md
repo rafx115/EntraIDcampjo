@@ -1,4 +1,3 @@
-
 # AADSTS65001: DelegationDoesNotExist - The user or administrator hasn't consented to use the application with ID X. Send an interactive authorization request for this user and resource.
 
 ## Introduction

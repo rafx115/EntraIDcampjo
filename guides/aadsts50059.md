@@ -1,4 +1,3 @@
-
 # AADSTS50059: MissingTenantRealmAndNoUserInformationProvided - Tenant-identifying information wasn't found in either the request or implied by any provided credentials. The user can contact the tenant admin to help resolve the issue.
 
 ## Introduction

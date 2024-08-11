@@ -1,4 +1,3 @@
-
 # AADSTS28003: Provided value for the input parameter scope can't be empty when requesting an access token using the provided authorization code. Specify a valid scope.
 
 ## Introduction

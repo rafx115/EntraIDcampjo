@@ -1,4 +1,3 @@
-
 # AADSTS70008: ExpiredOrRevokedGrant - The refresh token has expired due to inactivity. The token was issued on XXX and was inactive for a certain amount of time.
 
 ## Introduction

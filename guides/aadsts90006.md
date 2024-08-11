@@ -1,4 +1,3 @@
-
 # AADSTS90006: ExternalServerRetryableError - The service is temporarily unavailable.
 
 ## Introduction

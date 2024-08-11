@@ -1,4 +1,3 @@
-
 # AADSTS50029: Invalid URI - domain name contains invalid characters. Contact the tenant admin.
 
 ## Introduction

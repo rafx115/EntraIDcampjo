@@ -1,4 +1,3 @@
-
 # AADSTS90091: GraphServiceUnreachable
 
 ## Introduction

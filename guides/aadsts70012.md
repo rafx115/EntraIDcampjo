@@ -1,4 +1,3 @@
-
 # AADSTS70012: MsaServerError - A server error occurred while authenticating an MSA (consumer) user. Try again. If it continues to fail,open a support ticket
 
 ## Introduction

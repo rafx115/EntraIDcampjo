@@ -1,4 +1,3 @@
-
 # AADSTS50050: MalformedDiscoveryRequest - The request is malformed.
 
 ## Introduction

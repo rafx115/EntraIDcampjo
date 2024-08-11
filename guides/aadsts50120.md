@@ -1,4 +1,3 @@
-
 # AADSTS50120: ThresholdJwtInvalidJwtFormat - Issue with JWT header. Contact the tenant admin.
 
 ## Introduction

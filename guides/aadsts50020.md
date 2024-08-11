@@ -1,4 +1,3 @@
-
 # AADSTS50020: UserUnauthorized - Users are unauthorized to call this endpoint. User account '{email}' from identity provider '{idp}' does not exist in tenant '{tenant}' and cannot access the application '{appid}'({appName}) in that tenant. This account needs to be added as an external user in the tenant first. Sign out and sign in again with a different Microsoft Entra user account. If this user should be a member of the tenant, they should be invited via theB2B system. For additional information, visitAADSTS50020.
 
 ## Introduction

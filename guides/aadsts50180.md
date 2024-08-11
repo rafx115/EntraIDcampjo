@@ -1,4 +1,3 @@
-
 # AADSTS50180: WindowsIntegratedAuthMissing - Integrated Windows authentication is needed. Enable the tenant for Seamless SSO.
 
 ## Introduction

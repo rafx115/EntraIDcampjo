@@ -1,4 +1,3 @@
-
 # AADSTS80013: OnPremisePasswordValidationTimeSkew - The authentication attempt couldn't be completed due to time skew between the machine running the authentication agent and AD. Fix time sync issues.
 
 ## Introduction

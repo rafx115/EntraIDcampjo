@@ -1,4 +1,3 @@
-
 # AADSTS50027: InvalidJwtToken - Invalid JWT token because of the following reasons:doesn't contain nonce claim, sub claimsubject identifier mismatchduplicate claim in idToken claimsunexpected issuerunexpected audiencenot within its valid time rangetoken format isn't properExternal ID token from issuer failed signature verification.
 
 ## Introduction

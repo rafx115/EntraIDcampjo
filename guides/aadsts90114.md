@@ -1,4 +1,3 @@
-
 # AADSTS90114: InvalidExpiryDate - The bulk token expiration timestamp will cause an expired token to be issued.
 
 ## Introduction

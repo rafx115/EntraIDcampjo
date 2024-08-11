@@ -1,4 +1,3 @@
-
 # AADSTS90087: OrgIdWsFederationMessageCreationFromUriFailed - An error occurred while creating the WS-Federation message from the URI.
 
 ## Introduction

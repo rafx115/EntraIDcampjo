@@ -1,4 +1,3 @@
-
 # AADSTS90130: NonConvergedAppV2GlobalEndpointNotSupported - The application isn't supported over the/commonor/consumersendpoints. Use the/organizationsor tenant-specific endpoint instead.
 
 ## Introduction

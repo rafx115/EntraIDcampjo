@@ -1,4 +1,3 @@
-
 # AADSTS50010: AudienceUriValidationFailed - Audience URI validation for the app failed since no token audiences were configured.
 
 ## Introduction

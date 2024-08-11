@@ -1,4 +1,3 @@
-
 # AADSTS16002: AppSessionSelectionInvalid - The app-specified SID requirement wasn't met.
 
 ## Introduction

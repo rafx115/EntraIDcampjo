@@ -1,4 +1,3 @@
-
 # AADSTS90008: TokenForItselfRequiresGraphPermission - The user or administrator hasn't consented to use the application. At the minimum, the application requires access to Microsoft Entra ID by specifying the sign-in and read user profile permission.
 
 ## Introduction

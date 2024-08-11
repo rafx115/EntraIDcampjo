@@ -1,4 +1,3 @@
-
 # AADSTS50007: PartnerEncryptionCertificateMissing - The partner encryption certificate wasn't found for this app.Open a support ticketwith Microsoft to get this fixed.
 
 ## Introduction

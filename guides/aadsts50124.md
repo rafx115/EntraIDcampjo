@@ -1,4 +1,3 @@
-
 # AADSTS50124: ClaimsTransformationInvalidInputParameter - Claims Transformation contains invalid input parameter. Contact the tenant admin to update the policy.
 
 ## Introduction

@@ -1,4 +1,3 @@
-
 # AADSTS50008: InvalidSamlToken - SAML assertion is missing or misconfigured in the token. Contact your federation provider.
 
 ## Introduction

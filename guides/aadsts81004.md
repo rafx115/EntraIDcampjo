@@ -1,4 +1,3 @@
-
 # AADSTS81004: DesktopSsoIdentityInTicketIsNotAuthenticated - Kerberos authentication attempt failed.
 
 ## Introduction

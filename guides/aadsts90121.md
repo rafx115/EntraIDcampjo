@@ -1,4 +1,3 @@
-
 # AADSTS90121: InvalidEmptyRequest - Invalid empty request.
 
 ## Introduction

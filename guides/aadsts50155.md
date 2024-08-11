@@ -1,4 +1,3 @@
-
 # AADSTS50155: DeviceAuthenticationFailed - Device authentication failed for this user.
 
 ## Introduction

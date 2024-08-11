@@ -1,4 +1,3 @@
-
 # AADSTS53001: DeviceNotDomainJoined - Conditional Access policy requires a domain joined device, and the device isn't domain joined. Have the user use a domain joined device.
 
 ## Introduction

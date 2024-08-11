@@ -1,4 +1,3 @@
-
 # AADSTS75001: BindingSerializationError - An error occurred during SAML message binding.
 
 ## Introduction

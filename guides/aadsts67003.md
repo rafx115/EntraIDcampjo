@@ -1,4 +1,3 @@
-
 # AADSTS67003: ActorNotValidServiceIdentity
 
 ## Introduction

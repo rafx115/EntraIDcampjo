@@ -1,4 +1,3 @@
-
 # AADSTS90086: OrgIdWsTrustDaTokenExpired - The user DA token is expired.
 
 ## Introduction

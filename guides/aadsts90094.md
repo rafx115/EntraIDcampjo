@@ -1,4 +1,3 @@
-
 # AADSTS90094: AdminConsentRequired - Administrator consent is required.
 
 ## Introduction

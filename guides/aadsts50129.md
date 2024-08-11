@@ -1,4 +1,3 @@
-
 # AADSTS50129: DeviceIsNotWorkplaceJoined - Workplace join is required to register the device.
 
 ## Introduction

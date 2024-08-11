@@ -1,4 +1,3 @@
-
 # AADSTS90125: DebugModeEnrollTenantNotFound - The user isn't in the system. Make sure you entered the user name correctly.
 
 ## Introduction

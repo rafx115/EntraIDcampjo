@@ -1,4 +1,3 @@
-
 # AADSTS90100: InvalidRequestParameter - The parameter is empty or not valid.
 
 ## Introduction

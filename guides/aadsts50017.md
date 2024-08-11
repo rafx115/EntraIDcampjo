@@ -1,4 +1,3 @@
-
 # AADSTS50017: CertificateValidationFailed - Certification validation failed, reasons for the following reasons:Cannot find issuing certificate in trusted certificates listUnable to find expected CrlSegmentCannot find issuing certificate in trusted certificates listDelta CRL distribution point is configured without a corresponding CRL distribution pointUnable to retrieve valid CRL segments because of a timeout issueUnable to download CRLContact the tenant admin.
 
 ## Introduction

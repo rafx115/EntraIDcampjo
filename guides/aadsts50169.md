@@ -1,4 +1,3 @@
-
 # AADSTS50169: InvalidRequestBadRealm - The realm isn't a configured realm of the current service namespace.
 
 ## Introduction

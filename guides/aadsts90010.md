@@ -1,4 +1,3 @@
-
 # AADSTS90010: NotSupported - Unable to create the algorithm.
 
 ## Introduction

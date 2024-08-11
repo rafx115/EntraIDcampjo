@@ -1,4 +1,3 @@
-
 # AADSTS50072: UserStrongAuthEnrollmentRequiredInterrupt - User needs to enroll for second factor authentication (interactive).
 
 ## Introduction

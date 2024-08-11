@@ -1,4 +1,3 @@
-
 # AADSTS50032: WeakRsaKey - Indicates the erroneous user attempt to use a weak RSA key.
 
 ## Introduction

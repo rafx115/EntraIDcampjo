@@ -1,4 +1,3 @@
-
 # AADSTS76026: RequestIssueTimeExpired - IssueTime in an SAML2 Authentication Request is expired.
 
 ## Introduction

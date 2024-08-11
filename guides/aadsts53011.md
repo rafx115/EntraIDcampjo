@@ -1,4 +1,3 @@
-
 # AADSTS53011: User blocked due to risk on home tenant.
 
 ## Introduction

@@ -1,4 +1,3 @@
-
 # AADSTS50170: MissingExternalClaimsProviderMapping - The external controls mapping is missing.
 
 ## Introduction

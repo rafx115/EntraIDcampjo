@@ -1,4 +1,3 @@
-
 # AADSTS50136: RedirectMsaSessionToApp - Single MSA session detected.
 
 ## Introduction

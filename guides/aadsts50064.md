@@ -1,4 +1,3 @@
-
 # AADSTS50064: CredentialAuthenticationError - Credential validation on username or password has failed.
 
 ## Introduction

@@ -1,4 +1,3 @@
-
 # AADSTS70004: InvalidRedirectUri - The app returned an invalid redirect URI. The redirect address specified by the client does not match any configured addresses or any addresses on the OIDC approve list.
 
 ## Introduction
