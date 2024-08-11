@@ -67,7 +67,7 @@ While troubleshooting, refer to the following Microsoft documentation for furthe
 
 ### 6. Test Documentation Accessibility
 
-It’s important to ensure that the links to the above documentation are reachable:
+Itï¿½s important to ensure that the links to the above documentation are reachable:
 - Visit each link in a web browser to confirm that the pages are live and the information is current.
 
 ### 7. Advice for Data Collection

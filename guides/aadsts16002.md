@@ -1,4 +1,3 @@
-
 # AADSTS16002: AppSessionSelectionInvalid - The app-specified SID requirement wasn't met.
 
 
@@ -43,7 +42,7 @@ Certainly! The error code AADSTS16002 (AppSessionSelectionInvalid) indicates tha
 #### Step-by-Step Resolution Strategies
 1. **Validate App Configuration**:
    - Ensure that the app registration in Azure AD is configured correctly, especially settings related to authentication and permissions:
-     - Check for any misconfigurations in the app’s manifest or authentication URLs.
+     - Check for any misconfigurations in the appï¿½s manifest or authentication URLs.
 
 2. **Session Management**:
    - Review how the application is managing authentication sessions:
@@ -62,7 +61,7 @@ Certainly! The error code AADSTS16002 (AppSessionSelectionInvalid) indicates tha
    - If using SDKs for Azure Active Directory, ensure you are using the latest version and verify that your code correctly implements session handling.
 
 6. **Consult Documentation**:
-   - Review Microsoft’s official documentation for Azure AD authentication best practices:
+   - Review Microsoftï¿½s official documentation for Azure AD authentication best practices:
      - [Microsoft Identity Platform Documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/)
 
 #### Additional Notes or Considerations

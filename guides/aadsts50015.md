@@ -1,4 +1,3 @@
-
 # AADSTS50015: ViralUserLegalAgeConsentRequiredState - The user requires legal age group consent.
 
 
@@ -9,7 +8,7 @@ Certainly! The AADSTS50015 error code indicates that a user requires consent for
 
 #### Initial Diagnostic Steps
 1. **Identify User Impact**: Confirm which user(s) are seeing the error code. Check if it's a specific user or a broader group.
-2. **Verify User Info**: Check the user’s profile in Azure AD to determine their age and if they belong to a legal age group that requires consent. This can be done in the Azure Portal under Azure Active Directory > Users.
+2. **Verify User Info**: Check the userï¿½s profile in Azure AD to determine their age and if they belong to a legal age group that requires consent. This can be done in the Azure Portal under Azure Active Directory > Users.
 3. **Reproduce the Error**: Attempt to replicate the error by signing into the application using the affected user account. Document the exact steps that led to the appearance of the error.
 
 #### Common Issues that Cause This Error
@@ -28,7 +27,7 @@ Certainly! The AADSTS50015 error code indicates that a user requires consent for
    - Under the application settings, ensure that the permissions and consent requirements are legitimate for the user's age.
 
 3. **Review and Update Application Policy**:
-   - Check the application’s Age Consent policy if it’s set to require legal guardian consent.
+   - Check the applicationï¿½s Age Consent policy if itï¿½s set to require legal guardian consent.
    - Update the settings to allow access for users who are of legal age if appropriate.
 
 4. **Implement Parental or Guardian Consent**:

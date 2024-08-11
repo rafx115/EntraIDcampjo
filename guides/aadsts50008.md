@@ -13,7 +13,7 @@ The error code AADSTS50008 indicates that there is a problem with the SAML (Secu
 3. **Check User Credentials**: Ensure that the user credentials being used for authentication are correct and that the user is part of the required group/system.
 4. **Check Logs**: 
    - Look at the Azure Active Directory sign-in logs.
-   - Look at the application’s logs (if available) for any further details related to the SAML token.
+   - Look at the applicationï¿½s logs (if available) for any further details related to the SAML token.
 
 ### Common Issues that Cause this Error
 1. **SAML Assertion Missing Required Claims**: The SAML assertion sent to Azure AD doesn't contain necessary attributes/claims.
@@ -29,7 +29,7 @@ The error code AADSTS50008 indicates that there is a problem with the SAML (Secu
    - Check the SAML assertion for required claims, including `<saml:NameID>` and any custom claims expected by Azure AD.
   
 2. **Review Identity Provider Configuration**:
-   - Log in to your Identity Provider's management portal and verify the SAML settings, making sure that it’s configured to send all necessary attributes.
+   - Log in to your Identity Provider's management portal and verify the SAML settings, making sure that itï¿½s configured to send all necessary attributes.
    - Confirm that the SAML assertion settings (such as audience, issuer, and recipient) match those expected by Azure AD.
 
 3. **Check Clock Skew**:

@@ -23,7 +23,7 @@ Certainly! Here is a comprehensive troubleshooting guide for the error code AADS
    - Ensure that the signed-in user is attempting to access the correct tenant. If the user has multiple accounts, they may be logged into a different tenant.
 
 #### Common Issues That Cause This Error
-- **User Not in Tenant**: The user’s account does not exist in the Azure AD tenant associated with the application.
+- **User Not in Tenant**: The userï¿½s account does not exist in the Azure AD tenant associated with the application.
 - **Mis-typed Email**: The user might have entered an incorrect email address or username.
 - **Application Misconfiguration**: The application might be configured to use the wrong tenant.
 - **Tenant Restrictions**: The tenant may restrict the sign-in for users who are not part of the directory.

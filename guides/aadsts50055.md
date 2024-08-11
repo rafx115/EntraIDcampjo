@@ -14,7 +14,7 @@ AADSTS50055 - InvalidPasswordExpiredPassword: The password is expired. The user'
 4. **Assess Expiration Policies:** Review the password expiration settings set by your organization.
 
 ## Common Issues Causing This Error
-- The user’s password has indeed expired due to organizational policies.
+- The userï¿½s password has indeed expired due to organizational policies.
 - The user has not logged in for an extended period, triggering password expiration.
 - Password policies were changed by an admin that may have affected the user.
 - User accounts that were migrated from another system with differing policies could also face expiring passwords unexpectedly.
@@ -29,7 +29,7 @@ AADSTS50055 - InvalidPasswordExpiredPassword: The password is expired. The user'
   
 2. **Admin-initiated Password Reset:**
    - If the user cannot reset their password or needs assistance:
-     - An administrator can reset the user’s password via the Microsoft Entra ID portal:
+     - An administrator can reset the userï¿½s password via the Microsoft Entra ID portal:
        1. **Login to the Azure Portal:** Navigate to the [Azure Portal](https://portal.azure.com).
        2. **Access Azure Active Directory:** Go to 'Azure Active Directory'.
        3. **Select Users:** Click on 'Users' in the left pane and find the user in question.
@@ -37,8 +37,8 @@ AADSTS50055 - InvalidPasswordExpiredPassword: The password is expired. The user'
        5. **Follow Prompts:** Complete the prompts to set a new password and communicate it to the user.
 
 3. **Modify Password Policies (if required):**
-   - Review and potentially update your organization’s password expiration policy if notifications are not adequately informing users prior to expiration.
-   - Navigate to ‘Azure Active Directory’ > ‘User settings’ > ‘Password reset’ > ‘Registration’.
+   - Review and potentially update your organizationï¿½s password expiration policy if notifications are not adequately informing users prior to expiration.
+   - Navigate to ï¿½Azure Active Directoryï¿½ > ï¿½User settingsï¿½ > ï¿½Password resetï¿½ > ï¿½Registrationï¿½.
    - Check if self-service password reset options and notifications are enabled.
 
 4. **Communicate with Users:**
@@ -46,7 +46,7 @@ AADSTS50055 - InvalidPasswordExpiredPassword: The password is expired. The user'
    - Educate users on password policies (length, complexity, etc.) to reduce future issues.
 
 ## Additional Notes or Considerations
-- Ensure the organization’s password reset policies and notifications are configured properly to help users avoid expiration.
+- Ensure the organizationï¿½s password reset policies and notifications are configured properly to help users avoid expiration.
 - Consider enabling Multi-Factor Authentication (MFA) alongside proper password policies to enhance security while also offering multiple ways for users to verify their identity if they forget their passwords.
 
 ## Documentation for Guidance

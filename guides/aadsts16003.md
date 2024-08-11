@@ -1,11 +1,10 @@
-
 # AADSTS16003: SsoUserAccountNotFoundInResourceTenant - Indicates that the user hasn't been explicitly added to the tenant.
 
 
 ## Troubleshooting Steps
 ### Troubleshooting Guide for AADSTS16003 - SsoUserAccountNotFoundInResourceTenant
 
-The error code AADSTS16003 indicates that a user trying to sign in has not been explicitly added to the resource tenant. This can cause Single Sign-On (SSO) issues when dealing with Azure Active Directory (Azure AD). Here’s a comprehensive guide to troubleshoot and resolve this issue.
+The error code AADSTS16003 indicates that a user trying to sign in has not been explicitly added to the resource tenant. This can cause Single Sign-On (SSO) issues when dealing with Azure Active Directory (Azure AD). Hereï¿½s a comprehensive guide to troubleshoot and resolve this issue.
 
 ---
 
@@ -19,14 +18,14 @@ The error code AADSTS16003 indicates that a user trying to sign in has not been 
 
 3. **Tenant Verification**: 
    - Confirm the correct tenant that the user is attempting to access.
-   - Compare the user’s domain with the domain(s) associated with the resource tenant.
+   - Compare the userï¿½s domain with the domain(s) associated with the resource tenant.
 
 ---
 
 ### Common Issues that Cause this Error
 
 1. **User Not Added to the Resource Tenant**:
-   - The user’s account may not exist in the Azure Active Directory (AAD) of the resource tenant.
+   - The userï¿½s account may not exist in the Azure Active Directory (AAD) of the resource tenant.
 
 2. **Synchronization Issues**:
    - If using Azure AD B2B, the invitation to access the resource tenant may not have been sent or accepted.
@@ -65,15 +64,15 @@ The error code AADSTS16003 indicates that a user trying to sign in has not been 
 #### Step 3: Validate Domain Settings
 
 1. **Check Domain Verification**:
-   - Validate that the user’s email domain is verified in the resource tenant under **Azure Active Directory** -> **Custom domain names**.
+   - Validate that the userï¿½s email domain is verified in the resource tenant under **Azure Active Directory** -> **Custom domain names**.
 
 #### Step 4: Confirm UPN
 
 1. **Match UPNs**:
-   - Ensure that the user’s UPN in their original tenant matches the one being used in the resource tenant.
+   - Ensure that the userï¿½s UPN in their original tenant matches the one being used in the resource tenant.
    
 2. **Update UPN if Necessary**:
-   - If there’s a mismatch, update the user’s UPN and ensure they use the correct credentials.
+   - If thereï¿½s a mismatch, update the userï¿½s UPN and ensure they use the correct credentials.
 
 #### Step 5: Review Access Policies
 

@@ -11,7 +11,7 @@ Certainly! Below is a detailed troubleshooting guide for error code AADSTS50057,
 #### **1. Initial Diagnostic Steps**
 - **Verify Account Status:**
   - Check the account's status in the Azure Active Directory portal. Go to Azure Active Directory > Users > [Select User].
-  - Look for an indicator of whether the account is marked as “Disabled”.
+  - Look for an indicator of whether the account is marked as ï¿½Disabledï¿½.
 
 - **Check User Sign-in Logs:**
   - Navigate to Azure Active Directory > Sign-in logs to look for the specific AADSTS50057 error entry. This log can provide context about the time of the error, the application involved, and the conditions under which it occurred.
@@ -73,10 +73,10 @@ Certainly! Below is a detailed troubleshooting guide for error code AADSTS50057,
 
 #### **7. Advice for Data Collection**
 - **Gather User Information:**
-  - Collect the user’s email address, principal name, and any error messages received.
+  - Collect the userï¿½s email address, principal name, and any error messages received.
   
 - **Logs Collection:**
-  - Save the relevant sign-in logs and audit logs to analyze what actions led to the user’s account being disabled.
+  - Save the relevant sign-in logs and audit logs to analyze what actions led to the userï¿½s account being disabled.
 
 - **Document Changes:**
   - Keep a record of the steps taken and any changes made to the user account for future reference.

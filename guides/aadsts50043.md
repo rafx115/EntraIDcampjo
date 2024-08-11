@@ -18,7 +18,7 @@ Certainly! The error code `AADSTS50043`, with the description "UnableToGenerateP
 - **Multiple Salt Values**: The error typically arises when there are multiple salt values being generated during the authentication process, but only one is expected.
 - **Configuration Errors**: Misconfiguration of the identity provider, such as incorrect settings for OAuth and OpenID Connect parameters.
 - **Invalid Claims Mapping**: Incorrectly mapped claims that might interfere with the identifier generation.
-- **User’s Domain Issues**: Problems related to the user’s domain, especially if federated identities or conditional access policies are in play.
+- **Userï¿½s Domain Issues**: Problems related to the userï¿½s domain, especially if federated identities or conditional access policies are in play.
 
 ### 3. Step-by-Step Resolution Strategies
 

@@ -31,7 +31,7 @@
 ### 2. Common Issues that Cause This Error
 
 1. **Expired or Invalid SSO Session**:
-   - The user’s session may have expired. SSO sessions can have specific lifetimes after which they require re-authentication.
+   - The userï¿½s session may have expired. SSO sessions can have specific lifetimes after which they require re-authentication.
 
 2. **Cookies or Local Storage Issues**:
    - The SSO cookies or local storage data used for authentication may be missing, corrupted, or blocked by browser settings.
@@ -53,7 +53,7 @@
    - Ensure the user is authenticated by checking direct login or using different authentication flows.
 
 2. **Clear Browser Cache and Cookies**:
-   - Clear the browser’s cookies and cache to remove any corrupted SSO data. Instruct users to do this and try signing in again.
+   - Clear the browserï¿½s cookies and cache to remove any corrupted SSO data. Instruct users to do this and try signing in again.
 
 3. **Check Application and Azure AD Configuration**:
    - Confirm that the application is correctly registered in Azure AD:

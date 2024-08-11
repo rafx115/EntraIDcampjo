@@ -42,7 +42,7 @@ Certainly! Below is a comprehensive troubleshooting guide for the error code AAD
    - Make necessary adjustments in application settings to match the user's identifier.
 
 4. **Review Duplicate Claims**:
-   - Examine token claims for duplicates. Duplicate claims must be removed or resolved on the identity provider’s side.
+   - Examine token claims for duplicates. Duplicate claims must be removed or resolved on the identity providerï¿½s side.
 
 5. **Check Issuer and Audience**:
    - Ensure that your application is configured to accept the token only from expected issuers and audiences.

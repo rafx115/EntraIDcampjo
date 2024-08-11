@@ -1,4 +1,3 @@
-
 # AADSTS17003: CredentialKeyProvisioningFailed - Microsoft Entra ID can't provision the user key.
 
 
@@ -70,7 +69,7 @@ Certainly! Below is a detailed troubleshooting guide for the error code AADSTS17
 
 #### 6. Test Documentation Accessibility
 
-Make sure to verify the documentation links are reachable. Here’s how you can check:
+Make sure to verify the documentation links are reachable. Hereï¿½s how you can check:
 
 1. **Perform a brief review**:
    - Click on each link provided in the documentation section.

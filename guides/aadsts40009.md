@@ -57,7 +57,7 @@ This issue generally arises from problems with the federated IdP. Here are some 
   - Validate the configuration, especially the identifiers and reply URLs.
 
 #### Step 4: Network Connectivity
-- Ensure there are no network issues. Test by pinging the IdP’s endpoint from the affected client.
+- Ensure there are no network issues. Test by pinging the IdPï¿½s endpoint from the affected client.
 - Check firewall and proxy settings that may be blocking requests.
 
 #### Step 5: Re-test Authentication

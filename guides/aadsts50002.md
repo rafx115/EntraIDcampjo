@@ -16,7 +16,7 @@ The error code `AADSTS50002` indicates that a sign-in attempt failed due to rest
    - Confirm that the account is active and not locked or expired.
 
 3. **Consult with the Admin**:
-   - If you’re not the tenant administrator, contact the administrator to confirm any policies regarding restricted access.
+   - If youï¿½re not the tenant administrator, contact the administrator to confirm any policies regarding restricted access.
 
 4. **Diagnose Through Logs**:
    - Review sign-in logs and any related authentication logs for further details on the failure. This can provide insights into why access was restricted.

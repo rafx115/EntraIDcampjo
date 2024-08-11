@@ -27,12 +27,12 @@ The error code AADSTS40010 indicates a retryable server error with your federate
 
 4. **Network Connectivity Issues**: Issues in networking might prevent seamless communication between Azure AD and the IDP.
 
-5. **User Account Issues**: The user’s account on the IDP can also cause issues (e.g., account locks, disabled accounts, etc.).
+5. **User Account Issues**: The userï¿½s account on the IDP can also cause issues (e.g., account locks, disabled accounts, etc.).
 
 ### Step-by-Step Resolution Strategies
 
 1. **Check IDP Status**:
-   - Visit the IDP’s status page to confirm there are no ongoing outages.
+   - Visit the IDPï¿½s status page to confirm there are no ongoing outages.
    - If there is an outage, advise users to wait until the issue is resolved.
 
 2. **Verify Configuration**:

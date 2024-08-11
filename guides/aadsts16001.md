@@ -1,4 +1,3 @@
-
 # AADSTS16001: UserAccountSelectionInvalid - You see this error if the user selects on a tile that the session select logic has rejected. When triggered, this error allows the user to recover by picking from an updated list of tiles/sessions, or by choosing another account. This error can occur because of a code defect or race condition.
 
 
@@ -27,7 +26,7 @@ Sure! Below is a detailed troubleshooting guide for the error code AADSTS16001 w
 
 - **Stale Tokens**: The user's session tokens may have expired or may be invalid for some reason.
   
-- **Account Confusion**: The user may have multiple accounts and is trying to select an account that the system doesn’t recognize as valid for the current context.
+- **Account Confusion**: The user may have multiple accounts and is trying to select an account that the system doesnï¿½t recognize as valid for the current context.
   
 - **Misconfiguration**: Settings within Azure AD that control how accounts are selected or authenticated might be incorrectly configured.
 
@@ -53,7 +52,7 @@ Sure! Below is a detailed troubleshooting guide for the error code AADSTS16001 w
     - Ensure conditional access policies do not inadvertently block access.
 
 5. **Update Application Logic**:
-   - If it’s determined that a race condition in the code is causing the issue, review and modify the session management logic to ensure accurate tracking of user sessions.
+   - If itï¿½s determined that a race condition in the code is causing the issue, review and modify the session management logic to ensure accurate tracking of user sessions.
 
 6. **Test with Different Browsers**:
    - Verify if the issue persists across different browsers or devices. This can help isolate the problem to a specific client-side or server-side issue.

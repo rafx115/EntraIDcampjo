@@ -19,10 +19,10 @@ Certainly! The error code AADSTS50020 refers to an unauthorized access attempt w
 - There may be a mismatch or misconfiguration regarding the identity provider.
 
 #### **Step-by-Step Resolution Strategies**
-1. **Check User’s Existence in the Tenant**:
+1. **Check Userï¿½s Existence in the Tenant**:
    - Log in to the Azure Portal.
    - Navigate to **Azure Active Directory** > **Users**.
-   - Search for the user’s email. If not found, the user needs to be invited.
+   - Search for the userï¿½s email. If not found, the user needs to be invited.
 
 2. **Invite User as an External User (if applicable)**:
    - If the user is external, go to **Azure Active Directory** > **Users**.
