@@ -5,6 +5,7 @@
     "remark-lint-heading-increment",
     "remark-lint-first-heading-level",
     "remark-lint-no-duplicate-headings",
+    "lint-no-duplicate-defined-urls",
     "remark-lint-list-item-indent"
   ]
 }
