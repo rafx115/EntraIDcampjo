@@ -60,7 +60,11 @@ The AADSTS50014 error indicates that the user, trying to access an application, 
   - [Add Guest Users to Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/add-users-b2b).
   
 - For troubleshooting Azure AD sign-in errors:
+<<<<<<< HEAD:guides/Other/aadsts50014.md
   - [Sign-in Troubleshoot](https://docs.microsoft.com/en-us/azure/active-directory/enterprise-users/groups/groups-manageusers).
+=======
+  - [Sign-in Troubleshoot](https://docs.microsoft.com/en-us/azure/active-directory/enterprise-users/groups/groups-manage�users).
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50014.md
 
 #### Test Accessibility of Documentation
 
@@ -69,8 +73,13 @@ To ensure the documentation links are accessible:
   
 #### Advice for Data Collection
 
+<<<<<<< HEAD:guides/Other/aadsts50014.md
 - **Collect User Information**: Gather the users relevant information such as email address and the tenant they are trying to access.
 - **Error Logs**: Collect any detailed error logs or screenshots related to the users sign-in attempts.
+=======
+- **Collect User Information**: Gather the user�s relevant information such as email address and the tenant they are trying to access.
+- **Error Logs**: Collect any detailed error logs or screenshots related to the user�s sign-in attempts.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50014.md
 - **Time of Occurrence**: Note the time of the error occurrence, as this may help in diagnosing the issue further with support if necessary.
 
 Using this guide, you should be well-equipped to troubleshoot and resolve the AADSTS50014 error effectively.

@@ -2,7 +2,11 @@
 
 
 ## Troubleshooting Steps
+<<<<<<< HEAD:guides/Other/aadsts50050.md
 Certainly! Heres a detailed troubleshooting guide for resolving the error code **AADSTS50050**, which states **"MalformedDiscoveryRequest - The request is malformed."**
+=======
+Certainly! Here�s a detailed troubleshooting guide for resolving the error code **AADSTS50050**, which states **"MalformedDiscoveryRequest - The request is malformed."**
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50050.md
 
 ### Troubleshooting Guide for AADSTS50050
 
@@ -26,7 +30,11 @@ Certainly! Heres a detailed troubleshooting guide for resolving the error code
 
 2. **Check Azure AD Application Registration**:
    - Go to the Azure portal.
+<<<<<<< HEAD:guides/Other/aadsts50050.md
    - Navigate to Azure Active Directory > App registrations.
+=======
+   - Navigate to �Azure Active Directory� > �App registrations�.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50050.md
    - Identify your app and ensure the Redirect URIs are configured correctly.
 
 3. **Ensure Valid Client Information**:

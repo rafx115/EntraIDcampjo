@@ -34,6 +34,9 @@ Troubleshooting steps could not be generated due to an error.
 
 By following these steps and considerations, you should be able to diagnose and resolve the AADSTS50061 SignoutInvalidRequest error effectively. If the issue persists, consider reaching out to Microsoft support for further assistance.
 >>>>>>> 44a6fd6d2b08a07d1c083c6d7db8bca24b23c735
+<<<<<<< HEAD:guides/Other/aadsts50061.md
 
 
 Category: Other
+=======
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50061.md

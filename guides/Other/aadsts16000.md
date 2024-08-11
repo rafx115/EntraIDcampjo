@@ -1,4 +1,3 @@
-
 # AADSTS16000: InteractionRequired - User account '{EmailHidden}' from identity provider '{idp}' doesn't exist in tenant '{tenant}' and can't access the application '{appid}'({appName}) in that tenant. This account needs to be added as an external user in the tenant first. Sign out and sign in again with a different Microsoft Entra user account. This error is fairly common when you try to sign in to Microsoft Entra admin center by using personal Microsoft Account and no directory associated with it.
 
 
@@ -46,7 +45,11 @@ Certainly! The AADSTS16000 error occurs when a user attempts to access an applic
    - If an organizational account is intended for access, ensure that any session issues are resolved and use an account that has been properly added to the tenant.
 
 4. **Confirm Application Permissions**:
+<<<<<<< HEAD:guides/Other/aadsts16000.md
    - Check if the application (identified by `{appid}`) has been configured to allow access to the users tenant and permissions have been granted.
+=======
+   - Check if the application (identified by `{appid}`) has been configured to allow access to the user�s tenant and permissions have been granted.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts16000.md
 
 5. **Clear Cache and Cookies**:
    - Users can sign out, clear their browser's cache and cookies, and attempt to sign in again to eliminate session-related conflicts.

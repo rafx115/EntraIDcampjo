@@ -67,7 +67,11 @@ While troubleshooting, refer to the following Microsoft documentation for furthe
 
 ### 6. Test Documentation Accessibility
 
+<<<<<<< HEAD:guides/Other/aadsts40008.md
 Its important to ensure that the links to the above documentation are reachable:
+=======
+It�s important to ensure that the links to the above documentation are reachable:
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts40008.md
 - Visit each link in a web browser to confirm that the pages are live and the information is current.
 
 ### 7. Advice for Data Collection

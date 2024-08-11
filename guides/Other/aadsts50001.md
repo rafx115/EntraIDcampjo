@@ -5,7 +5,11 @@
 Troubleshooting the AADSTS50001 error can be critical to ensuring a smooth access to resources in Azure Active Directory (Azure AD). Below is a comprehensive guide on diagnosing and resolving this error.
 
 ### **Initial Diagnostic Steps**
+<<<<<<< HEAD:guides/Other/aadsts50001.md
 1. **Read the Error Message**: Confirm the exact wording: InvalidResource - The resource is disabled or doesn't exist. Check your app's code to ensure that you have specified the exact resource URL for the resource you're trying to access.
+=======
+1. **Read the Error Message**: Confirm the exact wording: �InvalidResource - The resource is disabled or doesn't exist. Check your app's code to ensure that you have specified the exact resource URL for the resource you're trying to access.�
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50001.md
    
 2. **Identify the Context**: Determine under what circumstances the error occurs. Is it during the authentication process, while accessing a specific API, or when trying to obtain access tokens?
 
@@ -29,7 +33,11 @@ Troubleshooting the AADSTS50001 error can be critical to ensuring a smooth acces
 =======
 3. **Ensure Resource Existence:**
    - Double-check that the resource being accessed exists.
+<<<<<<< HEAD:guides/Other/aadsts50001.md
    - If it doesnï¿½t exist, correct the resource URL accordingly.
+=======
+   - If it doesn�t exist, correct the resource URL accordingly.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50001.md
 >>>>>>> 44a6fd6d2b08a07d1c083c6d7db8bca24b23c735
 
 2. **Check Resource Status**:

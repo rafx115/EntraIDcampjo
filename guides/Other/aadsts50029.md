@@ -1,4 +1,3 @@
-
 # AADSTS50029: Invalid URI - domain name contains invalid characters. Contact the tenant admin.
 
 
@@ -11,7 +10,11 @@ The AADSTS50029 error occurs when there are invalid characters in the URI (Unifo
 ### Initial Diagnostic Steps
 1. **Check the Error Message**: Note the exact wording of the error message, as it may provide hints about the invalid characters or misconfigured settings.
    
+<<<<<<< HEAD:guides/Other/aadsts50029.md
 2. **Identify the URI**: Determine which URI triggered the error. This might be a redirect URI or the applications resource identifier.
+=======
+2. **Identify the URI**: Determine which URI triggered the error. This might be a redirect URI or the application�s resource identifier.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50029.md
 
 3. **Environment Context**: Identify if the error occurs in a specific environment (e.g., production vs. development) or for specific users.
 
@@ -62,7 +65,11 @@ Ensure that the above documentation links are accessible from your browser:
 ### Advice for Data Collection
 If these troubleshooting steps do not resolve the issue:
 1. **Collect Error Details**: Take screenshots of the error and note any steps that reproduce it.
+<<<<<<< HEAD:guides/Other/aadsts50029.md
 2. **Gather Configuration Details**: Document your applications configuration, especially the redirect URIs and service settings in Azure AD.
+=======
+2. **Gather Configuration Details**: Document your application�s configuration, especially the redirect URIs and service settings in Azure AD.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50029.md
 3. **User Reports**: Compile feedback from users experiencing the issue about the context in which it occurs (e.g., specific applications or actions).
 
 By following this troubleshooting guide, you should be able to resolve the AADSTS50029 error effectively. If further assistance is necessary, consider raising a support ticket with Microsoft.

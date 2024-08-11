@@ -41,7 +41,11 @@ The error code AADSTS28002 states that the provided value for the input paramete
 
 ### 4. Additional Notes or Considerations
 - **Scopes for Systems**: Be aware that different APIs may require different scopes and some APIs may only support specific scopes.
+<<<<<<< HEAD:guides/Other/aadsts28002.md
 - **Multiple Scopes Handling**: If you have multiple scopes, ensure they are separated by a space or comma as per your applications requirements.
+=======
+- **Multiple Scopes Handling**: If you have multiple scopes, ensure they are separated by a space or comma as per your application�s requirements.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts28002.md
 - **Documentation References**: Make sure to document any changes made while troubleshooting to maintain an accurate history of configurations.
 
 ### 5. Documentation Links 

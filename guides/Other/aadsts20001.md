@@ -9,7 +9,11 @@ Certainly! Below is a comprehensive troubleshooting guide for the error code **A
 1. **Confirm the Error Origin**: Verify if the error occurs consistently or sporadically. Note the time when the error occurs and the conditions under which it appears (e.g., specific applications, users, etc.).
 
 <<<<<<< HEAD
+<<<<<<< HEAD:guides/Other/aadsts20001.md
 2. **Review Logs**: Access and review the applications logs to gather any additional context or error messages surrounding the AADSTS20001 error. Look for any failures regarding federation requests.
+=======
+2. **Review Logs**: Access and review the application�s logs to gather any additional context or error messages surrounding the AADSTS20001 error. Look for any failures regarding federation requests.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts20001.md
 =======
 #### Step-by-Step Resolution Strategies:
 1. **Contact IDP Support**: Follow the instructions in the error message and reach out to your IDPï¿½s support team for assistance.
@@ -47,7 +51,11 @@ Certainly! Below is a comprehensive troubleshooting guide for the error code **A
    - Contact the administrator of the federated IDP to check for any outages or known issues that might affect authentication.
 
 3. **Certificate Validation**:
+<<<<<<< HEAD:guides/Other/aadsts20001.md
    - Ensure that the certificate used by the federated IDP is up-to-date. If its expired, have the IDP administrator replace it and update the configuration in Azure AD.
+=======
+   - Ensure that the certificate used by the federated IDP is up-to-date. If it�s expired, have the IDP administrator replace it and update the configuration in Azure AD.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts20001.md
 
 4. **User Account Review**:
    - Confirm that the user account is active and not locked or disabled. Check AD synchronization status if using Azure AD Connect.

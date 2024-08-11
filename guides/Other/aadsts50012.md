@@ -30,7 +30,11 @@ Certainly! Below is a comprehensive troubleshooting guide for the error code **A
 
 4. **Expired or Invalid Signing Certificate**: The signing certificate is expired or incorrectly configured.
 
+<<<<<<< HEAD:guides/Other/aadsts50012.md
 5. **Missing Policy**: The necessary policy isnt configured within the tenant.
+=======
+5. **Missing Policy**: The necessary policy isn�t configured within the tenant.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50012.md
 
 6. **Invalid Signature**: The client assertion contains a signature that does not match the expected signature.
 
@@ -52,13 +56,21 @@ Certainly! Below is a comprehensive troubleshooting guide for the error code **A
    - Navigate to **Azure AD** > **Enterprise applications** > [Your App] > **User settings**, and ensure that the necessary policies are correctly configured to support the signing certificate.
 
 5. **Reconfigure Application**:
+<<<<<<< HEAD:guides/Other/aadsts50012.md
    - If you have made any recent changes to your applications configuration in Azure, make sure to review and confirm all settings are correct.
+=======
+   - If you have made any recent changes to your application�s configuration in Azure, make sure to review and confirm all settings are correct.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50012.md
 
 6. **Renew Signing Certificates**:
    - If the certificate is close to or has expired, regenerate a new signing certificate and update the application registration.
 
 7. **Testing Assertion Validity**:
+<<<<<<< HEAD:guides/Other/aadsts50012.md
    - Use tools like **jwt.ms** to decode the JWT and verify the signature to ensure its valid.
+=======
+   - Use tools like **jwt.ms** to decode the JWT and verify the signature to ensure it�s valid.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50012.md
 
 8. **Utilize Azure AD Logs**:
    - Use logs to trace the steps that led to the error and verify that client assertions contain valid claims and are correctly signed.
@@ -68,7 +80,11 @@ Certainly! Below is a comprehensive troubleshooting guide for the error code **A
 #### Additional Notes or Considerations
 
 - Ensure that any third-party identity providers are correctly integrated and authorized for your Azure AD application.
+<<<<<<< HEAD:guides/Other/aadsts50012.md
 - Revisit the tenants security settings to see if any changes were made that could affect authentication.
+=======
+- Revisit the tenant�s security settings to see if any changes were made that could affect authentication.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50012.md
 
 ---
 

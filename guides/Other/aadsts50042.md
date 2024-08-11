@@ -46,7 +46,11 @@ The error code AADSTS50042 indicates that the Azure Active Directory (Azure AD) 
    - Confirm that the application has the proper redirect URIs configured, and check for permissions.
 
 3. **Adjust Authentication Settings**:
+<<<<<<< HEAD:guides/Other/aadsts50042.md
    - In the application registration, under Authentication, confirm if Allow public client flows is enabled. This can affect the ability to generate identifiers.
+=======
+   - In the application registration, under �Authentication�, confirm if �Allow public client flows� is enabled. This can affect the ability to generate identifiers.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50042.md
 
 4. **Salt Configuration**:
    - Ensure any relevant policies for generating pairwise identifiers are set up correctly. Review settings related to salt generation if available.

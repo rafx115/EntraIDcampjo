@@ -1,11 +1,14 @@
-
 # AADSTS16003: SsoUserAccountNotFoundInResourceTenant - Indicates that the user hasn't been explicitly added to the tenant.
 
 
 ## Troubleshooting Steps
 ### Troubleshooting Guide for AADSTS16003 - SsoUserAccountNotFoundInResourceTenant
 
+<<<<<<< HEAD:guides/Other/aadsts16003.md
 The error code AADSTS16003 indicates that a user trying to sign in has not been explicitly added to the resource tenant. This can cause Single Sign-On (SSO) issues when dealing with Azure Active Directory (Azure AD). Heres a comprehensive guide to troubleshoot and resolve this issue.
+=======
+The error code AADSTS16003 indicates that a user trying to sign in has not been explicitly added to the resource tenant. This can cause Single Sign-On (SSO) issues when dealing with Azure Active Directory (Azure AD). Here�s a comprehensive guide to troubleshoot and resolve this issue.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts16003.md
 
 ---
 
@@ -19,14 +22,22 @@ The error code AADSTS16003 indicates that a user trying to sign in has not been 
 
 3. **Tenant Verification**: 
    - Confirm the correct tenant that the user is attempting to access.
+<<<<<<< HEAD:guides/Other/aadsts16003.md
    - Compare the users domain with the domain(s) associated with the resource tenant.
+=======
+   - Compare the user�s domain with the domain(s) associated with the resource tenant.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts16003.md
 
 ---
 
 ### Common Issues that Cause this Error
 
 1. **User Not Added to the Resource Tenant**:
+<<<<<<< HEAD:guides/Other/aadsts16003.md
    - The users account may not exist in the Azure Active Directory (AAD) of the resource tenant.
+=======
+   - The user�s account may not exist in the Azure Active Directory (AAD) of the resource tenant.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts16003.md
 
 2. **Synchronization Issues**:
    - If using Azure AD B2B, the invitation to access the resource tenant may not have been sent or accepted.
@@ -65,15 +76,26 @@ The error code AADSTS16003 indicates that a user trying to sign in has not been 
 #### Step 3: Validate Domain Settings
 
 1. **Check Domain Verification**:
+<<<<<<< HEAD:guides/Other/aadsts16003.md
    - Validate that the users email domain is verified in the resource tenant under **Azure Active Directory** -> **Custom domain names**.
+=======
+   - Validate that the user�s email domain is verified in the resource tenant under **Azure Active Directory** -> **Custom domain names**.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts16003.md
 
 #### Step 4: Confirm UPN
 
 1. **Match UPNs**:
+<<<<<<< HEAD:guides/Other/aadsts16003.md
    - Ensure that the users UPN in their original tenant matches the one being used in the resource tenant.
    
 2. **Update UPN if Necessary**:
    - If theres a mismatch, update the users UPN and ensure they use the correct credentials.
+=======
+   - Ensure that the user�s UPN in their original tenant matches the one being used in the resource tenant.
+   
+2. **Update UPN if Necessary**:
+   - If there�s a mismatch, update the user�s UPN and ensure they use the correct credentials.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts16003.md
 
 #### Step 5: Review Access Policies
 

@@ -13,7 +13,11 @@ Certainly! The error code **AADSTS20033** is typically encountered when there is
 
 3. **Review User Credentials**: Ask affected users to verify their credentials, ensuring they are using the correct username and password.
 
+<<<<<<< HEAD:guides/Other/aadsts20033.md
 4. **Check the Application Registration**: Log into the Azure portal and verify the application registration's configuration, ensuring its correctly set up to use the federated identity provider.
+=======
+4. **Check the Application Registration**: Log into the Azure portal and verify the application registration's configuration, ensuring it�s correctly set up to use the federated identity provider.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts20033.md
 
 #### Common Issues that Cause This Error
 1. **Incorrect Tenant Name**: The tenant name in the federation metadata might not match the tenant associated with Azure AD.
@@ -50,7 +54,11 @@ Certainly! The error code **AADSTS20033** is typically encountered when there is
    - Review the enterprise application permissions and consent settings.
 
 6. **Test Connectivity**:
+<<<<<<< HEAD:guides/Other/aadsts20033.md
    - Perform a DNS lookup to check if the identity providers URL is resolvable.
+=======
+   - Perform a DNS lookup to check if the identity provider�s URL is resolvable.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts20033.md
    - Use tools like `nslookup` or `curl` to test the reachability of the federation metadata URL.
 
 #### Additional Notes or Considerations

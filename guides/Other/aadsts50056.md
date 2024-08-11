@@ -41,7 +41,11 @@ AADSTS50056 indicates that the user attempted to log in with an invalid or null 
    - The user may not be synced correctly if using Azure AD Connect.
 
 5. **Directory Issues:**
+<<<<<<< HEAD:guides/Other/aadsts50056.md
    - There might be an issue with the Azure AD service itself or with the users permissions.
+=======
+   - There might be an issue with the Azure AD service itself or with the user�s permissions.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50056.md
 
 ---
 
@@ -59,7 +63,11 @@ AADSTS50056 indicates that the user attempted to log in with an invalid or null 
    - Admins can verify the account status:
      - Log into the Azure portal.
      - Go to "Azure Active Directory" > "Users" > select the user.
+<<<<<<< HEAD:guides/Other/aadsts50056.md
      - Check the users status (enabled/disabled).
+=======
+     - Check the user�s status (enabled/disabled).
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50056.md
 
 4. **Account Lock Out:**
    - If the account is locked, wait for the lock period to expire or have an admin unlock the account manually.
@@ -72,7 +80,11 @@ AADSTS50056 indicates that the user attempted to log in with an invalid or null 
      - Run a sync manually from the Azure AD Connect tool.
 
 7. **Review Logs:**
+<<<<<<< HEAD:guides/Other/aadsts50056.md
    - Check the sign-in logs in Azure AD for any errors or warnings related to the users login attempts.
+=======
+   - Check the sign-in logs in Azure AD for any errors or warnings related to the user�s login attempts.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50056.md
 
 ---
 

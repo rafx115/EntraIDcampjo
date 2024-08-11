@@ -1,4 +1,3 @@
-
 # AADSTS50007: PartnerEncryptionCertificateMissing - The partner encryption certificate wasn't found for this app.Open a support ticketwith Microsoft to get this fixed.
 
 
@@ -10,7 +9,11 @@ The AADSTS50007 error typically indicates that the Azure Active Directory (AAD) 
 #### 1. Initial Diagnostic Steps
 - **Check the Error Message:** Ensure that the error code is indeed AADSTS50007 and the description explicitly mentions "PartnerEncryptionCertificateMissing."
 - **Identify the Application:** Determine which application is triggering the error, including its ID and any relevant configurations.
+<<<<<<< HEAD:guides/Other/aadsts50007.md
 - **Verify the Context:** Understand the context of the errorwas it triggered during a sign-in attempt, token issuance, etc.?
+=======
+- **Verify the Context:** Understand the context of the error�was it triggered during a sign-in attempt, token issuance, etc.?
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50007.md
 - **Confirm Service Status:** Check the Azure status page for any ongoing outages or maintenance that might be affecting Azure AD services: [Azure Status](https://status.azure.com/en-us/status).
 
 #### 2. Common Issues Causing This Error
@@ -26,6 +29,7 @@ The AADSTS50007 error typically indicates that the Azure Active Directory (AAD) 
 - Search for the application by its name or App ID.
 
 **Step 2: Check the Certificates and Secrets**
+<<<<<<< HEAD:guides/Other/aadsts50007.md
 - In the application registration, click on Certificates & secrets.
 - Check if the required encryption certificate is listed.
 - If its missing, proceed to upload or configure it.
@@ -33,6 +37,15 @@ The AADSTS50007 error typically indicates that the Azure Active Directory (AAD) 
 **Step 3: Upload the Certificate**
 - Obtain the valid encryption certificate (.cer or .pem file) from the partner application.
 - Click on Upload certificate and select the correct file.
+=======
+- In the application registration, click on �Certificates & secrets.�
+- Check if the required encryption certificate is listed.
+- If it�s missing, proceed to upload or configure it.
+
+**Step 3: Upload the Certificate**
+- Obtain the valid encryption certificate (.cer or .pem file) from the partner application.
+- Click on �Upload certificate� and select the correct file.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50007.md
 - Ensure the certificate is properly uploaded.
 
 **Step 4: Validate Certificate Details**
@@ -64,7 +77,11 @@ The AADSTS50007 error typically indicates that the Azure Active Directory (AAD) 
   - Event logs from the application showing the AADSTS50007 error.
   - The exact time of the error occurrence for correlation with Azure logs.
   - The configuration details of the application in Azure AD.
+<<<<<<< HEAD:guides/Other/aadsts50007.md
   - Any changes made recently that may have affected the applications setup.
+=======
+  - Any changes made recently that may have affected the application�s setup.
+>>>>>>> 8ca1440664e61dbdf9b1aa83f352634474c59c2f:guides/aadsts50007.md
   - Screenshot or documentation of the encryption certificate configuration.
 
 By following the above steps, you should be able to troubleshoot the AADSTS50007 error effectively and work towards a resolution. If the issue persists, do not hesitate to escalate the matter by contacting Microsoft Support.
