@@ -3,32 +3,86 @@
 
 
 ## Troubleshooting Steps
-### Troubleshooting Guide for Error Code AADSTS90015: QueryStringTooLong
+### Troubleshooting Guide for AADSTS90015: QueryStringTooLong
 
-#### Initial Diagnostic Steps:
-1. **Verify the Symptoms:** Confirm that the error message includes the description "QueryStringTooLong - The query string is too long."
-2. **Check Recent Changes:** Identify any recent changes in the application or environment that might have triggered the issue.
-3. **Review User Input:** Check if there's any large or excessive data being sent via the query string during the authentication process.
+**Error Code Description**: AADSTS90015 indicates that the query string in the URL is too long for Azure Active Directory (AAD) to process. This commonly occurs in contexts where a lot of data is passed in the URL, such as during authentication requests or callback URLs.
 
-#### Common Issues That Cause This Error:
-1. **Large Amount of Data:** Excessive data being passed via the query string.
-2. **Misconfigured Application:** Incorrect handling or processing of query string parameters in the authentication flow.
-3. **Outdated Libraries or SDKs:** Using outdated or incompatible versions of libraries or SDKs that contribute to the issue.
+---
 
-#### Step-by-Step Resolution Strategies:
-1. **Reduce Query String Length:** If possible, try to reduce the data passed in the query string to well below the Azure AD maximum limit.
-2. **Use POST Instead of GET:** Consider switching to a POST request to pass data securely in the body rather than in the query string.
-3. **Optimize Parameter Usage:** Evaluate the necessity of each parameter passed in the query string; remove any unnecessary or redundant parameters.
-4. **Update Libraries:** Ensure all libraries, SDKs, and dependencies are up to date to prevent any compatibility issues.
-5. **Review Azure AD Configuration:** Check the Azure AD configuration and permissions to ensure there are no restrictions causing the error.
-6. **Logging and Monitoring:** Implement logging mechanisms to track the query string data flow and detect any anomalies.
-  
-#### Additional Notes or Considerations:
-- **Security Implications:** Make sure data being passed via query strings is not sensitive or confidential. Consider encrypting sensitive data or using more secure methods of data transfer.
-- **Code Review:** Conduct a thorough code review to identify any areas where query string parameters are manipulated or processed inappropriately.
+### Initial Diagnostic Steps
+1. **Reproduce the Issue**:
+   - Attempt to reproduce the error by navigating to the URL or performing the action that triggers the error.
+   - Take note of the exact URL causing the error for analysis.
 
-#### Documentation and Guidance:
-For detailed information and step-by-step guides on handling authentication errors in Azure AD, refer to the official Microsoft documentation:
-- [Azure Active Directory B2C: Troubleshoot error codes](https://docs.microsoft.com/en-us/azure/active-directory-b2c/error-codes)
+2. **Check the Length of the Query String**:
+   - Measure the length of the query string (the part after the `?` in the URL). Azure has limitations on URL lengths, generally around 2048 characters for GET requests.
 
-By following these troubleshooting steps and best practices, you can effectively address the "QueryStringTooLong" error (AADSTS90015) in Azure AD authentication processes.
+3. **Inspect Logs**:
+   - Review server logs, application logs, or Azure AD logs to find any additional context or user actions leading to the error.
+
+---
+
+### Common Issues that Cause this Error
+1. **Excessive State Parameters**: The state parameter often holds information about the user session or application state and may accumulate unnecessary data.
+   
+2. **Large Payloads in URLs**: When passing complex parameters or large lists of items via query strings, the cumulative size can exceed the limit.
+
+3. **Improper Redirects**: Applications that improperly assemble redirect URLs can inadvertently add excessive query parameters.
+
+4. **Use of URL Encoding**: Sometimes, data that could be sent via POST requests is sent via GET, mistakenly increasing the URL length through encoding.
+
+---
+
+### Step-by-Step Resolution Strategies
+#### Step 1: Optimize Query String Usage
+- **Reduce Unnecessary Parameters**:
+  - Review the URL construction and eliminate any unnecessary parameters being passed in the query string.
+
+- **Use POST Requests for Large Payloads**:
+  - If passing a large amount of data, consider switching from GET to POST which allows sending data in the body of the request.
+
+#### Step 2: Modify Redirect and State Management
+- **Shorten State Parameter**:
+  - If using state parameters, ensure they are concise. Avoid sending unnecessary session or application data.
+
+- **Reevaluate Redirection Logic**:
+  - Review your application’s redirect logic to ensure it does not add extraneous query parameters.
+
+#### Step 3: Encryption or Encoding
+- **Consider Encrypting State Information**:
+  - If session information must be passed, consider encrypting it instead of sending it in a plain string format.
+
+#### Step 4: Testing
+- After implementing the changes, test to ensure that the error no longer occurs. Take note of query string lengths to ensure they remain within acceptable limits.
+
+---
+
+### Additional Notes or Considerations
+- Keep in mind that URL length limits can vary slightly based on different browsers and web servers. It is best practice to stay well below the threshold to avoid issues across different environments.
+- Monitor the application for changes, as future updates or user inputs can inadvertently lead to increased query string lengths.
+
+---
+
+### Documentation for Guidance
+- [Microsoft Documentation on Azure Active Directory Errors](https://learn.microsoft.com/en-us/azure/active-directory/develop/reference-aad-errors)
+- [Best Practices for Secure Application Development](https://learn.microsoft.com/en-us/azure/architecture/best-practices/)
+- [HTTP Request Length Limits Documentation](https://learn.microsoft.com/en-us/iis/configuration/system.webserver/serverruntime/#maximumurllength)
+
+---
+
+### Test Documentation Reachability
+You can reach the Azure documentation pages for the error details at [Microsoft AAD Errors Reference](https://learn.microsoft.com/en-us/azure/active-directory/develop/reference-aad-errors). Navigate there to verify the content.
+
+---
+
+### Advice for Data Collection
+- Create a log of the specific requests that failed, including:
+  - The full URL requested.
+  - The length of the query string.
+  - Any relevant user actions leading up to the error.
+- Utilize monitoring tools (like Application Insights) to gain insights into user behavior and application performance.
+- Consider capturing screenshots or error messages to document the issue and approach.
+
+---
+
+By following these steps, you should be able to identify and resolve issues related to the AADSTS90015 error effectively. If problems persist, consider reaching out to Microsoft Support for assistance.

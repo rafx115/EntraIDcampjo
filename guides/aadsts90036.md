@@ -3,36 +3,92 @@
 
 
 ## Troubleshooting Steps
-### Error Code: AADSTS90036
+**Troubleshooting Guide for Error Code AADSTS90036**
 
-#### Description:
-**MsodsServiceUnretryableFailure** - An unexpected, non-retryable error from the WCF service hosted by MSODS has occurred. Open a support ticket to get more details on the error.
+**Error Description:**
+AADSTS90036 (MsodsServiceUnretryableFailure) indicates an unexpected, non-retryable error from the Windows Communication Foundation (WCF) service that is hosted by Microsoft Online Directory Services (MSODS). The error suggests that there is a significant issue that cannot be automatically resolved and requires assistance from Microsoft support.
 
-#### Initial Diagnostic Steps:
-1. **Check for Server-Side Outages**: Verify if the WCF service hosted by MSODS is experiencing any downtime or outages that may be causing the error.
-2. **Review Recent Changes**: Investigate any recent configuration changes or updates that may have led to the error.
-3. **Check Service Credentials**: Confirm if the service credentials being used are correct and have the necessary permissions.
+---
 
-#### Common Issues:
-- **Server-side service outage**
-- **Incorrect service credentials**
-- **Unsuccessful recent updates or changes**
-- **Network connectivity issues**
+### Initial Diagnostic Steps
 
-#### Step-by-Step Resolution Strategies:
-1. **Verify Service Status**: Check the status of the WCF service hosted by MSODS to ensure it is operational.
-2. **Review Service Credentials**: Validate and update service credentials to ensure they are accurate and have necessary permissions.
-3. **Retry Request**: Attempt to retry the request to see if the error is transient or if it persists.
-4. **Investigate Recent Changes**: Rollback recent configuration changes or updates if they are suspected to be the cause of the error.
-5. **Contact Support**: Open a support ticket to get more detailed information about the error and assistance in resolving it.
+1. **Understanding the Context:**
+   - Identify the operation being performed when the error occurred (e.g., user sign-in, service provisioning).
 
-#### Additional Notes or Considerations:
-- **Network Configuration**: Ensure that there are no network issues causing communication problems with the WCF service.
-- **Error Persistence**: If the error persists after following troubleshooting steps, seek further assistance from the service provider or relevant support team.
+2. **Check Service Status:**
+   - Visit the [Microsoft 365 Service Health Status](https://portal.office.com/adminportal/home#/servicehealth) page to see if there are any ongoing outages or incidents affecting Microsoft services that could cause this error.
 
-#### Documentation:
-Refer to the official Microsoft documentation or support resources for guidance on troubleshooting error code AADSTS90036 and resolving issues related to MsodsServiceUnretryableFailure. Here is the link to the official documentation:
+3. **Monitor Logs:**
+   - Examine logs for any preceding errors or warnings that could give insight into the underlying issue leading to the AADSTS90036 error.
 
-- [Microsoft Azure Documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/msods-error-messages)
+---
 
-Follow the steps outlined in the documentation for detailed guidance on resolving the error.
+### Common Issues that Cause This Error
+
+1. **Configuration Issues:**
+   - Incorrect application settings or misconfigurations in Azure Active Directory (AAD) can lead to this error.
+
+2. **User Account Issues:**
+   - The user account experiencing the error may be in a non-intended state (e.g., disabled, deleted, or not properly synchronized).
+
+3. **Service Availability:**
+   - Temporary outages or issues with the MSODS service can cause unexpected failures.
+
+4. **Intermittent Network Problems:**
+   - Network connectivity issues between the client application and Azure services may lead to unexpected errors.
+
+---
+
+### Step-by-Step Resolution Strategies
+
+1. **Review Configuration:**
+   - Go to the Azure portal and confirm your application's registration settings, including redirect URIs, permission scopes, and other configurations.
+   - Ensure that there are no erroneous settings for Identity Provider configurations if applicable.
+
+2. **Check User Account Status:**
+   - Navigate to Azure Active Directory > Users.
+   - Search for the affected user and verify their account status. Make sure the account is enabled and properly licensed.
+
+3. **Try a Different User or App:**
+   - Test with another user account or application to determine if the issue is isolated to a specific configuration or account.
+
+4. **Engage Support:**
+   - If no configuration issues are found and the error persists, open a support ticket with Microsoft. Provide detailed logs, reproduction steps, and any other relevant information. 
+
+5. **Monitor Service Health:**
+   - Keep an eye on the Service Health dashboard to see if there are updates regarding the status of the MSODS service.
+
+---
+
+### Additional Notes or Considerations
+
+- **Rate Limiting:** Be aware that excessive requests can sometimes lead to throttling errors. Ensure your application is within Azure AD's thresholds for the number of API calls.
+  
+- **Timing:** If the issue appears to be intermittent, it may relate to service availability during heavy usage times.
+
+- **Authentication Flows:** Ensure that the authentication flow (authorization code, implicit, etc.) is implemented correctly as per Microsoft guidelines.
+
+---
+
+### Documentation for Guidance
+
+For further details and step-by-step guidance, refer to the following Microsoft documentation:
+- [Azure Active Directory Authentication](https://docs.microsoft.com/en-us/azure/active-directory/develop/)
+- [Troubleshooting Sign-in Issues](https://docs.microsoft.com/en-us/azure/active-directory/user-help/troubleshoot-sign-in-issues)
+- [Microsoft 365 Service Health](https://portal.office.com/adminportal/home#/servicehealth)
+
+**Testing Accessibility of Documentation:**
+You can check the above links in your browser to ensure they are reachable and provide the necessary information to resolve the error.
+
+---
+
+### Advice for Data Collection
+
+When preparing to troubleshoot or to open a support ticket, collect the following data:
+- Detailed logs around the time the error occurred.
+- Steps to reproduce the error, including exact user actions.
+- Any relevant configurations/settings from the Azure portal.
+- Screenshots of errors or the context in which the error appears.
+- User account details (not sensitive data) such as state, license status, and roles.
+
+By following the structured troubleshooting steps and guidelines outlined above, you should be able to diagnose and resolve the AADSTS90036 error or gather the necessary information for Microsoft support to assist you further.

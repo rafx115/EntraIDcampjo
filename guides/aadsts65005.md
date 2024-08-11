@@ -3,45 +3,85 @@
 
 
 ## Troubleshooting Steps
-### Error Code: AADSTS65005 - MisconfiguredApplication
+# AADSTS65005 Troubleshooting Guide
 
-#### Initial Diagnostic Steps:
-1. **Confirm Error Specifics**: Gather all available information about the error, including user actions leading to the error, timestamp of occurrence, affected user accounts, attempted operations, etc.
-   
-2. **Check Application Configuration**: Verify the settings and configurations of the application in Azure Active Directory (AAD), specifically related to resource access permissions.
+## Error Description
+**Error Code:** AADSTS65005  
+**Description:** Misconfigured Application - The app required resource access list doesn't contain apps discoverable by the resource, or the client app has requested access to a resource that wasn't specified in its required resource access list or Graph service returned bad request or resource not found. If the app supports SAML, you might have configured the app with the wrong Identifier (Entity).
 
-3. **Review Requested Resource**: Determine the resource that the client app is trying to access and ensure it aligns with the required resource access list.
+---
 
-#### Common Issues:
-1. **Missing Resource Permissions**: The application might not have the necessary permissions specified in its required resource access list to access the desired resources.
+## Initial Diagnostic Steps
+1. **Verify the Error Message**: Capture the full error response, as it may contain additional context or detailed error messages. 
 
-2. **Incorrect Identifier Configuration**: If SAML is used, the identifier (Entity) configured for the application may be incorrect, leading to resource access issues.
+2. **Check Application Registration**: Go to the Azure portal and navigate to Azure Active Directory > App registrations. Locate your application and verify its settings.
 
-3. **Bad Request/Resource Not Found**: The Azure AD Graph service might be returning errors, such as bad requests or resource not found, impacting the application's functionality.
+3. **Review Required Resource Access**: In the app registration, go to "API permissions" and check the required permissions. Ensure that all required resources are correctly specified.
 
-#### Step-by-Step Resolution Strategies:
+4. **SAML Configuration Check**: If your application is SAML-enabled, review the SAML configuration, including the Identifier (Entity ID) settings.
+
+5. **Check for Typos or Misconfiguration**: Verify that there are no typographical errors in your configuration settings.
+
+---
+
+## Common Issues That Cause this Error
+1. **Incomplete or Inaccurate API Permissions**: The application may not have the necessary permissions added to access the requested resource.
+
+2. **Incorrect SAML Configuration**: The SAML settings (like Identifier/Entity ID) may be incorrect, leading to failures in the authentication flow.
+
+3. **Missing or Misconfigured Redirect URIs**: The redirect URI specified during the application configuration doesn't match the one used during the OAuth flow.
+
+4. **Resource Not Found**: The resource being accessed may not be available or may have been deleted or renamed.
+
+5. **Invalid Scopes**: Requested scopes may not be valid or might not align with what is defined in Azure.
+
+---
+
+## Step-by-Step Resolution Strategies
 1. **Verify Application Permissions**:
-   - Access Azure Portal, navigate to Azure Active Directory > App registrations.
-   - Locate and select the misconfigured application.
-   - Check the required resource access list and ensure it includes all necessary resources.
-   - Update the permissions if required and save the changes.
+   - Go to Azure Active Directory > App registrations.
+   - Select your application.
+   - Click on "API permissions" and ensure that all required resources and permissions are listed.
+   - If missing, click "Add a permission" and include the necessary resources.
 
-2. **Review SAML Configuration (If Applicable)**:
-   - If the application supports SAML, double-check the Entity configuration in the app settings.
-   - Update the Identifier (Entity) to the correct value if it is found to be misconfigured.
+2. **SAML Configuration**:
+   - Navigate to the app's "Single sign-on" section.
+   - Double-check the Identifier (Entity ID) against what is expected by the Identity Provider (IdP).
+   - Ensure that all other SAML settings like Assertion Consumer Service URL, etc., are correctly configured.
 
-3. **Investigate Azure AD Graph Service Issues**:
-   - Check the Azure service health status to ensure there are no ongoing issues with the Azure AD Graph service.
-   - Review Azure AD logs and monitor for any specific errors related to the resource access requests.
+3. **Update Redirect URIs**:
+   - Verify Redirect URIs under Azure AD > App registrations > Your app > Authentication.
+   - Ensure that the URI you are using during login corresponds to one of the registered URIs.
 
-#### Additional Notes or Considerations:
-- **Permission Sync Delay**: Changes in application permissions may take some time to propagate across the Azure AD system. Allow time for sync if recent modifications have been made.
-  
-- **Logging and Monitoring**: Enable and utilize Azure AD logs and monitoring tools to track resource access requests and any related errors for troubleshooting.
+4. **Test Access to Resources**:
+   - Use Graph Explorer (https://developer.microsoft.com/en-us/graph/graph-explorer) to test access to the resource.
+   - Make sure that the resource is available and that you can retrieve data.
 
-#### Documentation for Guidance:
-- Microsoft Azure Documentation:
-  - For specific steps and detailed guidance on troubleshooting AADSTS65005 error, refer to [Troubleshooting AADSTS65005](https://docs.microsoft.com/en-us/troubleshoot/azure/active-directory/error-code-aadsts65005). 
-  - Additional information on managing Azure AD App Registrations can be found [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-app-registration).
-  
-By following the outlined diagnostics and resolution strategies, you can effectively address the AADSTS65005 MisconfiguredApplication error for the affected application.
+5. **Monitor Activity Logs**: 
+   - Check the Sign-in logs in Azure AD to see if there are any further insights regarding the authentication failures.
+
+---
+
+## Additional Notes or Considerations
+- Always ensure to test in a development or staging environment before applying changes to production.
+- If multiple applications are interacting, ensure that their permissions complement each other.
+
+---
+
+## Documentation for Guidance
+1. [Azure Active Directory App Registrations](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
+2. [API permissions in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-app-permissions)
+3. [Configure SAML-based single sign-on](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v2-aspnet-core)
+4. [Azure AD Sign-in logs](https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/concept-sign-ins)
+5. [Microsoft Graph API documentation](https://docs.microsoft.com/en-us/graph/overview)
+
+**Test Links:** Ensure that the guides and tutorials are accessible and updated by visiting the above links.
+
+---
+
+## Advice for Data Collection
+- Capture and log the full error messages you encounter, including any request IDs or correlation IDs for Azure support.
+- Document the exact steps leading to the error for better context when seeking assistance.
+- Make screenshots of configurations in the Azure portal related to API permissions and SAML settings to assess changes easily.
+
+By following this comprehensive guide, you should be able to diagnose and resolve the AADSTS65005 error effectively.

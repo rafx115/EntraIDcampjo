@@ -3,42 +3,97 @@
 
 
 ## Troubleshooting Steps
-### Troubleshooting Guide: AADSTS90101 InvalidEmailAddress Error
+Certainly! Below is a comprehensive troubleshooting guide for the error code AADSTS90101, which indicates that an email address provided is invalid. 
 
-**Description:**  
-InvalidEmailAddress - The supplied data isn't a valid email address. The email address must be in the format someone@example.com.
+### AADSTS90101 Troubleshooting Guide
 
-#### Initial Diagnostic Steps:
-1. Double-check the email address format you are attempting to use.
-2. Verify that there are no extra spaces or special characters in the email address.
-3. Ensure that the email address does not contain any typos or misspellings.
-4. Confirm whether the error persists for multiple users or just a specific user.
+#### Overview
+Error Code: AADSTS90101  
+Description: InvalidEmailAddress - The supplied data isn't a valid email address. The email address must be in the format someone@example.com.
 
-#### Common Issues:
-- Incorrect email address format.
-- Typographical errors in the email address.
-- Special characters in the email address.
-- Spaces before or after the email address.
-- Backend system limitations or API restrictions.
+---
 
-#### Step-by-Step Resolution Strategies:
-1. **Correct Email Format:** Ensure that the email address you are using follows the standard format of someone@example.com.
-   
-2. **Remove Special Characters:** Check for any special characters in the email address and eliminate them.
+### Initial Diagnostic Steps
 
-3. **Remove Extra Spaces:** Trim any leading or trailing spaces in the email address.
+1. **Check Context**: Identify what action triggered the error. Common scenarios include sign-in attempts or API requests.
+  
+2. **Capture User Input**: Record the exact email address input by the user. This will help in identifying formatting issues.
 
-4. **Verify Typographical Errors:** Carefully check for typos or misspellings in the email address.
+3. **Examine Logs**: Review any available logs (application logs, server logs, etc.) for additional context around the error occurrence.
 
-5. **Test with Another Valid Email:** Try using a known valid email address to see if the issue persists.
+4. **Reproduce the Error**: If possible, try to replicate the scenario with a known valid email address to confirm that the application logic surrounding the email handling is functioning correctly.
 
-6. **Backend Verification:** Cross-check the backend system requirements or API documentation for any specific email address format restrictions.
+---
 
-#### Additional Notes or Considerations:
-- If the error continues even after correcting the email address format, consider reaching out to the system administrator or support for further assistance.
-- Make sure there are no restrictions in place that prevent the use of certain email domains or special characters.
+### Common Issues that Cause This Error
 
-#### Documentation for Guidance:
-- For more specific troubleshooting steps related to the Azure Active Directory error AADSTS90101, refer to the official [Microsoft documentation on common error codes](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aadsts-error-codes).
+1. **Incorrect Formatting**: Users may enter email addresses in incorrect formats (e.g., missing "@" symbol, missing domain, additional spaces).
 
-By following these detailed steps and considerations, you should be able to troubleshoot and resolve the AADSTS90101 InvalidEmailAddress error effectively.
+2. **Trailing Spaces or Non-visible Characters**: Users may paste email addresses that contain leading or trailing spaces or special characters that aren't visible.
+
+3. **Domain Specific Issues**: The email address domain may not be valid or the domain does not conform to standard email domain formats.
+
+4. **Technical Issues**: Application bugs or issues in middleware that incorrectly processes the email input.
+
+---
+
+### Step-by-Step Resolution Strategies
+
+1. **Input Validation**:
+   - Implement client-side validation to ensure the email address is in the correct format before submission. Regular Expressions (RegEx) can be effective for this.
+   - Example regex pattern for validation: 
+     ```regex
+     ^[^\s@]+@[^\s@]+\.[^\s@]+$
+     ```
+
+2. **User Education**:
+   - Provide user-friendly error messages indicating what a valid email format should look like.
+   - Display examples of valid email addresses beside the input field.
+
+3. **Sanitization of Input**:
+   - Strip leading/trailing whitespace from the email address upon input submission.
+   - Check for any non-visible characters and remove them if detected.
+
+4. **Testing and Debugging**:
+   - Create a list of valid and invalid email addresses and conduct multiple test cases using both.
+   - Use logging to track input values and prepare reports of invalid entries to inform further improvements in validation.
+
+5. **Consult Documentation**:
+   - If the error is rooted in configuration with Azure Active Directory, consult the official Microsoft Azure AD documentation regarding user authentication and input requirements.
+   - You can visit [Azure AD Documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/) for guidance.
+
+---
+
+### Additional Notes or Considerations
+
+- **Localization**: If the application supports multiple languages, ensure that email validation messages are properly localized.
+  
+- **Response to Failure**: You may want to implement a mechanism to allow users to recover gracefully after an error. For example, retaining the email they attempted to enter to ease frustration.
+
+---
+
+### Documentation Resources
+
+1. **Microsoft Azure Active Directory Documentation**:
+   - [Microsoft Azure AD Overview](https://docs.microsoft.com/en-us/azure/active-directory/)
+   - [Authentication Errors and Troubleshooting](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aad-error-codes)
+
+---
+
+### Testing Documentation Accessibility
+
+1. Navigate to the links provided above in a web browser to ensure they load properly. Verify that you can access documentation and any relevant articles or guides.
+
+---
+
+### Advice for Data Collection
+
+- **Gather Information**:
+  - Ask users for the exact input they provided.
+  - Collect screenshots of the error message for clarity.
+  - Log events that led to the error to facilitate analysis.
+
+- **Feedback Loop**:
+  - After resolution, consider sending a follow-up survey to collect user feedback on their experience and whether the solution was effective.
+
+By following this guide, you should be able to diagnose and address instances of the AADSTS90101 error effectively, ensuring a smoother user experience during email validation.

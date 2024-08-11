@@ -3,46 +3,70 @@
 
 
 ## Troubleshooting Steps
-Here is a detailed troubleshooting guide for the error code AADSTS90091 with the description GraphServiceUnreachable:
+**Troubleshooting Guide for Error Code AADSTS90091 (GraphServiceUnreachable)**
 
-### Initial Diagnostic Steps:
-1. **Confirm Internet Connectivity:** Ensure that the device where the error occurs has a stable internet connection.
-   
-2. **Check Azure AD Service Status:** Verify if there are any ongoing service disruptions related to Azure Active Directory (AAD) that might be impacting the Graph service.
-   
-3. **Review Logs:** Look for any detailed error logs or messages related to the GraphServiceUnreachable error to gather more context.
+### Overview
+Error code **AADSTS90091** indicates that Azure Active Directory (AAD) is unable to reach the Microsoft Graph service. This can affect applications that rely on Microsoft Graph for accessing AAD data and functionality.
 
-### Common Issues that Cause this Error:
-1. **Network Configuration:** Firewalls, proxies, or network restrictions might be blocking the communication with Microsoft Graph service.
-   
-2. **Incorrect URL Configuration:** The service URL used to access the Graph API might be incorrect or outdated.
-   
-3. **Permissions:** Insufficient permissions for the application or user to access the Graph service can also trigger this error.
-   
-4. **Token Expiration:** If the authentication token has expired, it might lead to communication issues with the Graph service.
+### Initial Diagnostic Steps
+1. **Check Service Status**: 
+   - Visit the **Microsoft Service Health** dashboard to check if there are any ongoing issues with Azure Active Directory or Microsoft Graph.
+   - Link: [Azure Service Health Status](https://status.azure.com/en-us/status)
 
-### Step-by-Step Resolution Strategies:
-1. **Check Network Configuration:**
-   - Ensure that there are no network restrictions or firewalls blocking connections to the Graph service. Whitelist necessary URLs.
-   
-2. **Verify Service URL:**
-   - Double-check the endpoint URLs used for accessing the Graph API. They should be up-to-date and correctly configured.
-   
-3. **Review Permissions:**
-   - Make sure that the application or user has the necessary permissions assigned in Azure AD to access the Graph service.
-   
-4. **Refresh Token:**
-   - If the token has expired, acquire a new token by following the appropriate authentication flow.
-   
-5. **Retry Operation:**
-   - After addressing the above issues, retry the operation that triggered the GraphServiceUnreachable error.
+2. **Identify Context**: 
+   - Determine when and how often this error is occurring. Is it consistent or intermittent? Identify if it occurs at specific times or under certain load conditions.
 
-### Additional Notes or Considerations:
-- Closely monitor any service updates or announcements from Azure AD regarding potential service disruptions.
-   
-- Regularly review and update network configurations to ensure smooth communication with the Graph service.
+3. **Environment Check**: 
+   - Confirm the environment (e.g., production, development) where the error surfaced.
+   - Review any changes that occurred around the time the error started appearing.
 
-### Documentation for Guidance:
-- For more in-depth guidance on troubleshooting Azure AD errors like AADSTS90091, refer to the official Microsoft documentation on Azure Active Directory troubleshooting: [Azure AD Troubleshooting](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/troubleshoot-common-issues).
+### Common Issues that Cause this Error
+- **Network Issues**: Temporary network disruptions or latency between the application and Microsoft Graph.
+- **API Throttling**: If requests exceed the allowed number of API calls, Microsoft Graph may reject subsequent calls.
+- **Configuration Errors**: Issues in the registered application in Azure AD that could misconfigure permissions/scopes.
+- **Service Outage**: Temporary issues on the Microsoft Graph side.
 
-Following these steps and considering the recommendations provided should help in resolving the GraphServiceUnreachable error with the error code AADSTS90091.
+### Step-by-Step Resolution Strategies
+1. **Network Connectivity**:
+   - Run ping tests or traceroutes from the application server to the Microsoft Graph endpoints to check for connectivity issues.
+   - Verify firewall settings to ensure they allow outbound traffic to Microsoft Graph.
+
+2. **Review Application-Specific Limits**:
+   - Check your application for throttling by reviewing the response headers when a request to the Graph API fails.
+   - If throttling is suspected, implement retry logic with exponential backoff.
+
+3. **Validate Application Permissions**:
+   - Go to the Azure portal and review the permissions granted to your application.
+   - Ensure that the necessary Microsoft Graph API permissions are consented and granted to your application.
+   - Link: [API Permissions in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/permissions-reference)
+
+4. **Examine Logs**:
+   - Enable logging in your application to capture request and response details when accessing Microsoft Graph.
+   - Look at any error messages or statuses returned by the Graph API.
+
+5. **Utilize Graph Explorer**:
+   - Test the Microsoft Graph API manually using the [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) to see if you encounter the same error.
+   - This tool can help debug API availability independently of your application.
+
+### Additional Notes or Considerations
+- Ensure you are following best practices for managing API calls to avoid throttling.
+- Implement robust error handling to gracefully manage temporary service unavailability.
+- Monitor performance metrics and logs before and after implementing changes to help identify the impact of resolutions.
+
+### Documentation for Guidance
+- [Azure Active Directory Troubleshooting Azure AD Graph API](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-graph-api-troubleshooting)
+- [Microsoft Graph API Documentation](https://docs.microsoft.com/en-us/graph/overview)
+- [Managing Microsoft Graph API Permissions](https://docs.microsoft.com/en-us/graph/auth-v2-service#permissions)
+
+**Test Reachability of Documentation:**
+- Access the above links to ensure they are reachable and contain the necessary guidance. 
+
+### Advice for Data Collection
+- Gather the following data for easier troubleshooting:
+  - Timestamps when the error occurs.
+  - Full error messages returned from AAD or Graph API.
+  - Application logs showing request and response details.
+  - Network logs, including any potential connectivity issues or interruptions.
+  - API call count near the time of the error.
+
+If the problem persists after following these steps, consider reaching out to Microsoft Support with the gathered data for further assistance.

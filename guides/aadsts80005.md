@@ -3,41 +3,97 @@
 
 
 ## Troubleshooting Steps
-### Troubleshooting Guide: Error Code AADSTS80005
+### Troubleshooting Guide for AADSTS80005: OnPremisePasswordValidatorUnpredictableWebException
 
-#### Description:
-Error Code: AADSTS80005  
-Description: OnPremisePasswordValidatorUnpredictableWebException - An unknown error occurred while processing the response from the Authentication Agent. Retry the request. If it continues to fail, open a support ticket to get more details on the error.
+**Error Description:**  
+AADSTS80005 indicates an unknown error occurred while processing the response from the Authentication Agent. This error is generally related to the handling of authentication requests involving on-premises identity solutions such as Active Directory Federation Services (AD FS) or Azure AD Connect.
 
-#### Initial Diagnostic Steps:
-1. **Verify Internet Connectivity:** Ensure that the device has a stable internet connection to communicate with the Authentication Agent.
-2. **Check Service Status:** Confirm if the services related to the Authentication Agent are operational.
-3. **Review Logs:** Check application logs for any specific error messages or warnings related to the issue.
+---
 
-#### Common Issues:
-- **Connectivity Problems:** Network issues can lead to unreliable communication with the Authentication Agent.
-- **Configuration Errors:** Incorrect configurations of the Authentication Agent can cause unpredictable web exceptions.
-- **Authentication Agent Issues:** The Authentication Agent software may have encountered an unknown problem during response processing.
+### Initial Diagnostic Steps
 
-#### Step-by-Step Resolution Strategies:
-1. **Retry the Request:**
-   - Start by retrying the request to determine if the error persists.
-2. **Check Configuration Settings:**
-   - Double-check the configuration settings of the Authentication Agent for accuracy.
-3. **Update Software:**
-   - Ensure that the Authentication Agent software is up to date with the latest patches and updates.
-4. **Restart Agent Service:**
-   - Restart the Authentication Agent service to clear any temporary issues.
-5. **Review Security Settings:**
-   - Verify that security settings, such as firewalls or proxies, are not blocking communication.
-6. **Contact Support:**
-   - If the issue persists, contact the support team for further assistance, providing details of the error.
+1. **Review Logs:**
+   - Check the Azure AD sign-in logs for specific timestamps and account information related to the error.
+   - Look at the event viewer on the server running AD FS for any warnings or errors around the time of the failure.
 
-#### Additional Notes or Considerations:
-- Ensure that the Authentication Agent's documentation is readily available for reference.
-- Keep track of any changes or actions taken during the troubleshooting process for future reference.
+2. **Network Connectivity:**
+   - Ensure that the server hosting the Authentication Agent can reach the Azure AD endpoints and does not have any network issues.
 
-#### Documentation:
-- For detailed guidance on troubleshooting Authentication Agent errors or configurations, refer to the official documentation provided by the service provider or software vendor.
+3. **Reproduce the Error:**
+   - Attempt to reproduce the error using the same credentials and environment to gather more precise conditions under which the error occurs.
 
-This troubleshooting guide aims to help diagnose and resolve the AADSTS80005 error code associated with the OnPremisePasswordValidatorUnpredictableWebException. If the issue persists after following these steps, reaching out to support for more specialized assistance is recommended.
+---
+
+### Common Issues that Cause This Error
+
+- **Network Issues:** Firewalls or network security settings may block requests to Azure AD.
+- **Authentication Agent Issues:** The On-Premises Authentication Agent might be misconfigured or experiencing issues.
+- **Timeouts:** Slow, unreliable network connections can cause timeouts when the Authentication Agent tries to communicate with Azure AD.
+- **Proxy Configuration Issues:** If there's a proxy in place, it may not be properly routing requests to Azure AD.
+- **AD FS Configuration Issues:** Wrongly configured authentication methods or relying party trusts may lead to issues.
+  
+---
+
+### Step-by-Step Resolution Strategies
+
+1. **Confirm Network Connectivity:**
+   - Use `telnet` to check the connectivity to Azure AD endpoints (e.g. `login.microsoftonline.com`).
+
+2. **Restart the Authentication Agent:**
+   - If the Authentication Agent is running on a separate server, restart the service.
+
+3. **Verify Authentication Agent Configuration:**
+   - Ensure that the configuration settings for the Authentication Agent are correct.
+   - Check that the Agent is running the latest version and is properly registered with Azure AD.
+
+4. **Adjust AD FS Configuration:**
+   - Check that there are no issues with your AD FS configuration settings:
+     - Login to the AD FS management console.
+     - Review the Relying Party Trusts configuration.
+     - Verify whether any recent changes were made to the authentication methods.
+
+5. **Increase Timeout Settings:**
+   - If applicable, increase any timeout settings in your Authentication Agent or AD FS.
+
+6. **Check for Other Known Issues:**
+   - Search in known technical forums or Microsoft’s support articles for any notes on relevant patches or versions that may resolve the issue.
+
+---
+
+### Additional Notes or Considerations
+
+- **Monitor Traffic:** Use tools like Wireshark or Fiddler to monitor network traffic between the Authentication Agent and Azure AD, which can help in identifying where requests may be failing.
+  
+- **Testing in Isolation:** If possible, separate the components involved (e.g., test AD FS and the Authentication Agent independently) to isolate where the problem lies.
+
+---
+
+### Documentation
+
+- Microsoft Azure AD Sign-In Logs: https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/concept-sign-ins
+- Troubleshooting AD FS: https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/troubleshoot-issues
+- Azure Active Directory Authentication: https://docs.microsoft.com/en-us/azure/active-directory/hybrid/quick-start-coexist
+- On-Premises Authentication Agent documentation: https://docs.microsoft.com/en-us/azure/active-directory/hybrid/deploy-authentication-agent
+
+**Note:** Always verify that you are looking at the most current documentation.
+
+---
+
+### Testing Reachability of Documentation
+
+1. **Open your browser** and try to access each link provided under the documentation section to ensure they are reachable.
+  
+2. If a document is not accessible, search for the document title on the [Microsoft Docs](https://docs.microsoft.com/) website directly to find the latest version.
+
+---
+
+### Advice for Data Collection
+
+- **Event Logs:** Collect event logs from the event viewer (Application and System logs) during the time of the error.
+- **Authentication Agent Logs:** If the Authentication Agent provides any logging mechanism, ensure they are checked and/or collected for review.
+- **Network Configuration:** Document your network configuration and any changes made around the time of the error.
+- **Screenshot any error messages** and gather any relevant metadata.
+
+---
+
+By following this troubleshooting guide, you’ll be well-equipped to identify and resolve issues related to the AADSTS80005 error code. If the problem persists after exhausting these steps, consider opening a support ticket with Microsoft for further assistance.

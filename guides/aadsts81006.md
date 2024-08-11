@@ -3,40 +3,82 @@
 
 
 ## Troubleshooting Steps
-### Error Code: AADSTS81006 - DesktopSsoNoAuthorizationHeader
+**Troubleshooting Guide for Error Code AADSTS81006: DesktopSsoNoAuthorizationHeader - No authorization header was found.**
 
-#### Initial Diagnostic Steps:
-1. **Verify Error Context**: Understand where and when the error occurs � during sign-in, authentication, token validation, etc.
-2. **Check Logs**: Review logs or error messages to gather more information about the specific environment and context of the error.
-3. **Confirm Environment Setup**: Check if the correct configurations are in place for the authentication process.
+This error typically occurs in Azure Active Directory (AAD) scenarios when a client application attempts to access a resource without providing a valid authorization header. This guide will provide you with detailed steps to diagnose and resolve this issue.
 
-#### Common Issues:
-1. **Missing Authorization Header**: As indicated by the error message, the issue may stem from the absence of an authorization header, leading to failed authentication.
-2. **Incorrect Configuration**: Improper setup of Single Sign-On (SSO) settings, missing tokens, or misconfigured endpoints can also trigger this error.
-3. **Outdated Libraries**: Using outdated libraries or SDKs might result in incompatible authentication requests, causing the error.
+### 1. Initial Diagnostic Steps
 
-#### Step-by-Step Resolution Strategies:
-1. **Verify Authorization Header**:
-   - Ensure that the authorization header is being included in the authentication requests.
+1. **Check the Error Context**: Determine when and where the error occurs. Is it during login, when accessing a specific resource, or after authentication?
+2. **Review Application Configuration**: Verify the application registration in Azure AD. This includes checking redirect URIs, permissions, and secret/key configurations.
+3. **Check Network Trace**: Use a network tracing tool (like Fiddler or browser developer tools) to capture the network request. Look for the authorization header and examine its contents.
+4. **Review Client Logs**: If available, analyze the client application logs. They may provide more context about why the authorization header is missing.
+
+### 2. Common Issues that Cause This Error
+
+- **Missing Authorization Header**: The application may not be adding the `Authorization` header to the requests.
+- **Corrupted Authentication Token**: The access token could be corrupted or expired, and the application doesn’t provide a valid one.
+- **Incorrect Scopes and Permissions**: The application may not be requesting the necessary scopes or might lack the appropriate API permissions in Azure AD.
+- **Misconfiguration of the Application**: Settings such as client ID, tenant ID, or redirect URIs might not be correctly set in the Azure portal.
+
+### 3. Step-by-Step Resolution Strategies
+
+#### Step 1: Verify Authorization Flow
+
+- Ensure that the application's authentication flow is implemented correctly (e.g., authorization code flow, implicit flow).
+- For desktop applications, ensure you’re using the appropriate MSAL (Microsoft Authentication Library) version and configuring it for single sign-on (SSO) correctly.
+
+#### Step 2: Update Client Application Code
+
+- **Add Authorization Header**: Modify the client application to include the correct `Authorization` header in its HTTP requests:
+  ```
+  Authorization: Bearer {access_token}
+  ```
   
-2. **Check SSO Configuration**:
-   - Review the SSO configuration settings to ensure they are correctly set up with the required parameters.
+- **Handle Token Acquisition**: Implement a token acquisition mechanism that checks if the access token is present and valid:
+  ```csharp
+  if (string.IsNullOrEmpty(accessToken)) {
+      // Acquire a new token
+  }
+  ```
 
-3. **Update Libraries/SDKs**:
-   - If using any authentication libraries or SDKs, ensure they are up to date to prevent compatibility issues.
+#### Step 3: Validate the Token
 
-4. **Test in Different Environments**:
-   - Test the authentication process in various environments to determine if the issue is environment-specific.
+- Use tools like [jwt.io](https://jwt.io) to decode and verify the access token. Check the following:
+  - **Expiration:** Ensure the token is not expired.
+  - **Scopes:** Verify that the token contains the correct scopes for accessing the intended resource.
+  
+#### Step 4: Check API Permissions
 
-5. **Review Integration Steps**:
-   - Double-check the integration steps followed for authentication against the official documentation.
+- In Azure AD, navigate to your app registration and ensure that:
+  - The necessary API permissions are granted.
+  - Consent has been provided for the permissions if required.
 
-#### Additional Notes or Considerations:
-- Ensure that the system time is synchronized to prevent time-related authentication issues.
-- Clear any caches or cookies that might be affecting the authentication flow.
-- Test the authentication flow with different user accounts to isolate the problem further.
+#### Step 5: Review Application Registration
 
-#### Documentation for Guidance:
-- [Azure Active Directory error codes and messages](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aadsts-error-codes)
+- Go to **Azure Active Directory > App registrations > Your App**. Check the following sections:
+  - **Redirect URIs**: Check that all URIs used by the application are listed here.
+  - **Authentication**: Ensure that you have enabled the correct flows (like implicit or code flow).
+  - **Secrets Certificates**: Confirm that secret/key is valid and not expired.
 
-Following these troubleshooting steps should help in identifying and resolving the AADSTS81006 error related to the missing authorization header. If the issue persists, consider reaching out to the appropriate support channels for further assistance.
+### 4. Additional Notes or Considerations
+
+- Ensure that there are no proxy settings that may strip out headers in corporate environments.
+- Check if any recent updates or changes have been made to Azure AD or the application that could have affected the authentication process.
+
+### 5. Documentation and Resources
+
+- Microsoft’s official documentation for [Azure AD authentication](https://learn.microsoft.com/en-us/azure/active-directory/develop/authentication-scenarios) provides detailed information about authentication flows and configurations.
+- If you're using MSAL, check [documentation for MSAL libraries](https://learn.microsoft.com/en-us/azure/active-directory/develop/msal-overview).
+
+### 6. Test the Documentation Reachability
+
+- Ensure the documentation links provided above are accessible by attempting to access them through a web browser.
+
+### 7. Advice for Data Collection
+
+- Collect relevant logs from the client application, including timestamped error messages and stack traces.
+- Capture network traces to analyze the request and response headers, particularly focusing on the absence of the Authorization header.
+- Document all configuration settings from Azure AD related to the application registration.
+
+By following these steps systematically, you should be able to identify and resolve the issue causing the `AADSTS81006` error with the DesktopSsoNoAuthorizationHeader message. If the problem persists, consider reaching out to Microsoft Support for further assistance.

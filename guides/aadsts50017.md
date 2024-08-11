@@ -1,59 +1,81 @@
+
 # AADSTS50017: CertificateValidationFailed - Certification validation failed, reasons for the following reasons:Cannot find issuing certificate in trusted certificates listUnable to find expected CrlSegmentCannot find issuing certificate in trusted certificates listDelta CRL distribution point is configured without a corresponding CRL distribution pointUnable to retrieve valid CRL segments because of a timeout issueUnable to download CRLContact the tenant admin.
 
+
 ## Troubleshooting Steps
+### Troubleshooting Guide for AADSTS50017 - CertificateValidationFailed
 
-### Troubleshooting Guide for Error Code AADSTS50017: CertificateValidationFailed
+The error code AADSTS50017 indicates that there were issues validating a certificate during authentication. Below is a detailed troubleshooting guide designed to help you diagnose and resolve this error.
 
-#### **Initial Diagnostic Steps:**
+#### Initial Diagnostic Steps
 
-1. **Confirm the Error:** Make sure the error code AADSTS50017 with the
-   description "CertificateValidationFailed" appears consistently.
-2. **Check Certificate Configuration:** Verify the certificate used for
-   authentication and its configuration in the troubled service.
+1. **Identify the Application**: Determine which application or service is producing the AADSTS50017 error.
+  
+2. **Gather Error Details**: Look for any additional error messages or logs that accompany the AADSTS50017 error to gain more context.
 
-#### **Common Issues:**
+3. **Check the Certificate**:
+   - Determine which certificate is being used.
+   - Confirm it is present and correctly configured in Azure AD.
 
-1. **Missing Issuing Certificate:** The certificate required for validation is
-   not included in the trusted certificates.
-2. **CRL Issues:** Problems with Certificate Revocation Lists (CRL) like missing
-   segments or timeout issues.
-3. **Misconfigured CRL Distribution Points:** Issues with the delta CRL
-   distribution point or incorrect configuration.
-4. **Network Connectivity:** Timeout issues while downloading CRL due to network
-   problems.
+4. **Check Trust Chain**: Verify that the root and intermediate certificates are trusted and present in your environment.
 
-#### **Step-by-Step Resolution Strategies:**
+#### Common Issues Causing This Error
 
-1. **Check Trusted Certificates:**
-   - Ensure the issuing certificate is added to the trusted certificates list.
-2. **Verify CRL Configuration:**
+1. **Missing Intermediate or Root Certificates**: The issuing certificate might not be in the trusted certificate store.
+  
+2. **CRL Access Issues**: There could be problems accessing the Certificate Revocation List (CRL), such as:
+   - Timeout while trying to reach the CRL distribution point.
+   - Lack of internet connectivity blocking access to the CRL.
 
-   - Ensure CRL distribution points are correctly configured and accessible.
-   - Check that delta CRL distribution points are correctly configured.
+3. **Configuration Errors**: Misconfigured CRL settings, such as Delta CRL distribution points that do not correspond to CRL distribution points.
 
-3. **Resolve CRL Downloading Issues:**
+4. **Firewall Restrictions**: Firewalls or proxies blocking access to the CRL distribution points.
 
-   - Confirm the network connectivity and timeout settings for downloading CRL.
-   - Troubleshoot any network-related issues causing CRL download failures.
+#### Step-by-Step Resolution Strategies
 
-4. **Contact Tenant Admin:**
-   - If the issue persists, contact the admin of the tenant for further
-     assistance or to validate the certificate configurations.
+##### 1. Validate the Certificate Chain
+   - Check if the certificate used by your application is valid and has not expired.
+     - **Action**: Use tools like **OpenSSL** or **certutil** to examine the certificate and ensure the root and intermediate certificates are installed.
 
-#### **Additional Notes or Considerations:**
+##### 2. Ensure CRL Access
+   - Confirm that you can reach the CRL endpoints.
+     - **Action**: Use `curl` or `ping` commands to check the CRL distribution point URLs from the machine experiencing the error.
+     ```
+     curl <CRL_URL>
+     ```
+   - Check firewall/proxy settings to ensure they allow outbound HTTPS traffic to CRL URLs.
 
-- **Certificate Renewal:** Check if the certificate in use has expired or if a
-  newer certificate is available.
-- **Network Security:** Verify if any security measures are blocking the CRL
-  download or if a proxy server is causing issues.
+##### 3. Install Missing Certificates
+   - If you identify any missing certificates:
+     - **Action**: Download the required root and intermediate certificates from the CA or the issuer's website and install them into your trusted root and intermediate certification authorities.
 
-#### **Documentation for Guidance:**
+##### 4. Configure Delta CRL Settings
+   - If Delta CRL distribution points are configured, ensure they are correctly set up and reachable.
+     - **Action**: Review CRL configuration settings in your certificate manager/enterprise CA settings.
 
-- Microsoft Azure Active Directory documentation provides extensive resources on
-  Azure AD error codes and troubleshooting. Navigate to
-  [Azure AD Error Codes](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aadsts-error-codes)
-  for detailed information on troubleshooting common errors.
+##### 5. Network Diagnostics
+   - Check your network to ensure connectivity issues are resolved.
+   - **Action**: If using a corporate network, consult with your network administration team about potential restrictions.
 
-By following the outlined steps and considering the common issues, you should be
-able to diagnose and resolve the AADSTS50017 error related to
-CertificateValidationFailed effectively.
+#### Additional Notes or Considerations
+
+- **Certificates Expiry**: Regularly monitor the expiry dates of certificates in your environment to avoid unexpected downtime.
+- **Logging**: Enable certificate validation logging in your application to gather more detailed error information if the problem persists.
+  
+#### Documentation for Further Guidance
+
+- Azure Active Directory Authentication Errors: [Microsoft Documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/authentication-scenarios)
+- Managing Certificates in Azure AD: [Microsoft Docs - Manage certificates](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-manage-certificates)
+- CRL Distribution Point Configuration: [RFC 5280](https://tools.ietf.org/html/rfc5280)
+
+#### Test Documentation Accessibility
+
+Ensure you can reach the documentation links mentioned above. Open a browser and navigate to the URLs provided to check the accessibility of Microsoft Docs.
+
+#### Advice for Data Collection
+
+- Collect log files and error messages from the affected application.
+- Gather network access logs, especially around the time of the error occurrence.
+- Record the configuration details of involved certificates, such as paths to the certificates, CRL URLs, and any related settings.
+
+By following these troubleshooting steps, you should be able to diagnose and resolve the AADSTS50017 error effectively. If issues persist, consider reaching out to Microsoft support for further assistance.

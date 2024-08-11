@@ -3,38 +3,57 @@
 
 
 ## Troubleshooting Steps
-Below is a detailed troubleshooting guide for the error code AADSTS75011, specifically for the NoMatchedAuthnContextInOutputClaims scenario:
+Certainly! The error code **AADSTS75011** occurs when there is a mismatch between the authentication method used by the user and the authentication methods that are requested or expected by the service. This can often happen when Conditional Access policies are in place, or when specific authentication contexts are expected based on how the application is configured. 
 
-### Initial Diagnostic Steps:
-1. **Verify User Authentication Method:** Confirm how the user authenticated with the service. Check if the method aligns with the requested authentication method.
-   
-2. **Review Application Configuration:** Examine the Azure AD application configuration and settings related to authentication methods.
+Here’s a detailed troubleshooting guide to resolve this issue:
 
-### Common Issues:
-1. **Mismatched Authentication Methods:** This error typically occurs when the user authentication method doesn't match the one requested by the application.
+### 1. Initial Diagnostic Steps
+- **Check the Error Message**: Review the full error message to understand the context—specifically what authentication method was used and what was expected.
+- **Log Analysis**: Gather logs from the application attempting the authentication, as logs may indicate which authentication method was attempted and if there were any discrepancies.
 
-### Step-by-Step Resolution Strategies:
-1. **Ensure Consistency in Authentication Methods:**
-   - Cross-validate the authentication method used by the user with the one configured in the Azure AD application.
-   - Update the application configuration to align with the authentication method the user is using.
+### 2. Common Issues that Cause This Error
+- **Conditional Access Policies**: Policies may be in place that require specific authentication methods (e.g., Multi-Factor Authentication) that were not met during the sign-in.
+- **User Account Configuration**: The user’s account may be configured to require certain authentication methods that are not being utilized.
+- **Application Configuration**: The application may be configured to require particular claims or authentication contexts that are not being satisfied.
+- **Token Lifetime**: Sometimes, the tokens issued may be stale or not cover the necessary scopes or claims.
 
-2. **Check Claims Issuance Rules:**
-   - Review the claims issuance rules for the Azure AD application to ensure that the correct authentication method claims are being provided.
+### 3. Step-by-Step Resolution Strategies
 
-3. **Verify Application Manifest:**
-   - Check the application manifest in Azure AD to confirm that the correct authentication methods are specified.
+#### Step 1: Check Conditional Access Policies
+1. **Navigate to Azure AD**: Go to the Azure portal and navigate to Azure Active Directory.
+2. **Access Conditional Access**: Under Security, access Conditional Access policies.
+3. **Review Policies**: Check for any policies that might impact user authentication methods and ensure that the user's account complies with the requirements.
 
-4. **User Re-Authentication:**
-   - Request the user to re-authenticate using the appropriate authentication method.
+#### Step 2: Review User Account Details
+1. **Check Authentication Methods**: In Azure AD, go to Users, find the affected user, and review their authentication methods configured under "Authentication methods."
+2. **Ensure Compliance**: Make sure that the user’s account is set up to meet the expected authentication methods of the application.
 
-5. **Investigate Conditional Access Policies:**
-   - Review any Conditional Access Policies that may be affecting the authentication flow.
+#### Step 3: Validate Application Configuration
+1. **Inspect App Registration**: Go to Azure Active Directory > App registrations and select the problematic application.
+2. **Review Authentication Settings**: Check the authentication settings and supported authentication scenarios (e.g., single sign-on options).
+3. **Check Required Claims**: Confirm that the application’s manifest specifies the required claims and that there’s a match with what the user’s authentication context provides.
 
-### Additional Notes or Considerations:
-- It's important to communicate with the user about the authentication method they used and any potential issues they faced during the authentication process.
-- Periodic review and updates of application configurations in Azure AD can help prevent authentication-related errors.
+#### Step 4: Test Authentication Methods
+1. **Using an incognito window**: Attempt the sign-in from a private browser session to eliminate cached credentials.
+2. **Audit sign-in logs**: Use Azure AD sign-in logs to see if the user is receiving the correct authentication prompts and if errors are logged.
 
-### Documentation for Guidance:
-- Microsoft Azure AD documentation offers detailed information on troubleshooting various error codes, including AADSTS75011. Refer to this [Troubleshooting guide for error AADSTS75011](https://docs.microsoft.com/en-us/azure/active-directory/develop/troubleshoot-errors-no-matched-authn-context#in-output-claims) for more specific guidance on resolving this error.
+#### Step 5: Work with Support
+- **Escalate if needed**: If you cannot locate the cause of the error, consider raising a ticket with Azure support with detailed logs and descriptions of the troubleshooting steps that have been followed.
 
-By following these steps and guidelines, you should be able to diagnose and resolve the AADSTS75011 error with the NoMatchedAuthnContextInOutputClaims message effectively. If further assistance is needed, consider reaching out to Azure AD support for personalized help.
+### 4. Additional Notes or Considerations
+- Ensure that users are trained on any new authentication methods implemented as part of Conditional Access policy changes.
+- Monitor reports for failed sign-ins regularly to identify patterns that could indicate wider configuration issues.
+
+### 5. Documentation References
+- For detailed guidance regarding Conditional Access and multi-factor authentication: [Microsoft Docs - Conditional Access](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/)
+- For Azure AD sign-in logs: [Microsoft Docs - Sign-in logs](https://learn.microsoft.com/en-us/azure/active-directory/reports-monitoring/concept-sign-ins)
+
+### 6. Testing Documentation Reachability
+- Check the links provided for accessing Microsoft documentation. Here's a quick test directive: Open the links provided above in your browser to confirm they lead to the desired documentation.
+
+### 7. Advice for Data Collection
+- Collect detailed logs from both the user side and the application side during authentication attempts.
+- Gather information on the specific authentication methods available to the user and any changes in policy or application configuration.
+- Document error messages, timestamps of failures, and context in which the error occurs to assist in troubleshooting.
+
+By following these steps, you should be able to identify and resolve the AADSTS75011 error effectively. Always ensure that users are educated about the authentication processes in place to mitigate similar issues in the future.

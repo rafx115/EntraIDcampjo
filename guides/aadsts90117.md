@@ -3,44 +3,100 @@
 
 
 ## Troubleshooting Steps
-### Troubleshooting Guide: Error Code AADSTS90117 (InvalidRequestInput)
+### Troubleshooting Guide for Error Code AADSTS90117 - InvalidRequestInput
 
-#### Initial Diagnostic Steps:
+Error code AADSTS90117 typically indicates that the request sent to Azure Active Directory (AAD) was malformed or that some expected fields were missing or invalid. Here's a structured approach to troubleshoot this error.
 
-1. **Identify the User Context**: Understand if the error occurs during user sign-in, token issuance, or any other specific operation.
-  
-2. **Review Logs**: Check your application's logs or identity provider logs (Azure AD) for more detailed error messages.
+---
 
-3. **Confirm Request Format**: Ensure that the request being sent to Azure AD or the identity provider is properly formatted.
+#### 1. Initial Diagnostic Steps
 
-#### Common Issues Causing the Error:
+- **Identify Context**: Determine what specific action triggered the error. Was it during authentication, token refresh, or another operation? 
+- **Check Request Logs**: If possible, capture the logs of the request that led to the error. This includes headers, body content, and any related diagnostics.
+- **Review User Information**: Who was affected by the error? Ensure that the user account is active and properly configured in AAD.
 
-1. **Incorrect Parameters**: Invalid or missing required parameters in the request.
+---
 
-2. **Unsupported Protocols**: Use of unsupported protocols in the request.
+#### 2. Common Issues that Cause This Error
 
-3. **Incorrect Scopes**: Requesting scopes that are not supported by the application or Azure AD.
+- **Malformed Request**: The request URL may be incorrect, such as missing parameters or an invalid response type.
+- **Incorrect Application ID**: Ensure that the Application ID (Client ID) used in the request is correct and registered in the Azure portal.
+- **Improperly Configured Redirect URIs**: A mismatch between the redirect URI configured in Azure AD and the one used in the request can cause this error.
+- **Missing Required Parameters**: Some parameters must be included in specific requests, such as `client_id`, `redirect_uri`, `response_type`, etc.
+- **Invalid Scopes**: The scopes provided in the request may not match with the application's permissions or may be formatted incorrectly.
+- **Entity Not Found**: For users or applications, ensure that they exist in Azure AD.
 
-#### Step-by-Step Resolution Strategies:
+---
 
-1. **Check Request Parameters**: Verify that all required parameters are correctly included in the request.
+#### 3. Step-by-Step Resolution Strategies
 
-2. **Validate Scopes**: Ensure that the scopes being requested are allowed for the application in Azure AD.
+1. **Review Request Syntax**:
+   - Verify the URI, headers, and body of the request for incorrect or missing parameters.
 
-3. **Update Protocols**: Confirm that you are using the correct protocol (e.g., OpenID Connect) in the request.
+2. **Validate App Registration**:
+   - Go to the Azure Portal:
+     - Navigate to `Azure Active Directory` > `App registrations`.
+     - Find the corresponding application.
+     - Check the `Application (client) ID`, and ensure it's the one being used in the request.
 
-#### Additional Notes or Considerations:
+3. **Check Redirect URIs**:
+   - Still in the App registration:
+     - Go to `Authentication`.
+     - Ensure the `Redirect URIs` list includes the one used in your application.
 
-- **Access Token Claims**: Review the access token claims to ensure they align with the requested scopes and permissions.
-  
-- **API Permissions**: Check and update the API permissions for your application in Azure AD if needed.
+4. **Test Required Parameters**:
+   - Confirm all required parameters are present. Typical parameters include:
+     - `client_id`
+     - `redirect_uri`
+     - `grant_type` (if applicable)
+     - `scope`
 
-- **Token Lifetimes**: Ensure that token lifetimes are configured appropriately in Azure AD.
+5. **Validate Scopes**:
+   - Ensure the requested scopes in your authentication request are proper. They should match those configured for your app in Azure AD.
 
-#### Documentation for Guidance:
+6. **Inspect for Typos**:
+   - Address any potential typos in the application, user information, or even in the request URIs.
 
-- [Azure Active Directory Error Codes Reference](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aadsts-error-codes)
-  
-- [Microsoft Identity Platform Documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/)
+7. **Consult Azure Sign-In Logs**:
+   - In the Azure portal, navigate to `Azure Active Directory` > `Sign-ins`.
+   - Look for failures to gather more specific information about the request that caused the failure.
 
-By following these steps and considering the common issues, you should be able to troubleshoot the AADSTS90117 error (InvalidRequestInput) effectively. If the issue persists, consider reaching out to Microsoft support for further assistance.
+8. **Re-test**: 
+   - Make adjustments based on findings and re-test the request to see if the issue persists.
+
+---
+
+#### 4. Additional Notes or Considerations
+
+- **HTTP Method**: Ensure you’re using the correct HTTP method (GET, POST, etc.) as required by the authentication flow.
+- **Service Health**: Check Azure status for any ongoing issues that may be impacting your requests.
+- **Network Conditions**: Sometimes, network-related issues can also cause malformed requests if requests are being mishandled.
+
+---
+
+#### 5. Documentation Where Steps Can Be Found
+
+- Microsoft Documentation for [Azure Active Directory Authentication Scenarios](https://docs.microsoft.com/en-us/azure/active-directory/develop/authentication-scenarios)
+- [Azure AD App Registration Overview](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
+- [Troubleshoot Azure AD sign-in issues](https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/troubleshoot-sign-in-issues)
+
+---
+
+#### 6. Test Documentation Reachability
+
+- Verify the links to the documentation are reachable directly in your browser.
+    - [Authentication Scenarios](https://docs.microsoft.com/en-us/azure/active-directory/develop/authentication-scenarios)
+    - [App Registration Overview](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
+    - [Troubleshooting Sign-in Issues](https://docs.microsoft.com/en-us/azure/active-directory/reports-monitoring/troubleshoot-sign-in-issues)
+
+---
+
+#### 7. Advice for Data Collection
+
+- **Prepare Logs**: Capture network logs from the client-side, especially for the authentication request and response.
+- **Include Environment Details**: Note the platform, language, and library versions you are using.
+- **Document Error Messages**: Take detailed notes on any error messages or codes returned by the Azure AD service.
+
+---
+
+By following this guide, you should be able to effectively diagnose and resolve the AADSTS90117 error.

@@ -3,38 +3,60 @@
 
 
 ## Troubleshooting Steps
-Error Code: AADSTS90121
+Error Code: **AADSTS90121**  
+Description: **InvalidEmptyRequest - Invalid empty request.**
 
-Description: InvalidEmptyRequest - Invalid empty request.
+## Troubleshooting Guide for AADSTS90121: InvalidEmptyRequest
 
-Troubleshooting Guide:
+### Initial Diagnostic Steps
+1. **Check the Error Context**: Identify where the error is occurring. Is it during a specific authentication flow, API call, or user action?
+2. **Evaluate the Request**: Examine the request being made. Is it malformed or missing essential parameters?
+3. **Check Logging**: Review application and authentication logs for additional context around the error.
+4. **Verify User Input**: Ensure that any inputs from users, like passwords or usernames, are correctly formatted and provided.
 
-Initial Diagnostic Steps:
-1. Verify the error code AADSTS90121 and the description "InvalidEmptyRequest - Invalid empty request."
-2. Check if the issue is specific to a particular application or service.
-3. Confirm if the user is attempting to access or authenticate to a service using Azure Active Directory.
-4. Ensure that the user credentials and permissions are valid and up-to-date.
+### Common Issues Causing AADSTS90121
+1. **Empty Request**: The request to the Azure Active Directory (AAD) is empty or missing required parameters.
+2. **Invalid Redirect URI**: If the app configuration has an incorrect or empty redirect URI, this might lead to an invalid request.
+3. **Missing or Incorrect Credentials**: If required credentials such as client ID or client secret are not provided or incorrectly passed.
+4. **Insufficient Permissions**: The app may not have the necessary permissions granted in the Azure portal.
+5. **Misconfigured App Registration**: The app registration could be incorrectly configured, leading to authentication issues.
 
-Common Issues that Cause this Error:
-1. Missing or corrupted request data during authentication.
-2. Incorrect client configuration settings.
-3. Network connectivity issues disrupting communication with Azure Active Directory.
-4. Server-side configuration errors.
-5. User profile data inconsistencies.
+### Step-by-Step Resolution Strategies
+1. **Inspect and Validate Requests**
+   - Check the request format in the response to ensure all required parameters are being sent.
+   - Look for missing fields such as `client_id`, `scope`, `response_type`, and `redirect_uri`.
 
-Step-by-Step Resolution Strategies:
-1. Re-attempt the authentication process to rule out temporary glitches or issues in the initial request.
-2. Ensure that the request being sent is not empty or missing essential data.
-3. Double-check the client application configuration settings and make sure they are correctly set up to communicate with Azure Active Directory.
-4. Verify the network connectivity and ensure there are no firewalls or proxies blocking the communication.
-5. Review the server-side configuration settings and make necessary adjustments to align with the requirements of Azure Active Directory.
-6. Update or refresh user profile data to resolve any inconsistencies that might be causing the issue.
+2. **Verify App Registration Settings**
+   - Go to the Azure portal and navigate to **Azure Active Directory > App registrations**.
+   - Verify that the app has the correct **Redirect URIs** configured as per your application needs.
+   - Ensure that all necessary API permissions are granted.
 
-Additional Notes or Considerations:
-- If the error persists, consider checking the Azure Active Directory logs for more detailed information on the error and possible causes.
-- Consult with your organization's IT support team or Azure Active Directory administrators for further assistance in diagnosing and resolving the issue.
+3. **Check Authentication Flow**
+   - Validate the authentication flow being used (Authorization Code Flow, Implicit Flow, etc.) aligns with the set up in Azure.
+   - Make sure your application properly initializes and constructs the request according to the flow.
 
-Documentation:
-For more detailed guidance and documentation on resolving Azure Active Directory authentication issues, refer to the Microsoft Azure documentation website: https://docs.microsoft.com/en-us/azure/active-directory/ 
+4. **Review Client Credentials**
+   - Confirm that the `client_id` and `client_secret` are correctly configured in your application configuration settings.
+   - Regenerate the client secret if there’s a possibility the current one is compromised.
 
-Remember to always follow best practices and security guidelines when troubleshooting authentication errors to ensure the security and integrity of your data and systems.
+5. **Look Over Security Restrictions**
+   - Verify if there are any Conditional Access policies that may block or require additional checks during sign-in.
+
+### Additional Notes or Considerations
+- **Browser Behavior**: Sometimes cached data or cookies in the browser may interfere with the authentication process. Clear the browser cache or try a different browser.
+- **API Security Restrictions**: Ensure that your API is properly secured and that authentication scopes required by the app are accurate.
+
+### Documentation
+- Azure Active Directory Authentication Overview: [Authentication overview](https://docs.microsoft.com/en-us/azure/active-directory/develop/authentication-scenarios)
+- Azure App Registration: [App registrations in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
+- Common Errors in Azure Active Directory: [Common AAD error codes](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aad-error-codes)
+
+**Reachability Test for Documentation**:
+1. Access the links provided above and confirm they load correctly in your browser. All should be accessible without error.
+
+### Advice for Data Collection
+1. **Collect Request and Response Data**: When reproducing the error, log both the request sent to AAD and the complete error response.
+2. **Gather Application Logs**: Review logs from your application that may have further insights into what was happening at the error time.
+3. **User Feedback**: If applicable, collect feedback from users experiencing this error for additional context.
+
+By following this troubleshooting guide, most issues related to the AADSTS90121 error can be diagnosed and resolved efficiently.

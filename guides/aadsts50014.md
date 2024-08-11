@@ -3,41 +3,75 @@
 
 
 ## Troubleshooting Steps
-**Troubleshooting Guide for AADSTS50014 Error Code: GuestUserInPendingState**
+### Troubleshooting Guide for Error Code AADSTS50014: GuestUserInPendingState
 
-**Initial Diagnostic Steps:**
+The AADSTS50014 error indicates that the user, trying to access an application, is currently in a "pending" state indicating that their account does not exist in the directory of the tenant being accessed. Below is a structured troubleshooting guide to help resolve this issue.
 
-1. **Confirm Tenant and User:** Verify the tenant the user is trying to sign into and ensure that the user account exists in that directory.
+#### Initial Diagnostic Steps
+
+1. **Verify User Identity**: Confirm the identity of the user trying to access the application and make sure they are using the correct email address and credentials.
    
-2. **Check Application Configuration:** Review the configuration of the application that the user is trying to sign into and make sure it is set up correctly to allow guest users.
+2. **Check Tenant Configuration**: Identify which tenant the user is trying to log into. This can be done by examining the application settings or by discussing with the application owner.
 
-3. **Authenticate User:** Ensure that the user attempting to sign in is using the correct credentials and that they have been added as a guest user if necessary.
+3. **Review Error Details**: Read the full error message provided by Azure AD to gather additional context regarding the specific user and the issue.
 
-**Common Issues that Cause this Error:**
+#### Common Issues That Cause This Error
 
-1. **Incorrect Tenant Selection:** The application may be configured to point to the wrong tenant, causing the user to be redirected to the incorrect directory.
+1. **User Not Invited**: The user might not have been invited to the tenant, which is the most common cause of this error. 
+   
+2. **Pending Invitation**: The user may have received an invitation to join the tenant but has not yet accepted it.
 
-2. **User Not Added as Guest:** If the user is from a different organization, they need to be added as a guest user in the directory they are trying to sign into.
+3. **Wrong Tenant**: The user might be attempting to access a different tenant where they do not have permissions or credentials.
 
-**Step-by-Step Resolution Strategies:**
+4. **Inactive Guest Status**: The user could be in a state where their guest access has been suspended or deactivated.
 
-1. **Verify Tenant:** Confirm that the user is attempting to sign into the correct tenant. If not, guide them to choose the right one before attempting to sign in again.
+5. **Application Misconfiguration**: The application might be misconfigured to point to an incorrect Azure AD tenant.
 
-2. **Add as Guest:** If the user is from another organization, add them as a guest user in your directory. This can usually be done through the Azure Active Directory portal.
+#### Step-by-Step Resolution Strategies
 
-3. **Check Application Permissions:** Make sure that the application the user is trying to access is configured to allow guest users and has the necessary permissions set.
+1. **Confirm User Invitation Status**:
+   - Log into Azure AD portal: [Azure Portal](https://portal.azure.com/)
+   - Navigate to **Azure Active Directory** > **Users** > **Pending Invitations**.
+   - Check if the user's email appears here. If it does, remind the user to check their email and accept the invitation.
 
-4. **Request User to Reauthenticate:** Ask the user to sign out and then sign back in, ensuring that they provide the correct credentials and select the appropriate tenant.
+2. **Invite the User as a Guest**:
+   - If the user is not in the Pending Invitations, invite them as a guest:
+     - Go to **Azure Active Directory** > **Users** > **New guest user**.
+     - Enter the user's email and send the invitation.
+   - Make sure to notify the user to accept the invitation after it has been sent.
 
-5. **Contact Support:** If the issue persists, reach out to the administrator or support team for the application or Azure Active Directory for further assistance.
+3. **Check User Account Status**:
+   - After inviting the user, return to the Users list in Azure AD and ensure that the user account shows as active.
 
-**Additional Notes or Considerations:**
+4. **Tenant Verification**:
+   - Ensure that the user is trying to access the correct tenant. Verify the tenant ID or domain being used does match the one where the user is invited.
 
-- If the user is still facing issues, it may be beneficial to review the application's documentation or contact the application developer for specific troubleshooting steps.
-- Regularly monitor your Azure Active Directory for any unauthorized access attempts or unusual activity to prevent security breaches.
+5. **Consult the Application Owner**: 
+   - If the issue remains unresolved, contact the application owner to ensure that the application is correctly configured for the intended tenant.
 
-**Documentation for Guidance:**
+#### Additional Notes or Considerations
 
-- Microsoft Azure Active Directory Documentation: [B2B User Collaboration](https://docs.microsoft.com/en-us/azure/active-directory/b2b/fundamentals)
+- **Invite Resend**: If the invitation has expired (invitations expire after 7 days), you may need to resend it.
+- **Multi-Tenant Applications**: Sometimes applications require specific configurations for multi-tenancy; work closely with the app developers if this is the case.
 
-Following these steps should help diagnose and resolve the AADSTS50014 error code related to GuestUserInPendingState.
+#### Documentation for Further Guidance
+
+- Learn more about inviting and managing guest users in Azure AD: 
+  - [Understanding Azure AD B2B](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/what-is-b2b)
+  - [Add Guest Users to Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/external-identities/add-users-b2b).
+  
+- For troubleshooting Azure AD sign-in errors:
+  - [Sign-in Troubleshoot](https://docs.microsoft.com/en-us/azure/active-directory/enterprise-users/groups/groups-manage—users).
+
+#### Test Accessibility of Documentation
+
+To ensure the documentation links are accessible:
+- Click on each link and verify they load properly in your web browser.
+  
+#### Advice for Data Collection
+
+- **Collect User Information**: Gather the user’s relevant information such as email address and the tenant they are trying to access.
+- **Error Logs**: Collect any detailed error logs or screenshots related to the user’s sign-in attempts.
+- **Time of Occurrence**: Note the time of the error occurrence, as this may help in diagnosing the issue further with support if necessary.
+
+Using this guide, you should be well-equipped to troubleshoot and resolve the AADSTS50014 error effectively.

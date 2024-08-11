@@ -3,38 +3,64 @@
 
 
 ## Troubleshooting Steps
-### Troubleshooting Guide for Error Code AADSTS90099:
+The error code AADSTS90099 indicates that the application in question has not been authorized to access the tenant specified. This commonly occurs in a multi-tenant application scenario, where the application needs explicit permission from the tenant administrator before it can access tenant resources.
 
-#### Initial Diagnostic Steps:
-1. Verify the exact error message and error code (AADSTS90099) you are receiving.
-2. Identify the application '{appId}' and tenant '{tenant}' mentioned in the error message.
-3. Check if the application '{appId}' has been granted proper permissions in the specified tenant '{tenant}'.
-4. Confirm if any Partner Center API calls have been made to authorize the application.
+### Troubleshooting Guide for AADSTS90099
 
-#### Common Issues Causing Error AADSTS90099:
-1. **Missing Consent**: The application '{appId}' has not been pre-consented or authorized in the tenant '{tenant}'.
-2. **Lack of Permissions**: The application may not have the necessary permissions to access the external tenant.
-3. **Misconfiguration**: Improper setup or configuration settings within the application.
-4. **Partner Center API Not Executed**: Failure to execute the appropriate Partner Center API to authorize the application.
+#### Initial Diagnostic Steps
+1. **Identify the Application**: Note the `{appId}` and `{appName}` from the error message. This identifies the application that is experiencing the authorization issue.
+2. **Check Tenant ID**: Verify the `{tenant}` identifier to ensure you are working within the correct tenant context.
+3. **Review Roles and Permissions**: Ensure that the user attempting to authenticate has the proper permissions and roles assigned relevant to the application.
 
-#### Step-by-Step Resolution Strategies:
-1. **Pre-Consent the Application**:
-   - Utilize Azure AD Admin Consent workflow to grant necessary permissions for the application in the tenant.
-  
-2. **Execute Partner Center API**:
-   - Follow the documentation provided by Microsoft for executing the required Partner Center API to authorize the application in the external tenant.
+#### Common Issues that Cause this Error
+- The application has not been registered in the tenant.
+- The application has not been granted permission by the tenant administrator.
+- The application is designed to work as a multi-tenant, but no authorization has taken place in the external tenant.
+- The tenant administrators are unaware of the necessity for pre-consent for partner applications.
 
-3. **Verify Permissions**:
-   - Ensure the application has all the required permissions to access the specified tenant.
+#### Step-by-Step Resolution Strategies
 
-4. **Check Application Configuration**:
-   - Review the configuration of the application to ensure it aligns with the requirements for accessing the external tenant.
+1. **Check Application Registration**:
+   - Log in to the Azure portal.
+   - Navigate to Azure Active Directory > App registrations.
+   - Search for your application using the `{appId}` or `{appName}` to ensure it is registered in the tenant.
 
-#### Additional Notes or Considerations:
-- It's crucial to understand the permissions required by the application and ensure they are properly configured.
-- Collaborate with the Azure AD Admin of the tenant '{tenant}' to grant the necessary consents or permissions.
+2. **Grant Admin Consent**:
+   - In the Azure portal, go to Azure Active Directory > Enterprise applications.
+   - Find your application and click on it.
+   - Navigate to Permissions, and verify if the required API permissions are correctly listed.
+   - If not, click on “Grant admin consent for {tenant}”.
 
-#### Documentation for Reference:
-- [Microsoft Azure Active Directory documentation](https://docs.microsoft.com/en-us/azure/active-directory/)
+3. **Use Partner Center API for Authorization**:
+   - If the application needs specific permissions that require explicit consent, you may need to call the relevant APIs to automatically authorize the application. Use the Partner Center SDK or REST API to execute the necessary authorization.
+   - Refer to the [Microsoft Partner Center API documentation](https://docs.microsoft.com/en-us/partner-center/develop/overview) for details on how to authorize applications.
 
-This troubleshooting guide should help you navigate and resolve the error code AADSTS90099 effectively. If you encounter any challenges, consider seeking assistance from Azure support or relevant forums for further guidance.
+4. **Pre-Consent for Partner Applications**:
+   - Talk to the tenant administrator and explain the process for granting consent to applications. They will need to be involved in providing the necessary consent.
+   - Use the following URL format to guide admins through the consent process: 
+     ```
+     https://login.microsoftonline.com/{tenant}/adminconsent?client_id={appId}
+     ```
+   - Replace `{tenant}` and `{appId}` with the appropriate values. 
+
+5. **Verify Tenant Configurations**:
+   - Ensure that conditional access policies and any security settings applied in the tenant are not preventing the application from being authorized.
+
+#### Additional Notes or Considerations
+- If the application requires sensitive permissions, it is subject to stricter approval processes, which might delay authorization.
+- Multi-tenant applications must handle user consent to permissions carefully, as the process can differ significantly between tenants.
+
+#### Documentation for Guidance
+- [Microsoft Azure Active Directory - Register an application](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
+- [Admin consent for Azure AD apps](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-admin-consent)
+- [Partner Center API Overview](https://docs.microsoft.com/en-us/partner-center/develop/overview)
+
+#### Test Document Reachability
+You can test the documentation links provided above by visiting them in your web browser to ensure that they are accessible and up-to-date.
+
+#### Advice for Data Collection
+- **Collect Logs**: Gather logs from your application that recorded the authentication attempt. Logs should include timestamps, the error message, and any relevant identifiers (like user ID, tenant ID, app ID).
+- **Audit Azure AD Sign-In Logs**: Go to Azure Active Directory > Sign-ins to view the authentication logs to gather insights on the requests and errors encountered.
+- **Gather Feedback from Administrators**: Document any feedback or issues reported by tenant admins related to application consent or permissions.
+
+By following this troubleshooting guide, you should be able to resolve the AADSTS90099 error efficiently and ensure that your application has been authorized properly in the tenant.

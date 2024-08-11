@@ -3,41 +3,80 @@
 
 
 ## Troubleshooting Steps
-### Troubleshooting Guide for Error Code AADSTS80010: OnPremisePasswordValidationEncryptionException
+### Troubleshooting Guide for AADSTS80010: OnPremisePasswordValidationEncryptionException
 
-#### Initial Diagnostic Steps:
-1. **Confirm the Error Message**: Ensure that the error message received is indeed "OnPremisePasswordValidationEncryptionException - The Authentication Agent is unable to decrypt password."
-2. **Check System Logs**: Look into system logs, authentication logs, and any relevant error logs for more details on the issue.
-3. **Review Recent Changes**: Identify any recent changes made to the authentication system or related components that might have triggered this error.
+This error is associated with Azure Active Directory (Azure AD) when the Authentication Agent fails to decrypt a password during sign-in attempts.
 
-#### Common Issues causing this error:
-1. **Incorrect Configuration**: Misconfigurations in the authentication agent settings can lead to password decryption issues.
-2. **Credential Mismatch**: Inconsistent encryption keys or credentials between the authentication agent and the identity provider can cause decryption failures.
-3. **Key Management Problems**: Issues related to key management, such as expired encryption keys or improper key storage, can lead to decryption problems.
+#### Initial Diagnostic Steps
 
-#### Step-by-Step Resolution Strategies:
-1. **Verify Configuration Settings**:
-   - Check the configuration settings for the authentication agent, ensuring that all parameters are correctly set.
-   - Confirm that the encryption keys used for password decryption match between the agent and the identity provider.
+1. **Check the Error Details**: Verify the complete error message for any additional context, including timestamps and user identifiers.
 
-2. **Test Password Decryption**:
-   - Perform a test decryption with a known password to check if the agent can successfully decrypt it.
-   - If decryption fails, review the encryption and decryption processes to identify the root cause.
+2. **Identify Scope**: Determine if the issue is affecting all users or specific users, as well as whether it's limited to specific applications.
 
-3. **Key Management Check**:
-   - Verify the status of encryption keys used for password validation and decryption.
-   - Rotate encryption keys if necessary and update the configurations accordingly.
+3. **Review Logs**: Check the logs of the Azure AD Connect or the AD FS to pinpoint when the error began occurring and any related warnings or errors.
 
-4. **Update Authentication Agent**:
-   - Ensure that the authentication agent software is up to date with the latest patches and updates.
-   - Check for any known issues related to password decryption in the current version and apply relevant fixes.
+4. **Service Status**: Ensure that the Azure services, including Azure AD and Azure AD Connect, are operational by visiting the **[Azure Status Page](https://status.azure.com/en-us/status)**.
 
-#### Additional Notes or Considerations:
-- **Backup Configurations**: Before making any changes, ensure to have backups of the current configuration settings to revert in case of issues.
-- **Collaboration**: Coordinate with the system administrators, security team, and relevant stakeholders to address the error comprehensively and efficiently.
+5. **Network Issues**: Confirm that there are no network connectivity issues between your on-premises environment and Azure AD.
 
-#### Documentation for Guidance:
-- Refer to the official documentation of the authentication agent or the identity provider for specific troubleshooting steps related to decryption errors like AADSTS80010.
-- Consult the knowledge base, forums, or support resources provided by the authentication solution vendor for detailed guidance on resolving decryption issues.
+#### Common Issues That Cause This Error
 
-By following these outlined steps and considerations, you can effectively troubleshoot and resolve the Error Code AADSTS80010 related to OnPremisePasswordValidationEncryptionException in the authentication system.
+1. **Misconfiguration of the On-Premises Authentication Agent**: If the agent is not correctly configured, it may fail to decrypt the password.
+
+2. **Encryption Key Issues**: Problems with the encryption key used by the Authentication Agent can lead to decryption failures.
+
+3. **Expired or Revoked Certificates**: If the agent’s certificates (used for encryption and secure communication) are expired or revoked.
+
+4. **Change in Account State**: User accounts may be in an invalid state, such as being disabled or deleted.
+
+5. **Software Updates**: Recent updates to the Authentication Agent or Azure AD Connect might have altered configurations.
+
+#### Step-by-Step Resolution Strategies
+
+1. **Review the Authentication Agent Configuration**:
+   - Verify the configuration settings of the Authentication Agent.
+   - Ensure that the on-premises environment matches the required configurations as per Microsoft guidelines.
+
+2. **Check Encryption Keys**:
+   - Confirm that the encryption keys used by the agent are correct and have not been altered or deleted.
+   - Compare the keys in the on-premises environment with the ones stored in Azure AD.
+
+3. **Renew or Replace Certificates**:
+   - If any certificates are found to be expired, renew or replace them.
+   - Ensure the updated certificates are correctly configured on the Authentication Agent.
+
+4. **Reinstall the Authentication Agent**:
+   - If problems persist after checking configurations and keys, consider uninstalling and reinstalling the Authentication Agent. 
+   - Follow the steps in the official documentation for reinstallation.
+
+5. **Reset User Password**:
+   - If the specific user accounts are causing issues, resetting the user password might help resolve some inconsistencies.
+
+6. **Update to Latest Version**:
+   - Ensure the Authentication Agent and Azure AD Connect are updated to the latest version.
+
+#### Additional Notes or Considerations
+
+- Ensure that your server has sufficient permissions to perform decryption tasks required by the Authentication Agent.
+- Pay attention to any firewall rules or security groups that might inadvertently block traffic between Azure AD and the on-premises Authentication Agent.
+
+#### Documentation for Guidance
+
+- **Azure Active Directory Documentation**: There are various docs available on the Microsoft website.
+    - [Authentication Agent Setup](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/deploy-authentication-agent)
+    - [Install and Configure Azure AD Connect](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-install-new)
+
+- **Troubleshooting Authentication Agents**: See the relevant troubleshooting guides provided by Microsoft.
+
+#### Test Documentation Reachability
+
+Verify that the links provided in the documentation section are working by clicking on them directly. All should lead to the live, official Microsoft documentation pages.
+
+#### Advice for Data Collection
+
+- **Logs**: Collect logs from the Authentication Agent and Azure AD Connect. Look specifically for event IDs or any additional error codes.
+- **Time Stamps**: Note the times when the errors occurred to correlate with other events in the logs.
+- **Configuration Files**: Gather backups of configuration files for both the Authentication Agent and Azure AD Connect.
+- **User Information**: Document affected users (usernames, last login times, etc.) to allow for thorough testing upon resolution.
+
+By following this guide, you can methodically troubleshoot and resolve the AADSTS80010 error related to On-Premise Password Validation.

@@ -3,44 +3,89 @@
 
 
 ## Troubleshooting Steps
-Troubleshooting Guide for Error Code AADSTS50003: MissingSigningKey
+# Troubleshooting Guide for AADSTS50003 Error Code
 
-1. Initial Diagnostic Steps:
-- Verify the error code AADSTS50003 to confirm that it is indeed related to a MissingSigningKey issue.
-- Check the configuration settings of the app to see if a signing key or certificate is missing.
-- Review any recent changes made to the app or its configuration that may have led to the error.
+**Error Description:** AADSTS50003 - Sign-in failed because of a missing signing key or certificate. This typically indicates that there is no signing key configured in the application.
 
-2. Common Issues that Cause this Error:
-- Incorrect or missing configuration of signing keys in the app settings.
-- Expired, revoked, or invalid signing key or certificate.
-- Incorrect permissions or roles assigned to the app causing issues with accessing signing keys.
-- Changes made to the app configuration without updating corresponding signing key settings.
+## Initial Diagnostic Steps
 
-3. Step-by-step Resolution Strategies:
-a. Check App Configuration:
-   - Sign in to the Azure portal and navigate to the app's settings.
-   - Verify that the correct signing key or certificate is configured.
-   - If no signing key is configured, follow the steps to add a new signing key.
+1. **Identify the Context:**  
+   - Determine when and how the error occurs (e.g., during user sign-in, API request).
+   - Note down any additional error messages or context that accompanies AADSTS50003.
 
-b. Generate a New Signing Key:
-   - If a signing key is missing, follow the steps to generate a new key.
-   - Ensure that the new key is securely stored and updated in the app's configuration.
+2. **Check Signing Key Configuration:**
+   - Access the Azure portal and navigate to the App Registration for your application.
+   - Verify if a signing key/certificate has been configured.
 
-c. Check Key Expiry:
-   - If the signing key has expired, generate a new key and update the app's configuration with the new key.
-   - Remove any expired or revoked keys from the configuration settings.
+3. **Review Application Logs:**
+   - Look for log entries in the application that might provide additional context about the error.
+   - Check Azure AD sign-in logs for entries around the time the error occurred.
 
-d. Permissions and Roles:
-   - Ensure that the app has the necessary permissions to access the signing key.
-   - Review the app's roles and permissions settings in Azure AD to ensure proper access to keys.
+4. **Check Environment:**
+   - Ensure you're in the correct tenant environment and that the app is allowed to authenticate (check any tenant-specific configurations or policies).
 
-4. Additional Notes or Considerations:
-- Regularly monitor the expiration dates of signing keys and certificates to prevent issues.
-- Keep backup copies of signing keys in secure locations to avoid loss of access.
+## Common Issues that Cause this Error
 
-5. Documentation:
-- For detailed guidance on configuring signing keys in Azure AD and troubleshooting AADSTS50003 errors, refer to the Microsoft documentation:
-   [Troubleshoot AADSTS50003: MissingSigningKey](https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url-protection#error-aadsts5000304)
-   [Azure AD documentation](https://docs.microsoft.com/en-us/azure/active-directory/)
+- The signing key or certificate required for OAuth validation is not present or incorrectly configured in Azure AD.
+- The application registration is incorrectly set up, particularly in the "Authentication" tab.
+- Expired signing certificates that have not been renewed.
+- Misconfigured permissions or consent that prevents proper authentication.
+- The application is misconfigured to use an unsupported authentication method.
 
-By following these steps and ensuring the correct configuration of signing keys, you can resolve the AADSTS50003 error related to a MissingSigningKey issue in your Azure AD app.
+## Step-by-Step Resolution Strategies
+
+### 1. Verify the Application Registration Configuration:
+   - **Login to Azure Portal:** 
+     1. Navigate to Azure Active Directory.
+     2. Click on "App registrations" and select your application.
+   - **Check Certificates & Secrets:**
+     1. Go to the "Certificates & Secrets" section.
+     2. Ensure there is a valid certificate or client secret configured.
+     3. If absent, either create a new client secret under "Client secrets" or upload a new certificate under "Certificates".
+
+### 2. Configure The Necessary Keys:
+   - **Create a New Client Secret:**
+     1. Under "Certificates & Secrets", click on "New client secret".
+     2. Provide a description and set the expiration. 
+     3. Copy the generated secret immediately, as it will not be retrievable later.
+   - **Upload a Certification:**
+     1. If you prefer using certificates, ensure that you upload a valid certificate (typically a .cer file).
+     2. Follow necessary guidelines to generate a valid certificate if needed.
+
+### 3. Validate Permissions:
+   - **API Permissions:**
+     1. Ensure that the required permissions for your application to access Azure features are granted.
+     2. Go to "API permissions" and verify the permissions; make sure admin consent has been granted if needed.
+
+### 4. Check for Expired Certificates:
+   - Regularly monitor and renew any certificates that are approaching expiration. Azure usually warns you if a key/certificate is nearing expiration.
+
+### 5. Review Authentication Settings:
+   - **OAuth 2.0 Settings:**
+     1. In the "Authentication" tab, make sure that redirect URIs are correctly configured.
+     2. Ensure the "ID tokens" checkbox is enabled for the appropriate platforms and applications.
+
+## Additional Notes or Considerations
+
+- **Development vs. Production:** If this app is in development, ensure the app settings match the production environment, specifically regarding keys and permissions.
+- **Error Propagation:** This error can propagate if upstream dependencies or services are also misconfigured.
+- **Avoid Hardcoding Secrets:** Always use secure storage for secrets and credentials.
+
+## Documentation for Reference
+
+- [Microsoft Azure App Registration Overview](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
+- [Configure an Application to Sign in Users](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-desktop-setup)
+- [How to Manage Certificates and Secrets](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-common-authentication-scenarios)
+
+### Test Documentation Accessibility
+
+- Make sure the links above lead to your desired information by accessing them directly through a web browser to verify their availability.
+
+## Advice for Data Collection
+
+- **Error Logs:** Collect logs from the Azure AD and your application during the error occurrence timeframe.
+- **User Context:** Capture the user context under which the error was raised (username, roles, etc.).
+- **Request Details:** Document any relevant HTTP requests/responses that could show patterns related to the error.
+- **Client ID and Tenant ID:** Note the Client ID and Tenant ID of the application in question to help in searching for specific issues related to them.
+
+This comprehensive guide should assist in diagnosing and resolving the AADSTS50003 error. If issues persist after these steps, consider reaching out to Microsoft Support for further assistance.

@@ -3,37 +3,67 @@
 
 
 ## Troubleshooting Steps
-### Troubleshooting Guide: Error Code AADSTS90090 - GraphRetryableError
+**Troubleshooting Guide for AADSTS90090: GraphRetryableError - The service is temporarily unavailable**
 
-#### Initial Diagnostic Steps:
-1. **Confirm the Error Details**: Understand the error message and code. In this case, AADSTS90090 indicates a GraphRetryableError stating that the service is temporarily unavailable.
-2. **Check Service Status**: Verify if the Microsoft Graph service is experiencing any outages or maintenance by visiting the Microsoft 365 Service Status page.
-3. **Review Recent Changes**: If applicable, check for any recent changes made to user permissions, app registrations, or configurations that could have triggered this error.
+### Overview
+The error code AADSTS90090 indicates that the Microsoft Azure Active Directory (AAD) Graph API is currently experiencing a temporary service issue. This can disrupt interactions with the API, such as user authentication or token retrieval.
 
-#### Common Issues:
-- **Temporary Service Outages**: Microsoft Graph may face temporary service disruptions or maintenance activities causing the unavailability.
-- **Network Connectivity Issues**: Slow or unreliable internet connections can lead to connectivity problems with the service.
-- **Authentication Token Expiry**: Access tokens used for authentication may have expired, requiring new tokens to be generated.
-- **API Rate Limiting**: Exceeding the API rate limit for your application can result in temporary unavailability.
+### Initial Diagnostic Steps
+1. **Check Service Health:**
+   - Visit the [Azure Status page](https://status.azure.com/en-us/status) to see if there are any ongoing outages or service issues affecting Azure services, particularly AAD.
+  
+2. **Verify Error Occurrence:**
+   - Confirm that the error consistently occurs and not just sporadically. Note the frequency and timing of the errors.
 
-#### Step-by-Step Resolution Strategies:
-1. **Check Service Status**:
-   - If Microsoft Graph is experiencing issues, wait for the service to be restored as these errors are usually transient.
-2. **Refresh Tokens**:
-   - Generate new access tokens if existing tokens have expired. Ensure the tokens have the necessary permissions.
-3. **Verify Connectivity**:
-   - Test your network connection to ensure stable and sufficient internet connectivity.
-4. **Check API Rate Limits**:
-   - Review your application's API usage and ensure it complies with Microsoft Graph's rate limits.
-5. **Retry Operation**:
-   - Implement retry logic in your application to handle transient errors like this. This can involve waiting and retrying the operation after a short interval.
+3. **Review Application Id and Permissions:**
+   - Ensure that the application requesting access has the proper permissions and that the relevant API permissions have been granted.
 
-#### Additional Notes or Considerations:
-- **Error Retries**: GraphRetryableErrors are often transient, so retrying the operation after a delay can often resolve the issue without intervention.
-- **Token Management**: Proper token management and ensuring their validity is crucial to prevent authentication-related errors like this.
+### Common Issues that Cause this Error
+- Temporary outages or high traffic on the Azure service.
+- Misconfigured application settings or permissions in Azure AD.
+- Rate limiting due to excessive requests in a short time frame.
+- Insufficient permissions to access certain API resources.
+- Network-related issues on the client's side preventing connectivity to Azure services.
 
-#### Documentation:
-- Microsoft Graph API Reference: [Microsoft Graph REST API documentation](https://docs.microsoft.com/en-us/graph/api/overview?view=graph-rest-1.0)
-- Azure Active Directory Authentication Error Codes: [AADSTS error codes documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aadsts-error-codes)
+### Step-by-Step Resolution Strategies
+#### Step 1: Temporary Workaround
+- Wait and retry the operation after a few minutes. The error is temporary and may resolve itself as the service becomes available again.
 
-By following these steps and considering the potential causes outlined above, you should be able to troubleshoot and resolve the AADSTS90090 error with the GraphRetryableError effectively.
+#### Step 2: Check for Rate Limiting
+- Monitor API calls made in a short period. If the application is making too many requests, consider implementing exponential backoff in request attempts to handle rate limits gracefully.
+
+#### Step 3: Ensure Configuration is Correct
+1. **Review Azure AD App Registration:**
+   - Navigate to the Azure portal, and select your app registration.
+   - Ensure API permissions are configured correctly. If necessary, grant admin consent for the permissions.
+
+2. **Check Redirect URIs:**
+   - Ensure that the redirect URIs specified match those used in your application.
+
+3. **Clear Azure AD Tokens:**
+   - Sometimes stale tokens can cause issues. Clear existing tokens associated with your application and attempt to sign in again.
+
+#### Step 4: Monitor Service Updates
+- Keep an eye on the Azure Status page and monitor your application to see if the issue resolves itself over time.
+
+### Additional Notes or Considerations
+- If the error persists beyond a reasonable time, it may be beneficial to open a support request with Azure Support.
+- If your application is critical, consider implementing failover logic or service redundancy to mitigate the impact of such errors.
+
+### Documentation for Guidance
+- Azure AD Graph API Documentation: [Microsoft Graph API Overview](https://docs.microsoft.com/en-us/graph/overview)
+- Azure Status: [Azure Service Health Dashboard](https://status.azure.com/en-us/status)
+- Implementing Exponential Backoff for Retry Logic: [Best Practices for Azure API Management](https://docs.microsoft.com/en-us/azure/api-management/api-management-best-practices#retry-policies)
+
+### Test Documentation Reachability
+- The links provided in the documentation section should be accessible. 
+  - For example, visit the [Microsoft Graph API Overview](https://docs.microsoft.com/en-us/graph/overview) and ensure the page loads without issues.
+
+### Advice for Data Collection
+- Collect logs from your application that include:
+  - Timestamp of the error occurrence.
+  - Request and response details when the error was faced (excluding sensitive information).
+  - Frequency of the requests made leading up to the error.
+- If the error persists, consider running a network trace to see if requests to the Azure service are being blocked or failing.
+
+By following this guide, you can effectively troubleshoot the AADSTS90090 error, minimize downtime, and potentially improve the resilience of your application.

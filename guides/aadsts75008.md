@@ -3,38 +3,85 @@
 
 
 ## Troubleshooting Steps
-### Troubleshooting Guide: Error Code AADSTS75008
+Troubleshooting the AADSTS75008 error code, particularly when associated with the message **"RequestDeniedError - The request from the app was denied since the SAML request had an unexpected destination"**, involves systematic diagnostic steps. Here’s a detailed guide to help you resolve this issue:
 
-#### Initial Diagnostic Steps:
-1. **Isolate the Issue**: Verify if the error is consistent or intermittent and under what circumstances it occurs.
-2. **Check SAML Settings**: Review SAML configuration settings to ensure they are set up correctly.
+### Initial Diagnostic Steps
 
-#### Common Issues:
-1. **Incorrect SAML Configuration**: Misconfigured SAML settings in the app causing unexpected request destinations.
-2. **Misconfigured Redirect URIs**: Improperly defined redirect URIs can lead to the SAML request being sent to the wrong destination.
-3. **Expired or Invalid Certificates**: Outdated or invalid certificates in the SAML configuration can result in request denials.
+1. **Identify the Context**: 
+   - Determine which application is generating the error.
+   - Confirm whether the issue is occurring during user sign-in or a specific service access.
 
-#### Step-by-Step Resolution Strategies:
-1. **Review SAML Configuration**:
-   - Check the SAML configuration in the app and verify if the expected destination is correctly set.
-   - Ensure that the EntityID and Assertion Consumer Service URL are accurately defined.
+2. **Reproduce the Error**:
+   - Attempt to reproduce the error to confirm its persistence. Note the specific steps leading to the error.
   
-2. **Verify Redirect URIs**:
-   - Confirm that the redirect URIs in the SAML configuration match the endpoints where requests are expected to be sent.
+3. **Check Log Files**: 
+   - Review the logs of your application and Azure AD for detailed error messages that can provide more context on the failure.
 
-3. **Check Certificates**:
-   - Validate that the certificates used in the SAML configuration are up-to-date and valid.
-   - Update or renew any expired or invalid certificates.
+### Common Issues that Cause this Error
 
-4. **Test and Monitor**:
-   - After making changes, test the application thoroughly to ensure the issue has been resolved.
-   - Monitor for any recurrence of the error.
+1. **Incorrect SAML Configuration**:
+   - The SAML request may be directed to the wrong endpoint or contain an invalid service provider (SP) URL.
 
-#### Additional Notes:
-- **Logs and Reporting**: Use log files or error reports to identify specific patterns or triggers for the error.
-- **Engage Support**: Reach out to the app provider or SAML configuration support for additional assistance if needed.
+2. **Mismatch in Relay State**:
+   - Misconfigured RelayState or additional parameters that might confuse the endpoint routing.
 
-#### Documentation for Guidance:
-- [Microsoft Azure Active Directory Error Codes](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aadsts-error-codes)
+3. **Service Provider (SP) URL Variations**:
+   - Subdomains, paths, or HTTP vs. HTTPS mismatches can lead to "unexpected destination" errors.
 
-By following these troubleshooting steps and considerations, you should be able to address the Error Code AADSTS75008 related to the RequestDeniedError. If the issue persists, consider seeking help from relevant support channels.
+4. **Application Registration Issues**:
+   - If the application is not properly registered in Azure AD or if the identifiers are not matching.
+
+5. **Certificate Issues**:
+   - If there's a mismatch in the signing certificates used by the application and Azure AD.
+
+### Step-by-Step Resolution Strategies
+
+1. **Verify SAML Configuration**:
+   - Go to **Azure Active Directory** > **Enterprise applications** > <Your Application> > **Single sign-on**.
+   - Review the **Basic SAML Configuration** section to ensure that:
+     - The **Identifier (Entity ID)** is set correctly.
+     - The **Reply URL (Assertion Consumer Service URL)** must match the URL your application expects.
+     - Any alternate logs that reference other URL routes should be checked.
+  
+2. **Check Authentication Settings in App**:
+   - Ensure that your application's SAML settings point to the correct Azure AD instance. 
+   - If applicable, verify that the assertion consumer URL reflects the URL that Azure AD is expecting.
+
+3. **Inspect Relay State**:
+   - Confirm that any RelayState parameters used in the SAML request are valid and intended for your application.
+
+4. **Application Registration Review**:
+   - Ensure your application is registered properly under **Azure AD** > **App registrations**, and check the configuration.
+   - Confirm any required permissions are granted and consented to.
+
+5. **Azure AD Sign-on Logs**:
+   - Check the sign-in logs in Azure AD. Navigate to **Azure Active Directory** > **Sign-ins** to find specific logs related to the failed sign-ins. Look for related error codes and messages for additional context.
+
+6. **Test with Other Browsers/Incognito**:
+   - Sometimes cached responses can cause issues. Test with an incognito or private browser session to rule out caching problems.
+
+7. **Consult Documentation**:
+   - Refer to the Microsoft Azure Documentation for further guidance:
+     - [How to configure Single Sign-On with SAML](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-saml-protocol)
+     - [Troubleshooting SAML-based SSO](https://docs.microsoft.com/en-us/azure/active-directory/develop/troubleshoot-saml-sso)
+
+### Additional Notes or Considerations
+
+- Ensure that you have the right permissions to view and modify the SAML settings in Azure AD.
+- Be mindful of hours of operation for changes and rebooting services if necessary to propagate configuration updates.
+- DNS-related issues can sometimes prevent correct routing. Confirm proper domain routing in your network configuration.
+- After making changes, allow some time for settings to take effect and try to reproduce the sign-in error again.
+
+### Documentation Accessibility Test
+
+You can visit the following links to ensure that documentation is reachable:
+1. [How to configure Single Sign-On with SAML](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-saml-protocol)
+2. [Troubleshooting SAML-based SSO](https://docs.microsoft.com/en-us/azure/active-directory/develop/troubleshoot-saml-sso)
+
+### Advice for Data Collection
+
+- Log all errors and warnings encountered during SAML requests to analyze patterns.
+- Capture the SAML request and response using tools like Fiddler or browser development tools to identify exactly what was sent to Azure AD.
+- Consider implementing detailed logging within your application to capture the specifics of when errors occur.
+
+By following these steps diligently, you should be able to identify and resolve the issues leading to the AADSTS75008 error effectively.

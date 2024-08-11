@@ -3,40 +3,76 @@
 
 
 ## Troubleshooting Steps
-### Error Code: AADSTS70000 - InvalidGrant - Authentication failed. The refresh token isn't valid.
+# Troubleshooting Guide for AADSTS70000: InvalidGrant - Authentication Failed
 
-#### Initial Diagnostic Steps:
-1. **Verify Token Binding Header**: Check if the token binding header is empty.
-2. **Check Token Binding Hash**: Ensure that the token binding hash matches.
-3. **Review Integration**: Examine the resource or service integration where the error occurred.
-4. **Confirm Refresh Token Validity**: Check the validity of the refresh token being used.
+## Overview
+AADSTS70000 indicates an issue with the authentication process specifically related to the refresh token in Azure Active Directory. This error suggests that the refresh token being used is invalid, which can occur for a number of reasons.
 
-#### Common Issues:
-1. **Empty Token Binding Header**: If the token binding header is missing, authentication fails.
-2. **Mismatch in Token Binding Hash**: If the token binding hash does not match, authentication fails.
-3. **Expired Refresh Token**: The refresh token may have expired or been revoked, leading to authentication failure.
+## Initial Diagnostic Steps
+1. **Check Error Context**:
+   - Collect information about where the error occurred (application, user action).
+   - Note the specific conditions leading to the error (e.g., was the token manually revoked?).
 
-#### Step-by-Step Resolution Strategies:
-1. **Review Token Binding Settings**:
-   - Ensure that the token binding is correctly set up in the application or service making the authentication request.
-   - Verify if the token binding header is being included in the request.
+2. **Identify Token Details**:
+   - Inspect the refresh token being used. Ensure it is being properly generated and passed in your application.
+   - Check the token expiration settings in Azure AD.
 
-2. **Check Token Binding Hash**:
-   - If the hash does not match, confirm that the hashing algorithm and parameters are consistent between requests.
+3. **Examine Client Configuration**:
+   - Confirm that the application registration in Azure AD is correctly configured.
+   - Verify the application ID, secret, and scopes being requested.
 
-3. **Refresh Token Verification**:
-   - Obtain a new valid refresh token from the authorization server if the current one is expired or invalid.
-   - Check for any policy or configuration updates that may affect the refresh token validity.
+## Common Issues that Cause this Error
+1. **Token Expiration**: The refresh token has expired or has been revoked.
+2. **Invalid Usage**: The refresh token may be used incorrectly or not supported (e.g., incorrect audience).
+3. **Token Binding Issues**: Token binding headers may be missing or incorrectly configured.
+4. **User Mismatch**: The refresh token does not match the user trying to authenticate.
+5. **Consent Issues**: User has not consented to the necessary permissions.
+6. **Multiple Sessions**: If the user has multiple active sessions, this can potentially cause conflicts.
+  
+## Step-by-Step Resolution Strategies
+### Step 1: Verify Refresh Token Validity
+- Check if the refresh token has expired by looking at the issued and expiration timestamps.
+- Have the user sign in again; this will regenerate a new set of tokens.
 
-4. **Monitor Logs and Debug**:
-   - Review authentication logs to identify any specific error messages or patterns that can help pinpoint the issue.
-   - Utilize debugging tools or APIs to track the flow of authentication and token validation processes.
+### Step 2: Token Binding Headers
+- Ensure that the token binding headers are being sent correctly.
+- Check if the token binding feature is enabled in your application settings.
+- If you have the option disabled, consider switching it off to see if this resolves the issue.
 
-#### Additional Notes or Considerations:
-- **Token Lifetime**: Understand the token expiration policy and ensure that refresh tokens are used within their validity period.
-- **Token Security**: Protect refresh tokens as sensitive data and follow best practices for secure token handling.
+### Step 3: Review Application Configuration in Azure AD
+- Navigate to the Azure portal:
+  1. Sign into the Azure portal.
+  2. Go to “Azure Active Directory”.
+  3. Find the relevant application under “App registrations”.
+  4. Ensure the application ID and redirect URIs are correct.
+- Check that the correct API permissions have been granted and are configured correctly.
 
-#### Documentation for Guidance:
-- Microsoft Azure AD documentation:
-  - [Troubleshoot Common Errors in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/troubleshoot-common-errors)
-  - [Refresh Tokens in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/refresh-tokens)
+### Step 4: Re-grant Permissions and Consent
+- Go to the user’s account in Azure AD and re-grant the permissions:
+  1. Find the user under “Users”.
+  2. Check under “Assigned roles and permissions”.
+  3. Remove and re-grant any roles or permissions that might be relevant.
+
+### Step 5: Check for Revoked Tokens
+- In Azure AD, check if the refresh token or other related tokens have been revoked.
+- Consider checking the “Sign-ins” logs in Azure AD to capture any revocation events.
+
+## Additional Notes or Considerations
+- Implement logging around the token acquisition process to capture detailed error information.
+- Regularly review token management policies and consider implementing token lifetimes according to best practices.
+
+## Documentation for Guidance
+- Azure AD Authentication overview: [Microsoft Docs](https://docs.microsoft.com/en-us/azure/active-directory/develop/authentication-scenarios)
+- Troubleshooting token issues: [Token issues documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/authentication-vs-authorization)
+
+Ensure you can access this documentation periodically for updates or changes in instructions.
+
+## Advice for Data Collection
+- Collect logs from your application when the error occurs, including:
+  - User IDs
+  - Timestamps
+  - Context leading to the error
+  - Any stack traces or error messages
+- Capture HTTP requests/responses during the token exchange process to allow for auditing of issues.
+
+By following these steps and guidelines, you should be able to resolve the AADSTS70000 error effectively.

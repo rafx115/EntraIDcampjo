@@ -3,39 +3,74 @@
 
 
 ## Troubleshooting Steps
-Here is a detailed troubleshooting guide for resolving the error code AADSTS90020 related to a missing ImmutableID in the SAML 1.1 Assertion:
+### Troubleshooting Guide for Error Code AADSTS90020
 
-### Initial Diagnostic Steps:
-1. **Confirm the Error Message:** Make sure the error message indeed states that the SAML 1.1 Assertion is missing ImmutableID of the user.
-2. **Check Authentication Parameters:** Verify that the app is providing the necessary and correct authentication parameters as expected by the identity provider.
+**Error Description**: AADSTS90020 indicates that the SAML 1.1 Assertion is missing the `ImmutableID` of the user. This is typically a developer error, suggesting that the application is attempting to sign in without the required or correct authentication parameters.
 
-### Common Issues:
-- **Incomplete SAML Assertion:** The assertion sent by the app might be missing essential attributes, such as the ImmutableID.
-- **Misconfigured App:** The app may not be properly configured to send the ImmutableID attribute in the SAML assertion.
-- **Incorrect User Mapping:** There could be an issue with the mapping between the user's ImmutableID and their account in the app.
+#### Initial Diagnostic Steps
+1. **Identify the Context**:
+   - Determine where the error occurred: during login, token acquisition, or while making API calls.
+   - Identify the application involved and the specific SAML configuration it uses.
 
-### Step-by-Step Resolution Strategies:
+2. **Review Logs**:
+   - Check the application logs for additional error messages or warnings around the time the AADSTS90020 error was reported.
+   - Look for any prior exceptions that might indicate a misconfiguration or issue.
 
-1. **Review SAML Assertion Configuration:**
-   - Ensure that the SAML assertion includes the ImmutableID attribute.
-   - Make sure the attribute is correctly mapped and formatted according to the identity provider's requirements.
+3. **Verify User Attributes**:
+   - Confirm the attributes being sent in the SAML assertion. The `ImmutableID` attribute should be included.
 
-2. **Check App Configuration:**
-   - Review the app's SAML configuration settings to ensure the ImmutableID attribute is being included in the authentication requests.
-   - Update the configuration if necessary to include the ImmutableID.
+#### Common Issues That Cause This Error
+1. **Missing ImmutableID**:
+   - The SAML assertion does not include the `ImmutableID` attribute, which is essential for Azure AD to map the SAML token to the corresponding user.
 
-3. **Verify User Mapping:**
-   - Check the user account in the app to ensure that the ImmutableID is correctly associated with the user's profile.
-  
-4. **Test Authentication Flow:**
-   - Test the authentication flow again to see if the issue has been resolved after making the necessary adjustments.
+2. **Incorrectly Configured Application**:
+   - The application may not be configured to request or send the required claims.
 
-### Additional Notes or Considerations:
-- **Developer Collaboration:** Work closely with the developer responsible for the app to ensure the correct implementation of SAML assertions including ImmutableID.
-- **Logging and Monitoring:** Implement logging mechanisms to track SAML assertion details and monitor authentication requests for any issues.
+3. **SAML Configuration Issues**:
+   - The Service Provider (SP) and Identity Provider (IdP) configuration might not be aligned.
 
-### Documentation for Guidance:
-- Microsoft Azure Active Directory (AAD) Documentation:
-  - [Troubleshoot SAML-based single sign-on](https://docs.microsoft.com/en-us/azure/active-directory/develop/single-sign-on-saml-protocol#troubleshoot-saml-based-single-sign-on)
+4. **User Not Provisioned**:
+   - The user signing in might not be provisioned in Azure AD, leading to the 'ImmutableID' being undefined.
 
-By following these steps and considering the additional notes, you should be able to address the error code AADSTS90020 related to the missing ImmutableID in the SAML 1.1 Assertion effectively.
+#### Step-by-Step Resolution Strategies
+1. **Check SAML Assertion**:
+   - Use a tool or library that decodes and inspects SAML assertions. Look for the `ImmutableID` in the assertion.
+   - If it's missing, the SAML issuer may need to be updated to include it.
+
+2. **Update SAML Configuration**:
+   - If you are using a third-party identity provider, review their documentation to ensure your application is requesting the correct attributes including `ImmutableID`.
+   - If you are implementing your own IdP, update it to include `ImmutableID` in the SAML response.
+
+3. **Configure Claims in Azure AD**:
+   - Go to Azure AD and access the section for your application.
+   - Under "Token configuration", ensure that the `ImmutableID` claim is set to be issued in the SAML assertion.
+   - Validate the claims mapping and ensure the correct attribute from your directory is linked to `ImmutableID`.
+
+4. **Test with Sample Users**:
+   - Provision test users in Azure AD and ensure they include the `ImmutableID`. Use these accounts to test the login process.
+   
+5. **Review Documentation**:
+   - Refer to Microsoft's documentation on setting up SAML applications and configuring claims for Azure AD.
+   - Link: [Azure AD SAML Authentication Documentation](https://learn.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-saml)
+   - Check the links for step-by-step guidance on configuring SAML assertions properly.
+
+#### Additional Notes or Considerations
+- Always trace changes in claims configurations in your Azure AD as they can affect multiple apps if not done carefully.
+- Make sure the application identity is well-documented and share the configuration details with your development and ops teams.
+
+#### Documentation Where Steps Can Be Found
+- Microsoft Documentation: [Azure Active Directory SAML Protocol](https://learn.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-saml)
+- Documentation is regularly updated, so always check the latest resources.
+
+#### Test the Documentation Can Be Reached
+To ensure the documentation links provided are accessible:
+1. Open a web browser.
+2. Navigate to [Azure Active Directory SAML Protocol Documentation](https://learn.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-saml).
+3. Verify that the page loads successfully and that the content is accessible.
+
+#### Advice for Data Collection
+- Collect logs and error messages from both your application and Azure AD during each sign-in attempt.
+- If you have access to a SAML assertion debugger, log the content of the SAML assertions to see what attributes are being sent.
+- Ensure you gather details on the environment (production, staging, etc.), users affected, and steps to reproduce the error.
+
+By following this troubleshooting guide, you should be able to identify and resolve the AADSTS90020 error effectively. Make sure to involve developers familiar with SAML and Azure AD for more complex issues.

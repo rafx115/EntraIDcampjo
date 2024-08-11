@@ -3,43 +3,70 @@
 
 
 ## Troubleshooting Steps
-### Troubleshooting Guide for Error Code AADSTS90038
+The error code AADSTS90038 indicates a situation where there's a mismatch between the cloud instance you are trying to access and the national cloud your tenant belongs to. Here’s a detailed troubleshooting guide to help you diagnose and resolve this error.
 
-#### Initial Diagnostic Steps:
-1. **Confirm Tenant and Cloud Details:** Check the tenant ID ('Y'), National Cloud ('X'), and the current cloud instance ('Z') mentioned in the error message.
-2. **Verify Federation Configuration:** Ensure that the current cloud instance 'Z' is configured to federate with the National Cloud 'X'.
-3. **Check Tenant Configuration:** Review the settings and configurations for the tenant 'Y' to identify any misconfigurations.
+### 1. Initial Diagnostic Steps
 
-#### Common Issues:
-1. **Misconfigured Federation:** The current cloud instance is not configured to federate with the National Cloud causing the redirection error.
-2. **Missing Trust Relationship:** Trust between the current cloud instance and the National Cloud may not be properly established.
-3. **Incorrect Tenant Mapping:** The specified tenant 'Y' might be mapped incorrectly, leading to the redirection issue.
-4. **Network or Firewall Issues:** Network restrictions or firewall settings may interfere with the redirection process.
+1. **Identify the Tenant Information:**
+   - Confirm the tenant ID or domain (e.g., your organization’s name). This will involve checking the Azure portal or utilizing Azure CLI commands.
+   - Verify if this tenant is part of a National Cloud (such as Azure Government, Azure China, etc.).
 
-#### Step-by-Step Resolution Strategies:
-1. **Check Federation Settings:**
-    - Ensure that the current cloud instance 'Z' is configured to federate with the National Cloud 'X'.
-    - Verify trust relationships and federation settings to avoid redirection errors.
+2. **Check Current Cloud Instance:**
+   - Confirm which cloud instance you are currently connected to (commercial, government, etc.). You can check this by looking at the endpoint URLs when signing into Azure.
 
-2. **Update Tenant Mapping:**
-    - Correctly map the specified tenant 'Y' to the appropriate National Cloud 'X' in the configurations.
-    - This can help in redirecting the request to the correct cloud instance.
+3. **Sign-In Attempts:**
+   - Attempt to sign in using the Azure Portal to see if the issue persists when accessing different resources or services.
 
-3. **Network/Firewall Configuration:**
-    - Check network configurations and firewall rules to ensure they are not blocking the redirection process.
-    - Make necessary adjustments to allow the required communication.
+### 2. Common Issues that Cause this Error
 
-4. **Contact Support:**
-    - If the issue persists, contact the support team or Microsoft Azure Active Directory (Azure AD) for further assistance.
-    
-#### Additional Notes or Considerations:
-- **Data Backup:** Before making any changes to configurations, ensure you have a backup of critical data to avoid data loss.
-- **Testing:** After implementing the resolution strategies, perform thorough testing to confirm the error is resolved.
-- **Regular Maintenance:** Periodically review federation and tenant configurations to prevent such issues in the future.
+- **Cloud Mismatch:** The specified tenant is in a different cloud instance than the one being accessed.
+- **Configuration Issues:** Misconfigurations in Azure AD, particularly with tenant settings or application registrations.
+- **Legacy Links:** Applications or services that are hard-coded to point to a specific cloud endpoint.
 
-#### Documentation for Guidance:
-- Azure Active Directory Troubleshooting Guide: [Microsoft Documentation](https://docs.microsoft.com/en-us/azure/active-directory/)
-- Azure AD Federation Overview: [Documentation](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/concept-hybrid-identity-federation-management-guide)
-- Azure AD Tenant Configuration: [Documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant)
+### 3. Step-by-Step Resolution Strategies
+
+#### Step 1: Check Tenant and Current Cloud Configuration
+- Use the Azure AD Portal to review your tenant information.
+- Verify the resource URLs and ensure they match the cloud you are in. Example:
+  - Azure Government: `*.usgovcloudapi.net`
+  - Azure Germany: `*.azure.de`
+  - Azure China: `*.chinacloudapi.cn`
+
+#### Step 2: Determine Application Registration Configuration
+- If you are using an app or service, ensure the application registration is correctly configured for the intended cloud.
+- Consult the Azure AD documentation that outlines how to register applications in national clouds:
+  - Sample documentation: [App registration](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
   
-By following these steps and guidelines, you should be able to diagnose and resolve the AADSTS90038 error related to NationalCloudTenantRedirection effectively. If you encounter any difficulties, don't hesitate to seek assistance from the relevant support channels.
+#### Step 3: Plan a Cloud Redirection 
+- If necessary, update the relevant identifiers for applications (application id, secret, etc.) to point to the appropriate resources.
+- Utilize Azure CLI or PowerShell commands to adjust or check your setup.
+
+#### Step 4: Contact Support if Needed
+- If you still cannot resolve the issue, consider contacting Microsoft Support for further assistance. Gather details such as error codes, timestamps, and your account information.
+
+### 4. Additional Notes or Considerations
+
+- This error often indicates a need to reassess your IT architecture with respect to national cloud compliance (especially for government entities).
+- Regular audits of application registrations and cloud configurations can help prevent such issues.
+- Be aware of changes in compliance and regulations governing the use of national clouds.
+
+### 5. Documentation References
+
+- To check Azure AD documentation: 
+  - [Azure Active Directory Documentation](https://docs.microsoft.com/en-us/azure/active-directory/)
+- For guidance on national clouds: 
+  - [National Cloud Information](https://docs.microsoft.com/en-us/azure/government/gov-overview)
+  
+### 6. Testing Documentation Accessibility
+
+Ensure the documentation links work by accessing them directly in a browser. 
+- Open each link provided above.
+- Check for any errors or issues in loading the content.
+
+### 7. Advice for Data Collection
+
+- Collect logs and relevant error messages:
+  - Use Azure AD sign-in logs to gather pertinent data around the errors encountered.
+  - Enable diagnostics logging on your applications to capture events leading to sign-in attempts.
+  
+By following these detailed steps, you should be able to diagnose and resolve the AADSTS90038 error effectively. Always ensure your configurations align with best practices for your specific national cloud environment.

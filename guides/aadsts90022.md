@@ -3,36 +3,78 @@
 
 
 ## Troubleshooting Steps
-**Troubleshooting Guide for AADSTS90022 Error Code**
+### Troubleshooting Guide for AADSTS90022: AuthenticatedInvalidPrincipalNameFormat
 
-**Initial Diagnostic Steps:**
-1. **Verify Principal Name Format:** Check the principal name format being used, ensuring it adheres to the expected format requirements ([name][/host][@realm]).
-2. **Review Recent Changes:** Identify any recent changes made to the authentication flow or configurations that could possibly lead to this error.
+AADSTS90022 indicates that there is an issue with the format of the principal name being passed in the authentication request. This error typically occurs in an Azure Active Directory (AAD) context, and it suggests that the principal name does not meet the expected format of `[name[/host][@realm]]`.
 
-**Common Issues Causing the Error:**
-1. **Incorrect Principal Name Format:** The principal name may not be following the required format.
-2. **Missing Information:** The principal name may be missing necessary components like host or realm.
-3. **Improper Configuration:** Incorrect settings in authentication configurations could also trigger this error.
+---
 
-**Step-by-Step Resolution Strategies:**
-1. **Check Principal Name Format:** 
-   - Ensure that the principal name follows the correct format: [name][/host][@realm].
-   - If host and realm are optional and not used, confirm if they are correctly set to null.
-   
-2. **Update Principal Name:**
-   - Make necessary adjustments to the principal name format if it does not meet the required specifications.
-   
-3. **Review Configuration Settings:**
-   - Verify the authentication configuration settings to ensure they are correctly defined and mapped with the principal name format.
+#### Initial Diagnostic Steps
 
-4. **Test Authentication Flow:**
-   - Perform test authentication using the updated principal name and verify if the error persists.
+1. **Review the Error Message**: Start by carefully reading the full error message returned with the AADSTS90022 error code. Look for any specific details that might shed light on the cause.
 
-**Additional Notes or Considerations:**
-- Double-check any external systems or services that may interact with the authentication process, as they could also impact the principal name format.
-- Keep communication channels open with relevant parties or support teams to gather additional insights or assistance in resolving the issue.
+2. **Check Input Format**: Ensure that the principal name being used in the authentication process is formatted correctly. It should follow the format of either `user@domain` or `username`.
 
-**Documentation for Guidance:**
-- For detailed steps and guidance on troubleshooting Azure Active Directory errors, refer to Microsoft's official documentation: [Azure AD Error Codes](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aadsts-error-codes)
+3. **Test Authentication Request**: If possible, isolate the authentication request causing the problem and attempt to replicate the error in a controlled environment.
 
-Following these steps should help diagnose and resolve the AADSTS90022 error related to an AuthenticatedInvalidPrincipalNameFormat effectively. If further assistance is needed, consider reaching out to specific technical support teams familiar with the system in question.
+4. **Verify User Input**: If the principal name is being input by a user, verify that they are entering it correctly without any extra spaces or invalid characters.
+
+---
+
+#### Common Issues that Cause This Error
+
+1. **Improper Principal Name Format**: The most common issue is that the principal name does not follow the required format (missing domain, incorrect symbols, etc.).
+
+2. **Use of Special Characters**: Avoid special characters or whitespace within the principal name that may not be supported.
+
+3. **Misconfigured Application**: If the application that is generating authentication requests has misconfigurations, it may lead to incorrectly formatted principal names being sent.
+
+4. **User Account Issues**: The principal being referenced doesn’t exist in the directory, or it might have recently been deleted or renamed.
+
+---
+
+#### Step-by-Step Resolution Strategies
+
+1. **Verify Principal Name Format**:
+   - Check to ensure that the principal name adheres to the format:
+     - **Correct**: `user@domain.com` or `username`
+     - **Incorrect**: `user domain` or `user@` (lack of domain)
+
+2. **Modify Application Configurations**:
+   - If your application generates the principal name, review its settings and code to ensure the proper format is applied when constructing the principal name.
+
+3. **Validate User Exists**:
+   - Ensure that the user trying to authenticate exists in the Azure AD directory. You can do this through the Azure Portal:
+     - Navigate to Azure Active Directory → Users.
+     - Search for the user in question and validate their details.
+
+4. **Reconstruct the Request**:
+   - If directly working with API calls or manually constructing requests, check that the request matches expected formats, as per AAD documentation.
+
+5. **Testing and Debugging**:
+   - Use tools like Postman or Fiddler to check the actual requests being sent to Azure AD.
+   - Identify where the principal name is being set and adjust it as needed.
+
+---
+
+#### Additional Notes or Considerations
+
+- Make sure that any changes made are tested in a development or testing environment before rolling them out to production.
+- Check if similar issues are affecting other users, which may indicate a broader configuration problem.
+- Ensure that the Azure AD service has no known outages or service interruptions via the Azure status page.
+
+#### Documentation for Guidance
+
+- Azure Active Directory Error Codes: https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aadsts-error-codes
+- Principal Name Format Verification: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-authentication-scenarios
+
+(To ensure the links are reachable, simply click on them in your browser. They should lead to relevant Microsoft documentation.)
+
+#### Advice for Data Collection
+
+1. **Collect Error Responses**: Gather logs and full error responses that show AADSTS90022 occurrences.
+2. **Audit Authentication Requests**: If possible, collect the raw requests sent to Azure AD along with any relevant user identifiers.
+3. **User Details**: Document the user details (username, email) associated with the principal that is failing.
+4. **Application Logs**: Review application logs for any anomalies or further context surrounding the error generation.
+
+By following the steps outlined in this guide, you should be able to diagnose, troubleshoot, and resolve the AADSTS90022 error effectively.

@@ -56,8 +56,8 @@ for error in error_codes:
         description=error['description'],
         guide=error['guide']
     )
-    with open(filename, 'w') as file:
-        file.write(content)
-    print(f"Created {filename}")
+     # Save the updated content back to the file using UTF-8 encoding
+    with open(filepath, 'w', encoding='utf-8') as file:
+        file.write(updated_content)
 
 print(f"All guides created in {output_dir}")

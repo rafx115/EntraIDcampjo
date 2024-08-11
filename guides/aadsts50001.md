@@ -3,43 +3,68 @@
 
 
 ## Troubleshooting Steps
-### Troubleshooting Guide for Error Code AADSTS50001: InvalidResource
+Troubleshooting the AADSTS50001 error can be critical to ensuring a smooth access to resources in Azure Active Directory (Azure AD). Below is a comprehensive guide on diagnosing and resolving this error.
 
-#### Initial Diagnostic Steps:
-1. **Review Error Details:** Understand the error code AADSTS50001, especially the InvalidResource message, to identify that the resource is disabled or does not exist.
-2. **Check App Configuration:** Verify the app's settings and ensure that the resource URL is correctly specified.
-3. **Review Code:** Inspect the code related to resource access to ascertain if the correct resource URL is being used.
-4. **Verify Permissions:** Ensure that the app has the necessary permissions to access the specified resource.
+### **Initial Diagnostic Steps**
+1. **Read the Error Message**: Confirm the exact wording: “InvalidResource - The resource is disabled or doesn't exist. Check your app's code to ensure that you have specified the exact resource URL for the resource you're trying to access.”
+   
+2. **Identify the Context**: Determine under what circumstances the error occurs. Is it during the authentication process, while accessing a specific API, or when trying to obtain access tokens?
 
-#### Common Issues:
-1. **Incorrect Resource URL:** The app may be pointing to the wrong resource URL.
-2. **Disabled Resource:** The resource being accessed might be disabled.
-3. **Missing Resource:** The specified resource may not exist.
-4. **Permissions Issue:** The app might lack the required permissions to access the resource.
+3. **Check Event Logs**: Review application, platform, or error logs to gather more context about when and how the error occurs.
 
-#### Step-by-Step Resolution Strategies:
-1. **Verify Resource URL:**
-   - Check the app's code and configuration for the resource URL being accessed.
-   - Update the resource URL if it is incorrect.
+### **Common Issues that Cause this Error**
+- **Incorrect Resource URL**: The requested resource URL may not match the registered application in Azure AD.
+- **Resource Disabled**: The resource you are trying to access (e.g., an API or application) has been disabled in the Azure portal.
+- **Permissions and Consent Issues**: The application may not have sufficient permissions to access the requested resource.
+- **Incorrect Application ID**: The application ID you are using in your request may be incorrect or not properly registered.
+- **Expired or Invalid Tokens**: Previous access tokens may have expired, leading to unsuccessful attempts to access the resource.
 
-2. **Check Resource Status:**
-   - Confirm if the resource is enabled and accessible.
-   - Activate any disabled resources as needed.
+### **Step-by-Step Resolution Strategies**
 
-3. **Ensure Resource Existence:**
-   - Double-check that the resource being accessed exists.
-   - If it doesn’t exist, correct the resource URL accordingly.
+1. **Verify Resource Registration**:
+   - Log in to the Azure portal.
+   - Navigate to **Azure Active Directory** > **App registrations**.
+   - Check if the resource you are trying to access (API) is listed and correctly registered.
+   - Ensure the **Redirect URI** for your app is correct and matches what you are using in the code.
 
-4. **Review App Permissions:**
-   - Adjust the app's permissions to ensure it has the necessary access rights to the resource.
-   - Grant required permissions through Azure AD settings.
+2. **Check Resource Status**:
+   - In the Azure portal, ensure that the resource is active and not disabled. 
+   - If you are trying to access a specific API, go to **API permissions** under the application settings and confirm that the permissions to access the API are granted.
 
-#### Additional Notes or Considerations:
-- **Testing:** After making changes, test the app to verify that the error is resolved.
-- **Logs & Diagnostics:** Refer to Azure AD logs for more detailed error information if needed.
+3. **Confirm Resource URL**:
+   - Review the codebase where the resource URL is specified (for example: `https://<yourapi>.azurewebsites.net`). Make sure it is exactly as registered with no typos or discrepancies.
 
-#### Documentation:
-- Microsoft Azure Documentation:
-  - [Azure AD error codes and messages](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aadsts-error-codes)
+4. **Check Permissions**:
+   - Ensure that the application requesting the resource has the necessary permissions to access it.
+   - Go to the API permissions blade and add any missing permissions needed for the API you are trying to access.
 
-By following these steps and considerations, you should be able to troubleshoot and resolve Error Code AADSTS50001 related to the InvalidResource issue effectively.
+5. **Grant Admin Consent**:
+   - If using delegated permissions, ensure that admin consent has been granted for all required permissions.
+
+6. **Test with Graph Explorer**:
+   - Use the [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) to test direct access to the API using the same credentials.
+
+7. **Debugging Tokens**:
+   - If you suspect the token is invalid or expired, try re-authenticating and obtaining a new token. Use tools like [jwt.ms](https://jwt.ms) to decode and inspect the contents of your token.
+   - Look for the `aud` claim in the decoded token to ensure it matches the resource URL you are trying to access.
+
+### **Additional Notes or Considerations**
+- **Cross-Tenant Issues**: If your application needs to access resources in another tenant, ensure that cross-tenant access policies are properly configured.
+- **Versioning**: If accessing a versioned API, ensure that the correct version is specified in the URL.
+
+### **Documentation for Guidance**
+- Azure AD Authentication: [Azure Active Directory documentation](https://learn.microsoft.com/en-us/azure/active-directory/develop/)
+- Azure AD App Registration: [App registrations in Azure AD](https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
+- Developer Tools: [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)
+
+### **Test Access to Documentation**
+Make sure the above documentation links are reachable through your web browser. They should provide comprehensive instructions and insights related to Azure AD application troubleshooting.
+
+### **Advice for Data Collection**
+When troubleshooting, consider collecting:
+- Detailed logs from your application during the authentication flow.
+- The specific resource URL and parameters you are using in requests.
+- Token details if applicable, including timestamps, scopes, and claims.
+- Network traces or logs if using proxies or gateways that could eliminate transport-related issues.
+
+By methodically going through these steps and considerations, you can effectively resolve the AADSTS50001 error and ensure proper access to your Azure resources.

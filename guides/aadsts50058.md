@@ -3,53 +3,113 @@
 
 
 ## Troubleshooting Steps
-### Troubleshooting Guide for Error Code AADSTS50058
+### Troubleshooting Guide for AADSTS50058 Error Code
 
-#### **Initial Diagnostic Steps:**
-1. **Confirm the Error Message:**
-   Verify that the error code is indeed AADSTS50058 and the description is "UserInformationNotProvided - Session information isn't sufficient for single-sign-on."
+**Error Code**: AADSTS50058  
+**Description**: UserInformationNotProvided - Session information isn't sufficient for single-sign-on. This indicates that a user isn't signed in, leading to the error, particularly in scenarios where prompt=none is used.
 
-2. **User Sign-In Status:**
-   Check if the user is authenticated or signed in. If the user is unauthenticated, the error may be expected.
+---
 
-3. **SSO Session Status:**
-   Ensure the Single Sign-On (SSO) session for the user is valid and not expired.
+### 1. Initial Diagnostic Steps
 
-#### **Common Issues:**
-1. **User Not Signed In:**
-   The error commonly occurs when the user is not signed in or authenticated.
+1. **Check the Error Message**:
+   - Verify the full error message and context where it occurred. AADSTS50058 indicates a lack of user session.
 
-2. **Invalid or Expired SSO Session:**
-   If the user has previously signed in but encounters this error, the SSO session may be invalid or expired.
+2. **User Authentication Status**:
+   - Confirm whether the user was indeed signed in previously. Lack of a valid session will trigger this error.
 
-3. **Issue with prompt=none Parameter:**
-   This error can also occur if the application specifies prompt=none, which can skip the user prompt for credentials and lead to this error.
+3. **Examine Application Logs**:
+   - Review the application logs to find any prior authentication requests or SSO attempts that may provide insight into the session state.
 
-#### **Resolution Strategies:**
-1. **User Sign-In:**
-   - Instruct the user to sign in or authenticate if they are currently unauthenticated.
+4. **Check for Redirects**:
+   - Determine if the authentication flow was interrupted with an unexpected redirect or a network issue.
 
-2. **Refresh SSO Session:**
-   - Have the user attempt to refresh the SSO session by logging out and then signing in again.
+5. **Reproduce the Error**:
+   - Attempt to replicate the error in the same environment to understand the scenarios that lead to this issue.
 
-3. **Check SSO Configuration:**
-   - Review the SSO configuration to ensure it is properly set up and that sessions are managed correctly.
+---
 
-4. **Adjust prompt Parameter:**
-   - If the error occurs due to prompt=none, consider modifying the parameter to prompt the user for credentials as needed.
+### 2. Common Issues that Cause This Error
 
-#### **Additional Notes or Considerations:**
-- **Review Application Integration:**
-  Ensure that the application is integrated properly with the identity provider and SSO settings.
+1. **Expired or Invalid SSO Session**:
+   - The user’s session may have expired. SSO sessions can have specific lifetimes after which they require re-authentication.
 
-- **Monitor SSO Sessions:**
-  Regularly monitor and manage SSO sessions to prevent issues related to session expiration or invalidation.
+2. **Cookies or Local Storage Issues**:
+   - The SSO cookies or local storage data used for authentication may be missing, corrupted, or blocked by browser settings.
 
-- **Stay Updated:**
-  Keep an eye on any updates or changes in the identity provider's documentation or notifications related to SSO configurations.
+3. **Inconsistent Application Configurations**:
+   - Mismatched configurations between the application and Azure AD could lead to failure in establishing a SSO session.
 
-#### **Documentation for Guidance:**
-- Microsoft Azure Active Directory documentation:
-  - [Troubleshoot single sign-on issues in Microsoft Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/troubleshoot-single-sign-on-issues)
+4. **Multiple Accounts**:
+   - If the user has multiple Azure AD accounts, there can be confusion about which account to use for SSO.
 
-By following these troubleshooting steps and considering the common issues, you should be able to address the AADSTS50058 error related to insufficient session information in a single sign-on context effectively.
+5. **Network or Firewall Restrictions**: 
+   - Network policies or firewalls may block necessary communications to Azure AD.
+
+---
+
+### 3. Step-by-Step Resolution Strategies
+
+1. **Verify User Authentication**:
+   - Ensure the user is authenticated by checking direct login or using different authentication flows.
+
+2. **Clear Browser Cache and Cookies**:
+   - Clear the browser’s cookies and cache to remove any corrupted SSO data. Instruct users to do this and try signing in again.
+
+3. **Check Application and Azure AD Configuration**:
+   - Confirm that the application is correctly registered in Azure AD:
+     - Check Reply URLs.
+     - Ensure proper permissions are set.
+     - Validate that the client ID and secret are correctly implemented in the application.
+
+4. **Examine Session Lifetime Settings**:
+   - Review Azure AD session settings (like SSO token lifetime) to check whether they are appropriately set for your application's needs. Update settings if required.
+
+5. **Prompt for Authentication**:
+   - If using `prompt=none` in your request, consider removing it for debugging and to ensure authentication prompts are shown.
+
+6. **Test Across Different Browsers**:
+   - Check if the issue persists across various browsers or devices, which could indicate a local configuration issue.
+
+7. **Network Troubleshooting**:
+   - Ensure there are no network restrictions preventing access to Azure AD authentication endpoints.
+
+8. **User Experience Evaluation**:
+   - Encourage users to log out from all sessions and re-login to reset their session state.
+
+---
+
+### 4. Additional Notes or Considerations
+
+- **SSO Policies**: Be aware of how SSO implementation supports different authentication flows (like legacy vs. modern) that may impact session management.
+- **Session Tokens**: Understand the lifecycle of session tokens and ensure that your application handles renewals appropriately.
+- **User Education**: Educate users regarding managing multiple accounts and avoiding confusion between them.
+
+---
+
+### 5. Documentation and Guidance
+
+For further details and guidance, refer to:
+
+- [Microsoft Azure Active Directory Documentation](https://docs.microsoft.com/en-us/azure/active-directory/)
+- [Troubleshooting Single Sign-On](https://docs.microsoft.com/en-us/azure/active-directory/develop/troubleshoot-sso)
+- [Understanding Azure AD Error Codes](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aadsts-error-codes)
+
+**Test URL Access**: 
+- Confirm that these links are reachable from your network or application environment to ensure users can follow guidance:
+  - [AAD Documentation](https://docs.microsoft.com/en-us/azure/active-directory/)
+  - [Troubleshooting Guide](https://docs.microsoft.com/en-us/azure/active-directory/develop/troubleshoot-sso)
+
+---
+
+### 6. Advice for Data Collection
+
+To effectively troubleshoot, gather the following data:
+
+- **User Details**: Time, user account, and role involved at the time of the error.
+- **Session Information**: Details on session tokens and authentication attempts.
+- **Logs**: Collect logs from both the application and Azure AD.
+- **Browser Console Output**: Capture JavaScript console and network requests made during the SSO process to identify failures.
+- **Configuration Snapshots**: Save or document any settings related to session and SSO configurations in Azure AD.
+
+By following the above steps in this troubleshooting guide, you can efficiently diagnose and resolve the AADSTS50058 error.

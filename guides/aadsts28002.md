@@ -3,31 +3,59 @@
 
 
 ## Troubleshooting Steps
-Sure, I can provide a detailed troubleshooting guide for the error code AADSTS28002 related to invalid scope values. Here is a step-by-step guide:
+### Troubleshooting Guide for AADSTS28002 Error
 
-### Initial Diagnostic Steps:
-1. **Verify the Error Message:** Check the exact error message provided with the error code AADSTS28002 to ensure that it mentions an invalid scope value.
-2. **Review Application Configuration:** Make sure to examine your application's authentication and authorization configuration settings related to scopes.
-3. **Check the Request:** Review the request being made to the authentication server and check the scope parameter to identify the invalid scope.
+#### Error Overview
+The error code AADSTS28002 states that the provided value for the input parameter scope in an access token request is not valid. This typically occurs when the requested scope is not recognized by Azure Active Directory (AAD) or does not align with the permissions configured for the application.
 
-### Common Issues:
-1. **Incorrect Scope Value:** The most common cause for this error is providing an incorrect or unsupported scope value in the access token request.
-2. **Scope Mismatch:** The client application might be requesting scopes that are not configured or allowed in the resource server's settings.
-3. **Typographical Errors:** Errors related to misspellings or extra spaces in the scope values can also cause the issue.
+### 1. Initial Diagnostic Steps
+1. **Verify Error Context**: Identify when the error occurs (e.g., during login, token retrieval). Understanding the context can help narrow down the root cause.
+2. **Collect Request Information**: Look at the request that triggered the error, specifically the scope parameter.
+3. **Check for Typos**: Ensure there are no typographical errors in the scope values.
+4. **Use Logs**: Check application and Azure AD logs for details surrounding the request, including timestamps and any related errors.
 
-### Step-by-Step Resolution Strategies:
-1. **Verify Scope Values:** Double-check the list of allowed scopes in your application's configuration and ensure that the requested scopes are valid.
-2. **Review Resource Server Configuration:** Verify that the resource server is configured to recognize and accept the requested scopes.
-3. **Use Supported Scopes:** Ensure that the requested scopes are supported by the API/resource you are trying to access.
-4. **Update Client Configuration:** If necessary, update the client application's configuration to specify the correct and supported scopes.
-5. **Test in a Controlled Environment:** Test the authentication flow with known valid scope values in a controlled environment to isolate the issue.
+### 2. Common Issues That Cause This Error
+- **Invalid or Incorrect Scope Format**: The defined scope may not be properly formatted or may include unsupported characters.
+- **Scopes Not Registered**: The scopes being requested may not be defined in the AAD app registration.
+- **User Permissions**: The scope may require higher privileges than the user or application has been granted.
+- **API Permissions**: The API associated with the scope may not have adequate permissions configured in the AAD app registration.
 
-### Additional Notes or Considerations:
-- **Error Response Details:** The error response usually includes additional details that can help pinpoint the exact scope causing the issue.
-- **Token Validation:** Make sure that the access token is being correctly issued with the scopes mentioned and validate the token against the issuer's specifications.
-- **Azure AD Application Registration:** Ensure that the scopes you are trying to use are properly set up in the Azure AD application registration associated with your application.
+### 3. Step-by-Step Resolution Strategies
+#### Step 1: Review the Scope Parameter
+- **Check the Values**: Ensure the values you are passing in the scope parameter are correctly spelled and match what is defined in Azure AD.
+- **Format**: Typically, scopes are in the format `api://{app_id}/{scope}`, so verify adherence to this format.
 
-### Documentation:
-- Detailed information and documentation on working with scopes in Azure AD can be found in the [official Microsoft Azure documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/scopes). This resource provides guidance on configuring and using scopes effectively.
+#### Step 2: Confirm App Registration Configuration
+- **Azure Portal Access**: Go to Azure Portal -> Azure Active Directory -> App registrations.
+- **Select Your App**: Find and select the application relevant to the request.
+- **Scopes**: Navigate to `Expose an API` and verify the configured scopes.
+- **Add Missing Scopes**: If the required scope is missing, add a new scope under this section. 
 
-By following these steps and considerations, you should be able to diagnose and resolve the error code AADSTS28002 related to invalid scope values effectively. If you encounter any specific issues during the troubleshooting process, feel free to ask for further assistance.
+#### Step 3: Check API Permissions
+- Go to the `API Permissions` section of your app registration.
+- Ensure the proper permissions are granted for accessing the desired API based on the scopes you are requesting.
+- Make sure any necessary admin consent has been granted.
+
+#### Step 4: Testing with Valid Scopes
+- Modify your token requests to use a known valid scope from your app registration to see if the error persists.
+- Use tools like Postman to manually request tokens with a known valid scope to isolate the issue further.
+
+### 4. Additional Notes or Considerations
+- **Scopes for Systems**: Be aware that different APIs may require different scopes and some APIs may only support specific scopes.
+- **Multiple Scopes Handling**: If you have multiple scopes, ensure they are separated by a space or comma as per your application’s requirements.
+- **Documentation References**: Make sure to document any changes made while troubleshooting to maintain an accurate history of configurations.
+
+### 5. Documentation Links 
+For further guidance and troubleshooting steps, you can refer to the official Microsoft documentation:
+- Microsoft Identity Platform and OAuth 2.0 scopes: [Scopes in Microsoft Identity](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent)
+- Troubleshooting authentication issues: [Troubleshoot Azure AD issues](https://docs.microsoft.com/en-us/azure/active-directory/develop/troubleshoot-authentication)
+
+### 6. Testing Documentation Accessibility
+- Verify the provided URLs are active by clicking on them in a web browser. If any link does not open, check for alternative documents or section within the Microsoft documentation.
+
+### 7. Advice for Data Collection
+- **Gather Request Data**: Log the full request and response payload when the error occurs, including headers, body, and the specific scope.
+- **User Context**: Collect information regarding the user and their roles/permissions in the Azure AD.
+- **Session Details**: Review any session tokens that could shed light on the user context during the auth flow.
+
+By following this troubleshooting guide, you should be able to identify the cause of the AADSTS28002 error and take appropriate action to resolve it. If issues persist after all strategies have been applied, consider reaching out to Microsoft Support for additional assistance.

@@ -3,46 +3,70 @@
 
 
 ## Troubleshooting Steps
-### Troubleshooting Guide: AADSTS70008 - ExpiredOrRevokedGrant
+### Troubleshooting Guide for Error Code AADSTS70008: ExpiredOrRevokedGrant
 
-#### Initial Diagnostic Steps:
-1. **Confirm the Error Code:**
-   Ensure that the error code is indeed AADSTS70008, indicating an issue with an expired or revoked refresh token.
+#### Error Description
+The error code AADSTS70008 indicates that the refresh token has expired due to inactivity. When you receive this error, it suggests that the refresh token issued to your application is no longer valid since it was not used within the allowed inactive period.
 
-2. **Check Token Issuance Date:**
-   Identify the exact date when the refresh token causing the error was issued (referred to as XXX), as this will provide context on its expiration timeline.
+---
 
-#### Common Issues:
-- **Long Periods of Inactivity:** Refresh tokens are designed to expire after a certain period of inactivity for security reasons.
-- **Manual Revocation:** The token may have been manually revoked by the user or the application.
-- **Rotation Policy:** If the token renewal process or token rotation policy is not correctly configured, it can lead to this error.
+### Initial Diagnostic Steps
+1. **Verify the Error Message**: Check the exact error message you received, including the issue date of the token and the inactivity period.
+2. **Token Lifetimes**: Review the refresh token lifetime settings for your Azure Active Directory (AAD) tenant. Understand the default configuration and any organizational policies that may affect it.
+3. **Reproduce the Error**: Try to replicate the error by performing the same action that initially triggered it.
+4. **Review Logs**: Check application logs and Azure activity logs to gather information about authentication requests and token usage to see if there are any patterns or anomalies.
 
-#### Step-by-Step Resolution Strategies:
-1. **Verify Token Inactivity:**
-   Check the time elapsed since the refresh token was last used to confirm if it has indeed expired due to inactivity.
+---
 
-2. **Attempt Token Refresh:**
-   If the original token is still valid, try refreshing it using the appropriate mechanism provided by your authentication service.
+### Common Issues That Cause This Error
+- **Inactivity Period Exceeded**: The refresh token has not been used for a duration longer than its inactive limit.
+- **Multiple Clients**: Using the refresh token across different clients or sessions can lead to its invalidation.
+- **Token Revocation**: Tokens can be revoked by an administrator or through policies, leading to this error.
+- **Application Reconfiguration**: Changes in permissions, scopes, or authentication settings in Azure AD can affect existing tokens.
+- **User Account Changes**: Changes to user accounts, such as password resets or account disablement, can invalidate tokens.
 
-3. **Manually Reauthenticate:**
-   If the token is expired, prompt the user to re-authenticate to generate a new refresh token.
+---
 
-4. **Review Token Management Policies:**
-   Evaluate the token expiration and rotation policies within your authentication setup to ensure they align with security best practices.
+### Step-by-Step Resolution Strategies
+1. **Re-authenticate the User**:
+   - Prompt the user to sign in again to acquire a new refresh token and access token.
 
-5. **Implement Automated Token Renewal:**
-   Set up automated processes to regularly refresh tokens to prevent expiration due to inactivity.
+2. **Update Token Storage**:
+   - If your application caches tokens, ensure that old or invalidated tokens are removed from your storage.
+   
+3. **Inspect Token Lifetimes**:
+   - Go to the Azure portal (Azure Active Directory > App Registrations > Your Application > Token Configuration) and check the lifetimes of token settings.
+   - Modify the refresh token expiration policy if necessary (keeping in mind security considerations).
 
-6. **Communicate with Users:**
-   Educate end-users on the importance of periodic re-authentication and the implications of expired refresh tokens.
+4. **Check User State**:
+   - Verify if the user account is active. Check for any changes that might have disabled or suspended the account.
 
-#### Additional Notes or Considerations:
-- Regularly monitor the token expiration status to proactively address any potential issues.
-- Ensure that all application components are updating tokens as required to maintain secure access.
-- Review any relevant system logs or audit trails for insights into token usage and expiration patterns.
+5. **Implement Token Refresh Logic**:
+   - Ensure that your application correctly handles cases where the refresh token is invalid by catching this specific error and prompting the user for re-authentication.
 
-#### Documentation for Guidance:
-- Azure Active Directory v2.0 error codes documentation: [Error Codes](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-aadsts-error-codes)
-- Microsoft Identity Platform authentication documentation: [Refresh Tokens](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+6. **Monitor Token Usage**:
+   - Implement logging and monitoring for token usage to track how and when refresh tokens are used, along with their lifecycle.
 
-By following these troubleshooting steps and best practices, you can effectively address the AADSTS70008 error related to expired or revoked grants in Azure Active Directory.
+---
+
+### Additional Notes or Considerations
+- Be cautious when changing token lifetimes to avoid compromising security. Lowering the inactive period may help mitigate this issue, but it should be balanced with user convenience.
+- Consider implementing user notifications or error messaging to inform users gracefully if they need to log in again due to expired tokens.
+- It’s advisable to design the application in such a way that it minimizes reliance on long-lived tokens.
+
+---
+
+### Documentation for Guidance
+- [Understanding Azure AD Refresh Tokens](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-authentication-scenarios#refresh-tokens)
+- [Token Lifetime Policies](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-configuration-token-lifetimes)
+- [Best Practices for Managing Azure AD Token Lifetimes](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-configuration-token-lifetime-best-practices)
+
+### Test the Documentation Reachability
+- Visit the links provided above to ensure they are accessible.
+
+### Advice for Data Collection
+- Collect logs that include timestamps of when tokens were issued and when the errors occurred.
+- Document user actions leading up to the error, as well as the environment (application, version, etc.).
+- Maintain a list of affected users and how frequently the issue occurs, as well as information about changes in configuration or user state that coincide with the error.
+
+By following this guide, you should be able to diagnose and resolve the AADSTS70008 error effectively and improve your application’s handling of authentication tokens.

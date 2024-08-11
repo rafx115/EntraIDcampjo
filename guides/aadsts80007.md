@@ -3,41 +3,113 @@
 
 
 ## Troubleshooting Steps
-When encountering the error code AADSTS80007 with the description "OnPremisePasswordValidatorErrorOccurredOnPrem - The Authentication Agent is unable to validate the user's password," it indicates an issue where the Authentication Agent is unable to validate the user's password for Active Directory (AD) authentication. Below is a detailed troubleshooting guide to help you resolve this error:
+### Troubleshooting Guide for AADSTS80007 Error
 
-### Initial Diagnostic Steps:
-1. **Check the Agent Logs:** Refer to the logs of the Authentication Agent to identify any specific error messages or details regarding the password validation failure.
-   
-2. **Verify Active Directory Status:** Ensure that Active Directory is up and running as expected. Confirm connectivity to the AD server.
+**Description:**  
+The error code `AADSTS80007` with the description `OnPremisePasswordValidatorErrorOccurredOnPrem` indicates that the Authentication Agent is unable to validate the user's password. This can prevent users from authenticating properly against Azure Active Directory (AAD) when using on-premises Active Directory.
 
-3. **Review Recent Changes:** Identify any recent changes or updates that may have affected the password validation process.
+---
 
-### Common Issues Causing this Error:
-- Misconfiguration of the Authentication Agent settings
-- Incorrect credentials provided by the user
-- Network connectivity issues between the Authentication Agent and AD server
-- Outdated or incompatible Agent version
-- Issues with AD services or policies
+### Initial Diagnostic Steps
 
-### Step-by-Step Resolution Strategies:
-1. **Confirm Correct Username and Password:** Verify that the user is providing the correct username and password for AD authentication.
+1. **Check the Service Status:**
+   - Verify the status of Azure services to make sure there are no ongoing outages or issues with the Azure Active Directory service that could impact authentication.
 
-2. **Check Authentication Agent Configuration:** Review the settings configured in the Authentication Agent to ensure they are accurate and up to date.
+2. **Review Agent Logs:**
+   - Check the logs for the Azure AD Authentication Agent. Logs are typically found at: `C:\Program Files\Microsoft Azure AD Authentication Agent\logs`. Look for recent entries related to user authentication.
 
-3. **Reset Password:** If the issue persists, consider resetting the user's password in Active Directory and attempt to authenticate with the new password.
+3. **Validate Network Connectivity:**
+   - Ensure that the Authentication Agent can reach the on-premises Active Directory and that external connectivity to Azure AD is also functioning properly.
 
-4. **Update Authentication Agent:** Make sure the Authentication Agent is updated to the latest version to address any known issues or compatibility problems.
+4. **Test Basic Authentication:**
+   - Try to authenticate a user directly against Active Directory using tools such as `dsquery`, `get-aduser`, or similar. This checks whether the user can be validated outside of the Authentication Agent.
 
-5. **Review Network Connectivity:** Ensure that there are no network issues preventing the Authentication Agent from communicating with the AD server.
+---
 
-6. **Check AD Services:** Verify the status of essential AD services and ensure that the AD policies are not blocking the authentication process.
+### Common Issues That Cause This Error
 
-### Additional Notes or Considerations:
-- **Logs Analysis:** Analyze detailed logs from the Authentication Agent to pinpoint the root cause of the password validation failure.
-- **User Support:** Provide guidance to the user on how to troubleshoot password-related issues from their end.
-- **Escalation:** If necessary, involve relevant IT support teams or escalate the issue to Microsoft support for further assistance.
+1. **Authentication Agent Configuration:**
+   - Incorrectly configured Authentication Agent, particularly regarding connections to the on-premises Active Directory.
 
-### Documentation for Guidance:
-- Microsoft Azure Active Directory documentation on troubleshooting authentication errors: [Azure AD Troubleshooting guide](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-troubleshooting?tabs=Windows)
+2. **AD DS Availability:**
+   - Active Directory Domain Services (AD DS) might be down or experiencing issues.
 
-By following these steps and considering the common issues and resolution strategies outlined above, you should be able to troubleshoot and resolve the AADSTS80007 error related to password validation in Active Directory successfully.
+3. **Account Lockouts:**
+   - The user account may be locked, expired, or invalid.
+
+4. **Password Changes Not Replicated:**
+   - New passwords may not have propagated throughout Active Directory or have not been synced correctly.
+
+5. **Firewall and Network Issues:**
+   - Network or firewall settings may be blocking connections between the Authentication Agent and the AD or Azure.
+
+6. **Kerberos Issues:**
+   - In cases where Kerberos authentication is set up, issues in service tickets can arise.
+
+---
+
+### Step-by-Step Resolution Strategies
+
+1. **Validate Configuration of Authentication Agent:**
+   - Open the Azure AD Authentication Agent configuration.
+   - Verify that the agent is correctly configured with the proper credentials and settings for accessing the on-premises Active Directory.
+
+2. **Check Active Directory Health:**
+   - Use the `dcdiag` command to check the health of the Active Directory.  
+   Command:  
+   ```
+   dcdiag /v
+   ```
+
+3. **Review User Account Status:**
+   - Open Active Directory Users and Computers (ADUC).
+   - Check the user's account for status indicators (locked, expired, etc.).
+
+4. **Replicate Password Changes:**
+   - If the user has recently changed their password, ensure that the change has been replicated throughout AD. Use the `repadmin` command to check replication status.  
+   Command:  
+   ```
+   repadmin /showrepl
+   ```
+
+5. **Monitoring Network:**
+   - Ensure that the Authentication Agent can communicate with your on-premises AD and Azure AD without being blocked by any firewall rules.
+   - Use `ping` or `telnet` tests on necessary ports (generally TCP 389 for LDAP).
+
+6. **Restart the Authentication Agent Service:**
+   - Sometimes, simply restarting the Azure AD Authentication Agent service can resolve transient issues.  
+   Command in PowerShell:  
+   ```powershell
+   Restart-Service "AzureADAuthenticationAgent"
+   ```
+
+---
+
+### Additional Notes or Considerations
+
+- Make sure that the system hosting the Authentication Agent has adequate permissions to query AD.
+- Ensure that time synchronization is maintained across systems to prevent Kerberos authentication failures.
+- Regularly review and update the Authentication Agent to the latest version for stability.
+- If you have multiple Authentication Agents, ensure they’re all configured properly and are in good health.
+
+---
+
+### Documentation for Reference
+
+- Azure AD Authentication Agent Documentation: [Overview of Azure AD Authentication Agent](https://learn.microsoft.com/en-us/azure/active-directory/hybrid/deploy-authentication-agent)
+- How to check Active Directory Health: [Using DCDIAG](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/active-directory-diagnostic-tools)
+
+*Note: Please verify that access to the above documentation is available as connections may vary based on your network settings and permissions.*
+
+---
+
+### Advice for Data Collection
+
+- When troubleshooting, compile the following data:
+  - Event logs from the Authentication Agent.
+  - Error messages encountered during user authentication.
+  - Outputs from `dcdiag` and `repadmin` commands.
+  - Connectivity tests (ping, telnet) results.
+  - Configuration settings of the Authentication Agent.
+
+By following this troubleshooting guide, you will systematically address the AADSTS80007 error related to on-premises password validation and help restore functionality for users.

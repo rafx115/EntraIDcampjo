@@ -1,30 +1,31 @@
 import os
 import openai
 import time
-import chardet
 
 # Your OpenAI API key
 openai.api_key = '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'
 
-# Directory where the guides are located
-guides_dir = r"C:\Users\joser\EntraIDcampjo\guides"
+# Base directory where the guides are located
+base_guides_dir = r"C:\Users\joser\EntraIDcampjo\guides"
 
 # Initialize counters for evaluated and skipped files
 total_files_count = 0
 skipped_files_count = 0
 
-# Function to generate troubleshooting steps using ChatGPT
-def generate_troubleshooting_steps(code, description):
+# Function to generate troubleshooting steps and categorize the error code
+def generate_troubleshooting_steps_and_category(code, description):
     prompt = f"""
-    Provide a detailed troubleshooting guide for the error code {code} with the following description: {description}.
-    Make sure to include:
+    For the error code {code} with the following description: "{description}",
+    - Provide a detailed troubleshooting guide.
+    - Suggest the most appropriate product category or service this error relates to.
     - Initial diagnostic steps
     - Common issues that cause this error
     - Step-by-step resolution strategies
     - Additional notes or considerations
     - Documentation where steps can be found for guidance
-    - Test the documentation can be reachable
-    - Advice for data collection
+    - Advice for data collection event viewer logs, netrace, fiddler if are related to the issue
+    
+    Your response should start with the category, followed by the troubleshooting guide.
     """
     
     while True:
@@ -36,7 +37,10 @@ def generate_troubleshooting_steps(code, description):
                     {"role": "user", "content": prompt}
                 ]
             )
-            return response['choices'][0]['message']['content'].strip()
+            # Split the response into category and guide
+            full_response = response['choices'][0]['message']['content'].strip()
+            category, guide = full_response.split("\n", 1)
+            return category.strip(), guide.strip()
         except openai.error.APIError as e:
             print(f"API error: {e}. Retrying in 60 seconds...")
             time.sleep(60)
@@ -45,24 +49,18 @@ def generate_troubleshooting_steps(code, description):
             time.sleep(60)
         except openai.error.OpenAIError as e:
             print(f"General OpenAI error: {e}.")
-            return "Troubleshooting steps could not be generated due to an error."
+            return "Uncategorized", "Troubleshooting steps could not be generated due to an error."
         except Exception as e:
             print(f"An unexpected error occurred: {e}")
-            return "Troubleshooting steps could not be generated due to an error."
+            return "Uncategorized", "Troubleshooting steps could not be generated due to an error."
 
 # Iterate through each Markdown file in the directory
-for filename in os.listdir(guides_dir):
+for filename in os.listdir(base_guides_dir):
     if filename.endswith(".md"):
         total_files_count += 1  # Increment total files counter
-        filepath = os.path.join(guides_dir, filename)
+        filepath = os.path.join(base_guides_dir, filename)
         
-        # Detect the file encoding
-        with open(filepath, 'rb') as file:
-            raw_data = file.read()
-            result = chardet.detect(raw_data)
-            encoding = result['encoding']
-        
-        with open(filepath, 'r', encoding=encoding) as file:
+        with open(filepath, 'r', encoding='utf-8') as file:
             content = file.read()
             lines = content.splitlines()
             
@@ -80,6 +78,16 @@ for filename in os.listdir(guides_dir):
                 if len(parts) == 2:
                     code = parts[0].strip()
                     description = parts[1].strip()
+                    
+                    # Get the category and troubleshooting steps from OpenAI
+                    category, troubleshooting_steps = generate_troubleshooting_steps_and_category(code, description)
+                    
+                    # Determine the product and create a directory if needed
+                    product_dir = os.path.join(base_guides_dir, category)
+                    os.makedirs(product_dir, exist_ok=True)
+                    
+                    # Save the file in the appropriate product directory
+                    filepath = os.path.join(product_dir, filename)
                 else:
                     print(f"Skipping {filename}: Unable to parse code and description.")
                     skipped_files_count += 1
@@ -89,9 +97,6 @@ for filename in os.listdir(guides_dir):
                 skipped_files_count += 1
                 continue
         
-        # Generate troubleshooting steps
-        troubleshooting_steps = generate_troubleshooting_steps(code, description)
-        
         # Append troubleshooting steps to the file content
         updated_content = content + "\n\n## Troubleshooting Steps\n" + troubleshooting_steps
         
@@ -99,7 +104,7 @@ for filename in os.listdir(guides_dir):
         with open(filepath, 'w', encoding='utf-8') as file:
             file.write(updated_content)
         
-        print(f"Updated {filename} with troubleshooting steps.")
+        print(f"Updated {filename} with troubleshooting steps in category {category}.")
 
 # Print the total number of evaluated and skipped files
 print(f"\nTotal files evaluated: {total_files_count}")

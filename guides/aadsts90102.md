@@ -3,43 +3,65 @@
 
 
 ## Troubleshooting Steps
-Troubleshooting guide for error code AADSTS90102 (InvalidUriParameter - The value must be a valid absolute URI):
+Certainly! The error code **AADSTS90102**, indicating "InvalidUriParameter - The value must be a valid absolute URI," typically arises in scenarios related to OAuth or OpenID Connect authentication when the URI parameter(s) specified in a request are not formatted correctly. Here’s a detailed troubleshooting guide for this issue.
 
-**Initial Diagnostic Steps:**
-1. Start by verifying the exact context in which the error occurs (e.g., during login, token acquisition, or API access).
-2. Check the specific URI parameter value that is causing this error.
-3. Ensure that there are no typos or incorrect syntax in the URI parameter.
-4. Confirm if the URI provided is indeed an absolute URI (starts with a scheme such as http:// or https://).
+### Initial Diagnostic Steps
 
-**Common Issues Causing This Error:**
-1. Incorrectly formatted or incomplete URI parameters.
-2. Missing scheme (e.g., http:// or https://) in the URI.
-3. Including special characters in the URI that are not properly encoded.
-4. Using relative URIs instead of absolute URIs.
+1. **Check the Error Message:** Identify the specific URI parameter mentioned in the error message.
+2. **Review the Request:** Examine the request (like the authorization request URL) leading to this error to identify any URI parameters that might be incorrectly formatted.
+3. **Reproduce the Error:** If possible, replicate the error in a controlled environment to understand the exact conditions that cause the failure. 
 
-**Step-by-Step Resolution Strategies:**
-1. Check the URI Parameter Value:
-   - Verify the URI parameter value provided in the request for any errors.
-   - Pay close attention to the syntax and ensure it is a complete absolute URI.
+### Common Issues that Cause this Error
 
-2. Ensure Proper URI Formatting:
-   - Confirm that the URI starts with a scheme (http:// or https://) followed by the domain and path.
-   - Make sure to encode special characters in the URI if necessary.
+1. **Malformed URI:** The specified URI is not formatted as an absolute URI (e.g., it might be a relative URL or missing the protocol).
+2. **Missing Required Parameters:** Required parameters might be omitted from the URI.
+3. **Wrong Parameter Value:** Sometimes, even valid-looking URIs can contain incorrect values or formats (e.g., missing scheme like http or https).
+4. **Incorrect Application Registration:** The application being used might not be correctly configured to handle the URIs being passed.
 
-3. Test the URI:
-   - Manually try to access the URI in a web browser to ensure it is a valid absolute URI.
-   - If the URI does not load in the browser, correct the URI until it becomes valid.
+### Step-by-Step Resolution Strategies
 
-4. Update the URI Parameter:
-   - If the URI parameter value is indeed incorrect, update it with the correct absolute URI.
-   - Double-check the URI parameter syntax before proceeding.
+1. **Verify the URI Format:**
+   - Ensure that the URI is absolute, meaning it should include the scheme (http:// or https://), host, and path as necessary. For example:
+     - Correct: `https://example.com/callback`
+     - Incorrect: `example/callback`
+  
+2. **Check Application Registration:**
+   - Log into Azure portal and navigate to the Azure Active Directory.
+   - Go to "App registrations," select your application, and check the following:
+     - Redirect URIs: Ensure that all specified redirect URIs are absolute and accurately listed.
+     - Application ID URI: Ensure that it is set correctly if needed.
 
-**Additional Notes or Considerations:**
-- It's crucial to follow URI specifications and encoding rules to ensure compatibility with the Azure Active Directory (AAD) authentication system.
-- Clear any caching that might be causing the incorrect URI to persist in subsequent requests.
-- Ensure that the URI provided is accessible and properly configured on the server side.
+3. **Examine OAuth/OpenID request parameters:**
+   - If you are making an OAuth or OpenID request, ensure that the parameters such as `redirect_uri`, `scope`, and `response_type` are correctly specified and properly encoded in the URL.
 
-**Documentation for Guidance:**
-You can refer to the official Azure Active Directory documentation on handling errors and troubleshooting common issues like AADSTS90102. Detailed guidance can be found in the Microsoft Docs, particularly in the Azure AD error codes documentation section.
+4. **Consult Documentation:**
+   - Visit the official Microsoft documentation related to Azure Active Directory to review any specific requirements for URIs.
+   - Documentation Links:
+     - [Azure AD Authentication documentation](https://docs.microsoft.com/en-us/azure/active-directory/develop/authentication-scenarios)
+     - [Redirect URIs in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/v1-app-redirect-uri)
 
-By following these diagnostic steps and resolution strategies, you should be able to address the error code AADSTS90102 related to an InvalidUriParameter effectively.
+5. **Logging and Debugging:**
+   - Implement logging in your application to capture the generated URIs before making authentication requests.
+   - Utilize tools like Fiddler or browser developer tools to inspect outgoing requests.
+
+### Additional Notes or Considerations
+
+- **Encoding:** Be cautious of encoding issues in URIs; characters may need to be URL-encoded.
+- **Security:** Ensure that sensitive information is not included in URIs as query parameters.
+- **Multiple Environments:** Consider the possibility of having different configurations for different environments (development, staging, production).
+
+### Test the Documentation Reachability
+
+To ensure that the documentation is accessible:
+1. Open a web browser.
+2. Navigate to the URL: [https://docs.microsoft.com/en-us/azure/active-directory/develop/authentication-scenarios](https://docs.microsoft.com/en-us/azure/active-directory/develop/authentication-scenarios)
+3. Verify the page loads properly, and the relevant information is available.
+
+### Advice for Data Collection
+
+1. **Request Logs:** Collect logs from the request-making component of your application.
+2. **Error Responses:** Keep copies of any full error messages returned from Azure Active Directory.
+3. **Configuration Snapshots:** Capture screenshots or text exports of your application’s settings within the Azure portal to reference when troubleshooting.
+4. **User Reports:** Document any user reports related to authentication issues for patterns or common configurations.
+
+By following these steps and considerations, you should be able to diagnose and fix the AADSTS90102 error effectively. If issues persist even after these resolutions, it may be helpful to engage with Microsoft Support for more in-depth troubleshooting.
