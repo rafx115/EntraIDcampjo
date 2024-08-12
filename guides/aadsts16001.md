@@ -1,4 +1,3 @@
-
 # AADSTS16001: UserAccountSelectionInvalid - You see this error if the user selects on a tile that the session select logic has rejected. When triggered, this error allows the user to recover by picking from an updated list of tiles/sessions, or by choosing another account. This error can occur because of a code defect or race condition.
 
 

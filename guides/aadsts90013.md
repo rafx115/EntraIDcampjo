@@ -1,4 +1,3 @@
-
 # AADSTS90013: InvalidUserInput - The input from the user isn't valid.
 
 

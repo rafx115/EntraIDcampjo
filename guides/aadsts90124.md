@@ -1,4 +1,3 @@
-
 # AADSTS90124: V1ResourceV2GlobalEndpointNotSupported - The resource isn't supported over the/commonor/consumersendpoints. Use the/organizationsor tenant-specific endpoint instead.
 
 

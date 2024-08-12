@@ -1,4 +1,3 @@
-
 # AADSTS70003: UnsupportedGrantType - The app returned an unsupported grant type.
 
 

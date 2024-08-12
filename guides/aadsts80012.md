@@ -1,4 +1,3 @@
-
 # AADSTS80012: OnPremisePasswordValidationAccountLogonInvalidHours - The users attempted to log on outside of the allowed hours (this is specified in AD).
 
 

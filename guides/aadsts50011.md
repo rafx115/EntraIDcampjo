@@ -1,4 +1,3 @@
-
 # AADSTS50011: InvalidReplyTo - The reply address is missing, misconfigured, or doesn't match reply addresses configured for the app. As a resolution ensures to add this missing reply address to the Microsoft Entra application or have someone with the permissions to manage your application in Microsoft Entra IF do this for you. To learn more, see the troubleshooting article for errorAADSTS50011.
 
 

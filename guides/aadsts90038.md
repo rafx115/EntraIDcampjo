@@ -1,4 +1,3 @@
-
 # AADSTS90038: NationalCloudTenantRedirection - The specified tenant 'Y' belongs to the National Cloud 'X'. Current cloud instance 'Z' does not federate with X. A cloud redirect error is returned.
 
 

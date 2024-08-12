@@ -1,4 +1,3 @@
-
 # AADSTS70043: BadTokenDueToSignInFrequency - The refresh token has expired or is invalid due to sign-in frequency checks by Conditional Access. The token was issued on {issueDate} and the maximum allowed lifetime for this request is {time}.
 
 

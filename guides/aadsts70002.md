@@ -1,4 +1,3 @@
-
 # AADSTS70002: InvalidClient - Error validating the credentials. The specified client_secret does not match the expected value for this client. Correct the client_secret and try again. For more info, seeUse the authorization code to request an access token.
 
 
