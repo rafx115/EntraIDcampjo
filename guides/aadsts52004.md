@@ -1,4 +1,3 @@
-
 # AADSTS52004: DelegationDoesNotExistForLinkedIn - The user has not provided consent for access to LinkedIn resources.
 
 

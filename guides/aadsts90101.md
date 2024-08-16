@@ -1,4 +1,3 @@
-
 # AADSTS90101: InvalidEmailAddress - The supplied data isn't a valid email address. The email address must be in the formatsomeone@example.com.
 
 

@@ -1,4 +1,3 @@
-
 # AADSTS76021: ApplicationRequiresSignedRequests - The request sent by client is not signed while the application requires signed requests
 
 

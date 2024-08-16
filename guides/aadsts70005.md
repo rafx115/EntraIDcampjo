@@ -1,4 +1,3 @@
-
 # AADSTS70005: UnsupportedResponseType - The app returned an unsupported response type due to the following reasons:response type 'token' isn't enabled for the appresponse type 'id_token' requires the 'OpenID' scope -contains an unsupported OAuth parameter value in the encoded wctx
 
 

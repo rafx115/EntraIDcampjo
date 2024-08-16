@@ -1,4 +1,3 @@
-
 # AADSTS50005: DevicePolicyError - User tried to sign in to a device from a platform not currently supported through Conditional Access policy.
 
 

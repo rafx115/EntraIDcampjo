@@ -1,4 +1,3 @@
-
 # AADSTS90095: AdminConsentRequiredRequestAccess-  In the Admin Consent Workflow experience, an interrupt that appears when the user is told they need to ask the admin for consent.
 
 

@@ -1,4 +1,3 @@
-
 # AADSTS50097: DeviceAuthenticationRequired - Device authentication is required.
 
 
